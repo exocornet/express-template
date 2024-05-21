@@ -10,6 +10,7 @@ out
 Thumbs.db
 .DS_Store
 machinet.conf
+package-lock.json
 
 # dotenv environment variables file (build for Zeit Now)
 .env
