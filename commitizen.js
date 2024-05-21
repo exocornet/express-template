@@ -46,9 +46,9 @@ module.exports = {
 		body: 'Полное описание проделанной работы с указанием файла, который изменил',
 		confirmCommit: 'Вас устраивает получившийся коммит?',
 	},
-	skipEmptyScopes: true,
-	allowCustomScopes: false,
 	allowBreakingChanges: false,
+	allowCustomScopes: false,
+	skipEmptyScopes: true,
 	footerPrefix: 'METADATA:',
 	subjectLimit: 72,
 };
