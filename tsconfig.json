@@ -8,12 +8,14 @@
 		"strictPropertyInitialization": false,
 		"forceConsistentCasingInFileNames": true,
 		"incremental": true,
+		"noImplicitAny": true,
 		"esModuleInterop": true,
 		"module": "es6",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"jsx": "preserve"
+		"jsx": "preserve",
+		"noEmit": true,
 	},
 	"include": [
 		"**/*.ts",
