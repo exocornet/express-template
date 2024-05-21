@@ -1,0 +1,10 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('zone')
+
+		return {
+			block: BLOCK({}, [cn?.display, cn?.margin]),
+			elementBtn: BLOCK('btn'),
+			elementIcon: BLOCK('icon'),
+		}
+	}

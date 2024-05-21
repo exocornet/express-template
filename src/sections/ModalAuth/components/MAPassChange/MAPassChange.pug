@@ -1,0 +1,18 @@
+mixin MAPassChange(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include MAPassChange.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)&attributes(attributes)
+		+Heading(ELEM('Heading'))(class=styles.elementHeading)
+		form(class=styles.elementForm novalidate method="post" action="/auth")
+			div(class=styles.elementFormContent)
+				input(type="hidden" name="userId" id="change-password-user-id")
+				input(type="hidden" name="checkword" id="change-password-code")
+				+Input(ELEM('InputPasswordRepeat'))(class=styles.elementInput)
+				+Input(ELEM('InputPassword'))(class=styles.elementInput)
+				+Button(ELEM('Button'))&attributes({Button: {class: styles.elementButton}})

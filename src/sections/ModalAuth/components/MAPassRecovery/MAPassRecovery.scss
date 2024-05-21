@@ -1,0 +1,67 @@
+.ma-pass-recovery {
+	$self: &;
+
+	display: flex;
+	flex-direction: column;
+
+	&__button-back {
+		position: absolute;
+		top: 24px;
+		left: 24px;
+
+		color: $red;
+
+		@include media(xs) {
+			top: 16px;
+			left: 12px;
+		}
+	}
+
+	&__heading {
+		margin-bottom: 32px;
+		padding-inline: 64px;
+
+		@include media(xs) {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__input + &__input {
+		margin-top: 8px;
+
+		@include media(xs) {
+			margin-top: 4px;
+		}
+	}
+
+	&__button {
+		width: 100%;
+		margin-top: 8px;
+
+		@include media(xs) {
+			margin-top: 4px;
+			padding-inline: 0;
+		}
+	}
+
+	&__input + &__button {
+		margin-top: 24px;
+
+		@include media(xs) {
+			margin-top: 16px;
+		}
+	}
+
+	&__caption {
+		margin-top: 24px;
+
+		@include media(xs) {
+			margin-top: 16px;
+		}
+
+		// stylelint-disable-next-line order/order
+		a {
+			text-decoration: none;
+		}
+	}
+}

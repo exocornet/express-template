@@ -1,0 +1,96 @@
+// ПРИ ПОЯВЛЕНИЕ СЛАЙДЕРА ОТЛИЧАЮЩЕГОСЯ ПО ДИЗАЙНУ ОТ ДАННОГО СЛАЙДЕРА ТРЕБУЕТСЯ РАЗДЕЛИТЬ ЛОГИКУ НА РАЗНЫЕ КОМПОНЕНТЫ И ПРОВЕСТИ РЕФАКТОРИНГ
+// КОМПОНЕНТ +Slider ОСТАНЕТСЯ И БУДЕТ ВЫЗЫВАТЬСЯ УЖЕ В СООТВЕТСТВУЮЩИЕ КОМПОНЕНТЫ
+.slider {
+	$self: &;
+
+	position: relative;
+
+	overflow: hidden;
+
+	width: 100%;
+	margin-bottom: 80px;
+
+	border: 2px solid $light-gray;
+	border-radius: $br24;
+
+	@include media(md) {
+		margin-bottom: 0;
+
+		border: none;
+	}
+
+	// stylelint-disable-next-line order/order
+	&__slide {
+		text-size-adjust: 100%;
+	}
+
+	// [START] ===> Стили пагинации
+	&__pagination {
+		--swiper-pagination-color: #{$gray};
+		--swiper-pagination-bullet-inactive-color: #{$background-gray};
+		--swiper-pagination-bullet-inactive-opacity: 1;
+		--swiper-pagination-bullet-horizontal-gap: 4px;
+		--swiper-pagination-bullet-size: 12px;
+		--swiper-pagination-bottom: 16px;
+
+		position: absolute;
+		z-index: $infinity;
+
+		text-align: center;
+
+		@include media(md) {
+			--swiper-pagination-bottom: 24px;
+		}
+
+		@include media(xs) {
+			--swiper-pagination-bottom: 12px;
+			--swiper-pagination-bullet-size: 4px;
+			--swiper-pagination-bullet-horizontal-gap: 2px;
+		}
+	}
+	// Стили пагинации <=== [END]
+
+	// [START] ===> Стили навигации
+	&__navigation {
+		position: absolute;
+		z-index: $infinity;
+		top: 50%;
+		right: 16px;
+		left: 16px;
+
+		display: flex;
+		justify-content: space-between;
+
+		transform: translateY(-50%);
+
+		@include media(md) {
+			display: none;
+		}
+	}
+
+	&__next {
+		margin-left: auto;
+	}
+
+	&__prev,
+	&__next {
+		width: 40px;
+		height: 40px;
+
+		color: $red;
+
+		&:hover {
+			color: $red-80;
+		}
+	}
+
+	&__arrow-button {
+		width: 24px;
+		aspect-ratio: 1 / 1;
+	}
+
+	.swiper-button-disabled {
+		display: none;
+	}
+	// Стили навигации <=== [END]
+}

@@ -1,0 +1,8 @@
+mixin Col(props)
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Col.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.col)&attributes(attributes)
+		block

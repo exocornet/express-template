@@ -1,0 +1,30 @@
+//- # ЛОГИКА КОМПОНЕНТА # -//
+-
+	CartItemId = 1;
+	CartItemCallCount = 0;
+
+mixin CartItem(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include CartItem.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)&attributes(attributes)
+		picture(class=styles.elementPicture)
+			source(srcset=DATA('imgWebp'))
+			img(class=styles.elementImage src=DATA('img') alt="text")
+		div(class=styles.elementContent)
+			+Text(ELEM('TextName'))(class=styles.elementName)
+			div(class=styles.elementCount data-card-id=`${CartItemCallCount > 1 ? CartItemId : 1}`)
+				+CounterCart(ELEM('CounterCart'))(class=styles.elementCounter)
+				div(class=styles.elementCountInfo)
+					+Text(ELEM('TextPrice'))(class=styles.elementPrice)
+					+Text(ELEM('TextWeight'))(class=styles.elementWeight)
+		button(class=styles.elementButtonEmpty type="button" aria-label="Удалить")
+			+Sprite('close')(class=styles.elementButtonEmptyIcon)
+	-
+		CartItemId++;
+		CartItemCallCount++;

@@ -1,0 +1,17 @@
+mixin ModalMapStatic(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include ModalMapStatic.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	+Modal(ELEM('Modal'))(class=styles.block)
+		+ModalBody(class=styles.elementModalBody)
+			div(class=styles.elementHeader)
+				+Text({data: {text: 'Зоны доставки'}, cn: {size: 'body-h2'}})
+				+ModalCloseButton(class=styles.elementModalClose)
+			div(class=styles.elementMap)
+				picture
+					img(src="/assets/img/sections/modal-map/map.png" alt="map" class=styles.elementImage)

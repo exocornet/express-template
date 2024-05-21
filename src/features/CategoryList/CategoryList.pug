@@ -1,0 +1,15 @@
+mixin CategoryList(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include CategoryList.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block data-category-block=DATA('dataCategoryBlock', false))&attributes(attributes)
+		+Text(ELEM('Text'))
+		div(class=styles.elementWrapper)
+			for item in ELEM_ARR('CategoryItemArr')
+				include ../../shared/helpers/pug/shortcut-check-store
+				+ItemCategory(item)

@@ -1,0 +1,91 @@
+-
+	const ModalBuyInOne = {
+		includeContent: 'ModalBuyInOne',
+		elem: {
+			InputName: {
+				data: {
+					type: 'text',
+					validationType: 'fullName',
+					name: 'fullName',
+				},
+				elem: {
+					TextLabel: {
+						data: {
+							text: 'Имя и фамилия'
+						},
+						cn: {
+							color: 'gray',
+						}
+					},
+					TextError: {
+						data: {
+							text: 'Неверный формат'
+						},
+						cn: {
+							color: 'red',
+							size: 'caption'
+						}
+					}
+				}
+			},
+			InputPhone: {
+				data: {
+					type: 'tel',
+					validationType: 'phone',
+					name: 'phone',
+				},
+				elem: {
+					TextLabel: {
+						data: {
+							text: "Телефон"
+						},
+						cn: {
+							color: 'gray',
+						}
+					},
+					TextError: {
+						data: {
+							text: 'Неверный формат'
+						},
+						cn: {
+							color: 'red',
+							size: 'caption'
+						}
+					}
+				}
+			},
+			Modal: {
+				data: {
+					dataModal: 'buy-in-one',
+				},
+			},
+			HeadingSuccess: {
+				data: {
+					text: 'Спасибо за заказ',
+					tag: 'h2'
+				},
+			},
+			TextSuccess: {
+				data: {
+					text: 'Менеджер свяжется с вами для уточнения деталей'
+				},
+				cn: {
+					size: 'body-m-m'
+				}
+			},
+			ButtonSuccess: {
+				data: { text: 'Смотреть заказ', href: '#!' },
+				cn: { width: 'w-100' },
+			},
+			HeadingError: {
+				data: {
+					text: 'Ошибка',
+					tag: 'h2'
+				}
+			},
+			ButtonError: {
+				data: { text: 'Назад' },
+				cn: { width: 'w-100' },
+			}
+		}
+	}

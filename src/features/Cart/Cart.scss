@@ -1,0 +1,297 @@
+@import "../../shared/styles/include-setings-styles";
+
+.cart {
+	--btn-height: 64px;
+
+	$self: &;
+	position: sticky;
+	top: calc(var(--outside-indentation) + var(--outside-indentation-main));
+
+	display: flex;
+	flex-direction: column;
+
+	height: calc(100vh - (var(--outside-indentation) + var(--outside-indentation-main)));
+
+	transition: transition();
+	gap: 8px;
+
+	@include media(md) {
+		position: fixed;
+
+		z-index: 1;
+		top: unset;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		height: 0;
+	}
+
+	// stylelint-disable-next-line order/order
+	&__bg {
+		position: fixed;
+		z-index: 0;
+		inset: 0;
+
+		display: none;
+
+		background: $black-50;
+	}
+
+	&__button-address {
+		width: 100%;
+
+		@include media(md) {
+			position: absolute;
+			z-index: 2;
+			bottom: 12px;
+			left: 32px;
+
+			width: calc(50% - 32px - 4px);
+		}
+
+		@include media(xs) {
+			inset: 60px 12px auto;
+
+			display: flex;
+
+			width: auto;
+		}
+	}
+
+	&__wrapper {
+		position: relative;
+
+		display: flex;
+		flex-direction: column;
+
+		height: calc(100% - var(--btn-height));
+
+		max-height: 692px;
+		padding: 20px;
+
+		transition: transition();
+
+		border-radius: $br24;
+		background: $background-light;
+
+		@include media(md) {
+			z-index: 0;
+			top: 100vh;
+
+			height: 100%;
+			max-height: unset;
+			padding: 0;
+
+			border-radius: 16px 16px 0 0;
+		}
+	}
+
+	&__top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		margin-bottom: 20px;
+
+		@include media(md) {
+			margin-bottom: 24px;
+			padding: 32px 32px 0;
+		}
+
+		@include media(xs) {
+			margin-bottom: 88px;
+			padding: 12px 12px 0;
+		}
+	}
+
+	&__button-back {
+		display: none;
+
+		@include media(md) {
+			display: flex;
+
+			color: $red;
+		}
+	}
+
+	&__button-empty {
+		display: flex;
+		align-items: center;
+
+		color: $gray;
+		column-gap: 8px;
+
+		@include media(md) {
+			justify-content: center;
+
+			width: 40px;
+			height: 40px;
+			padding: 8px;
+
+			color: $red;
+			border-radius: 50%;
+			background-color: $white;
+		}
+
+		@include media(xs) {
+			width: 32px;
+			height: 32px;
+		}
+
+		// stylelint-disable-next-line order/order
+		&:hover:not([disabled]) {
+			@include media(md) {
+				background-color: $red;
+			}
+		}
+	}
+
+	&__button-empty-text {
+		line-height: 1;
+
+		@include media(md) {
+			display: none;
+		}
+	}
+
+	&__button-empty-icon-desktop {
+		width: 16px;
+		height: 16px;
+
+		@include media(md) {
+			display: none;
+		}
+	}
+
+	&__button-empty-icon-mobile {
+		display: none;
+
+		@include media(md) {
+			width: 16px;
+			height: 16px;
+
+			color: $red;
+		}
+	}
+
+	&__body {
+		display: flex;
+
+		overflow-y: auto;
+		flex-direction: column;
+
+		height: 100%;
+
+		padding-bottom: 115px;
+		gap: 16px;
+
+		@include media(md) {
+			padding: 0 32px 105px;
+			gap: 24px;
+		}
+
+		@include media(xs) {
+			//because IPHONE X HAS A DIFFERENT HEIGHT
+			padding: 0 12px 180px;
+		}
+
+		@include no-scrollbar;
+	}
+
+	&__logo {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
+
+		height: 100%;
+	}
+
+	&__sprite {
+		width: 64px;
+		height: 64px;
+	}
+
+	&__bottom {
+		position: absolute;
+		right: 20px;
+		bottom: 20px;
+		left: 20px;
+
+		display: flex;
+		align-items: flex-end;
+
+		height: 115px;
+
+		background: linear-gradient(hsl(0deg 5% 96% / 0) 0%, $background-light 30%);
+
+		@include media(md) {
+			position: fixed;
+			z-index: 2;
+			right: 0;
+			bottom: 0;
+			left: 0;
+
+			height: 88px;
+			padding: 12px 32px;
+
+			border-top-left-radius: 16px;
+			border-top-right-radius: 16px;
+
+			background: $white;
+		}
+
+		@include media(xs) {
+			height: 74px;
+			padding: 14px 12px;
+
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+		}
+	}
+
+	&__button-cart {
+		width: 100%;
+
+		@include media(md) {
+			position: absolute;
+			right: 32px;
+			bottom: 12px;
+
+			width: calc(50% - 32px - 4px);
+		}
+
+		@include media(xs) {
+			position: static;
+
+			width: 100%;
+		}
+	}
+
+	&.js-show {
+		z-index: 2;
+
+		@include media(md) {
+			height: calc(100vh - 32px);
+
+			.cart {
+				&__bg {
+					display: block;
+				}
+
+				&__wrapper {
+					top: 0;
+				}
+
+				&__button-empty-icon-mobile {
+					display: block;
+				}
+			}
+		}
+
+		@include media(xs) {
+			top: 16px;
+		}
+	}
+}

@@ -1,0 +1,26 @@
+-
+	function classes(cn) {
+		// логика формирования классов
+		const cols = cn?.cols ? cn?.cols : 'col-36';
+
+		// определение блока 'col'
+		const BLOCK = CN('col');
+
+		return {
+			col: BLOCK({}, [
+				cols,
+				cn?.order,
+				cn?.margin,
+				cn?.padding,
+				cn?.display,
+				cn?.justify,
+				cn?.flexWrap,
+				cn?.alignItems,
+				cn?.direction,
+				cn?.offset,
+				cn?.position,
+				cn?.gap,
+				cn?.zIndex
+			])
+		}
+	}

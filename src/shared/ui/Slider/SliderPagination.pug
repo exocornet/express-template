@@ -1,0 +1,7 @@
+mixin SliderPagination(props)
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Slider.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.elementPagination)&attributes(attributes)

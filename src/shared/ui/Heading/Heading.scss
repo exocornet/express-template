@@ -1,0 +1,60 @@
+// дефолтным стилем является heading H2 из макетов т.к встречался чаще всех.
+
+.heading {
+	letter-spacing: 0.02em;
+
+	font-family: $font-montserrat;
+	font-size: $fs22;
+	line-height: 1.1;
+
+	// # MODIFIER SIZE # //
+	&_h1 {
+		font-size: $fs40;
+
+		@include media(xs) {
+			font-size: $fs24;
+			line-height: 1.16;
+		}
+	}
+
+	&_h2 {
+		letter-spacing: 0.02em;
+
+		font-size: $fs24;
+		line-height: 1.16;
+
+		@include media(xs) {
+			font-size: $fs20;
+			line-height: 1.2;
+		}
+	}
+
+	&_h3 {
+		letter-spacing: 0;
+
+		font-family: $font-firasans;
+		font-size: $fs22;
+
+		@include media(xs) {
+			letter-spacing: 0.02em;
+
+			font-size: $fs16;
+			line-height: 1.25;
+		}
+	}
+
+	&_h4 {
+		letter-spacing: 0.02em;
+
+		font-family: $font-firasans;
+		font-size: $fs17;
+		line-height: 1.17;
+
+		@include media(xs) {
+			letter-spacing: 0.01em;
+
+			font-size: $fs14;
+			line-height: 1.14;
+		}
+	}
+}

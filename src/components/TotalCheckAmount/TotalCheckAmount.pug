@@ -1,0 +1,31 @@
+mixin TotalCheckAmount(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include TotalCheckAmount.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	aside(class=[styles.block, 'mt-32@md'])
+		div(class=styles.elementArticle)
+			+Text({ data: { text: 'Всего 4 товара • 2,5 кг.' } })
+			+Text({ data: { text: '1746 ₽' } })
+
+		hr(class=styles.elementSeparator)
+
+		div(class=styles.elementDescription)
+			div(class=styles.elementArticle)
+				+Text({ data: { text: 'Итого:' }, cn: { size: 'body-l-m' } })
+				+Text({ data: { text: '1746 ₽' }, cn: { size: 'body-h3' } })
+			div(class=styles.elementArticle)
+				+Text({ data: { text: 'Скидка за товар:' }, cn: { size: 'caption', color: 'red' } })
+				+Text({ data: { text: '23 ₽' }, cn: { size: 'caption', color: 'red' } })
+			div(class=styles.elementArticle)
+				+Text({ data: { text: 'Включая НДC:' }, cn: { size: 'caption' } })
+				+Text({ data: { text: '1746 ₽' }, cn: { size: 'caption' } })
+
+		+Button({
+			data: { text: 'Повторить заказ' },
+			cn: { width: 'w-100' }
+		})(Button = { 'data-modal-form': "buy-in-one" })

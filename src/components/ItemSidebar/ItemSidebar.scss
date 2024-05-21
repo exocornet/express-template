@@ -1,0 +1,69 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../shared/styles/include-setings-styles";
+
+.item-sidebar {
+	$self: &;
+	width: fit-content;
+
+	&__img {
+		width: 40px;
+
+		border-radius: 8px;
+	}
+
+	&__body {
+		display: flex;
+		align-items: center;
+
+		width: fit-content;
+
+		cursor: pointer;
+		column-gap: 16px;
+	}
+
+	&__list {
+		display: flex;
+		visibility: hidden;
+		overflow: hidden;
+		flex-direction: column;
+
+		height: 0;
+
+		margin-top: 0;
+
+		opacity: 0;
+		row-gap: 12px;
+	}
+
+	&__link {
+		width: fit-content;
+		margin-left: 56px;
+
+		text-decoration: none;
+		letter-spacing: 0.01em;
+
+		font-size: $fs14;
+		line-height: 1.14;
+
+		@include media(xs) {
+			font-size: $fs14;
+			line-height: 1.14;
+		}
+	}
+}
+
+.js-show {
+	.item-sidebar {
+		&__list {
+			visibility: visible;
+			overflow: visible;
+
+			height: auto;
+			margin-top: 16px;
+
+			transition: transition();
+
+			opacity: 1;
+		}
+	}
+}

@@ -1,0 +1,10 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../shared/styles/include-setings-styles";
+
+// # ------------ LAYER FEATURES ------------ # //
+// ## Стили для сложных компонентов имеющих бизнес-логику ## //
+@import "../features/features";
+
+// # ------------ LAYER UTILITIES ------------ # //Task-56236-588-about
+// ## Часто используемые стили (Utilities) ## //
+@import "../shared/styles/layer-utilities/utilities";

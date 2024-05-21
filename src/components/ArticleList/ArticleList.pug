@@ -1,0 +1,21 @@
+mixin ArticleList(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include ArticleList.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)
+		for item in DATA_ARR('elementArticleArr')
+			//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК I_DATA, I_OPT, I_ELEM # -//
+			include ../../shared/helpers/pug/shortcut-check-store
+			- const TEXT_NAME_PROPS = {cn: {color: 'gray'}, ...I_ELEM('TextName')};
+			- const BUTTON_PROPS = {data: {icon: 'pencil', ...I_ELEM('Button').data}, cn: {type: 'only-small-icon'}};
+
+			div(class=styles.elementArticle)
+				+Text(TEXT_NAME_PROPS)(class=styles.elementName)
+				+Text(I_ELEM('TextDescription'))(class=styles.elementDescription)
+				if I_OPT('isButton')
+					+Button(BUTTON_PROPS)(Button={class: styles.elementButton})

@@ -1,0 +1,13 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('card-product')
+
+		return {
+			block: BLOCK(),
+			elementBody: BLOCK('body'),
+			elementActions: BLOCK('actions'),
+			elementImg: BLOCK('img'),
+			elementFavorites: BLOCK('favorites', ['d-none']),
+			elementInfo: BLOCK('info'),
+		}
+	}

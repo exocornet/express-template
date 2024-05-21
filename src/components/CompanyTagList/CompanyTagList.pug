@@ -1,0 +1,18 @@
+mixin CompanyTagList(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include CompanyTagList.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)
+		+Heading({ data: { text: 'Выбрать компанию', tag: 'h4' } })
+		div(class=styles.elementCompaniesList)
+			for item, pos in ELEM_ARR('CompanyTagArr')
+				include ../../shared/helpers/pug/shortcut-check-store
+				+Text(I_ELEM('TextCompanyTag'))(class=[styles.elementCompanyTag, pos === 0 && 'js-company-active'] data-company-id="4")
+
+			template(data-template="template-company-tag")
+				+Text({ data: { tag: 'a', href: "/company/4" }, cn: { size: 'body-m-m' } })(class=styles.elementCompanyTag data-company-id="5")

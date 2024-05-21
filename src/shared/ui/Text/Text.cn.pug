@@ -1,0 +1,17 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('text');
+
+		return {
+			block: BLOCK({
+				[`${cn?.size}`]: ['body-h1', 'body-h2', 'body-h3', 'body-h4','body-l-m', 'body-m-b', 'body-m-m', 'button-l', 'caption'].includes(cn?.size),
+				[`${cn?.color}`]: ['gray', 'white', 'white-opacity', 'red'].includes(cn?.color),
+				[`${cn?.textStriking}`]: ['striking'].includes(cn?.textStriking),
+			}, [
+				cn?.margin,
+				cn?.padding,
+				cn?.width,
+				cn?.textAlign,
+			]),
+		}
+	}

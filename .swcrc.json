@@ -1,0 +1,27 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"jsc": {
+		"parser": {
+			"syntax": "typescript",
+			"jsx": false,
+			"dynamicImport": true,
+			"privateMethod": true,
+			"functionBind": true,
+			"exportDefaultFrom": false,
+			"exportNamespaceFrom": true,
+			"decorators": true,
+			"decoratorsBeforeExport": false,
+			"topLevelAwait": false,
+			"importMeta": false
+		},
+		"target": "es5",
+		"loose": false,
+		"externalHelpers": false,
+		"keepClassNames": true
+	},
+	"minify": true,
+	"env": {
+		"mode": "entry",
+		"coreJs": "3.22"
+	}
+}

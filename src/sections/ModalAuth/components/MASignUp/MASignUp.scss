@@ -1,0 +1,58 @@
+.ma-signup {
+	$self: &;
+
+	display: flex;
+	flex-direction: column;
+
+	&__heading {
+		margin-bottom: 32px;
+		padding-inline: 64px;
+
+		@include media(xs) {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__tabs-buttons {
+		margin-bottom: 24px;
+
+		@include media(xs) {
+			margin-bottom: 16px;
+		}
+	}
+
+	&__input-block {
+		margin-bottom: 24px;
+
+		@include media(xs) {
+			margin-bottom: 16px;
+		}
+	}
+
+	&__input {
+		&:not(:last-child) {
+			margin-bottom: 8px;
+
+			@include media(xs) {
+				margin-bottom: 4px;
+			}
+		}
+	}
+
+	&__button {
+		width: 100%;
+		margin-bottom: 8px;
+
+		@include media(xs) {
+			margin-bottom: 4px;
+		}
+	}
+
+	&__caption {
+		margin-top: 16px;
+
+		a {
+			text-decoration: none;
+		}
+	}
+}

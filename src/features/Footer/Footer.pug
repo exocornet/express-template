@@ -1,0 +1,44 @@
+mixin Footer(props)
+	//- # ПОДКЛЮЧЕНИЕ СТАТИЧНОГО STORE ДЛЯ FOOTER # -//
+	include Footer.store.pug
+	//- # ФУНКЦИОНАЛ ДЛЯ ПЕРЕОПРЕДЕЛЕНИЯ СТАТИЧНОГО STORE СО STORE СТРАНИЦЫ # -//
+	- props = deepMerge(Footer, props);
+
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ЛОГИКА КОМПОНЕНТА # -//
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Footer.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	footer(class=styles.block)
+		+Container
+			+Row
+				+Col({cn: {cols: 'col-8 offset-7 col-5@md offset-0@md col-4@xs'}})
+					+Text({cn: {margin: 'mb-8', size: 'body-h2'}})
+						a(class=styles.elementFooterLink href=DATA('linkPhoneHref')) !{DATA('linkPhoneText')}
+					+Text({cn: {margin: 'mb-24', size: 'body-h2'}})
+						a(class=styles.elementFooterLink href=DATA('linkEmailHref')) !{DATA('linkEmailText')}
+					+Text(ELEM('textInfo'))(class=styles.elementFooterInfo)
+
+					div(class=styles.elementFooterSocial)
+						for item in DATA_ARR('footerSocialLinksArr')
+							include ../../shared/helpers/pug/shortcut-check-store
+							+Button(I_ELEM('Button'))
+
+				+Col({cn: {cols: 'col-8 col-4@md col-4@xs'}})
+					nav
+						ul(class=styles.elementFooterNav)
+							for item in DATA_ARR('footerMenuLinksArr')
+								include ../../shared/helpers/pug/shortcut-check-store
+								li
+									a(href=I_DATA('link') class=styles.elementFooterNavLink) !{I_DATA('text')}
+				+Col({cn: {cols: 'col-4 col-3@md col-4@xs', alignItems: 'text-align-right text-align-left@xs'}})
+					a(href="#")
+						+Sprite(DATA('copyrightIcon'))
+
+		div(class=styles.elementLogoWrap)
+			img(class=styles.elementLogoImage src=DATA('image') alt="")

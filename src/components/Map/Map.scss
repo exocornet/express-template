@@ -1,0 +1,23 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../shared/styles/include-setings-styles";
+
+.map {
+	overflow-y: hidden;
+
+	width: 100%;
+	height: 100%;
+
+	&__marker {
+		content: url("include-svg/marker.svg");
+
+		cursor: pointer;
+		transform: translate(-50%, -100%);
+	}
+
+	@include no-scrollbar;
+
+	@include media(xs) {
+		height: 100%;
+		max-height: unset;
+	}
+}

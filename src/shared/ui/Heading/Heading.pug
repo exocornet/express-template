@@ -1,0 +1,24 @@
+mixin Heading(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../helpers/pug/shortcut-check-store
+
+	//- # ЛОГИКА КОМПОНЕНТА # -//
+	-
+		const HEADING_TAGS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span'];
+		const TAG = HEADING_TAGS.includes(DATA('tag')) && DATA('tag');
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Heading.cn.pug
+	- const styles = classes({...props.cn, TAG});
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	if TAG
+		#{TAG}(class=styles.block)&attributes(attributes)
+			if DATA('text', false)
+				| !{DATA('text')}
+			else
+				block
+	else
+		pre.
+			компонент Heading
+			передай в объекте data ключ tag и присвой ему значение - ('h1', 'h2','h3', 'h4', 'h5', 'h6')

@@ -1,0 +1,16 @@
+mixin CardMedium(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include CardMedium.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)
+		picture
+			source(srcset=DATA('imageXs') media=`(max-width: ${media.xs})`)
+			img(src=DATA('image') alt="картинка баннера" class=styles.elementImage)
+		+Text(ELEM('TextBig'))
+		+Text(ELEM('TextSmall'))
+		+Button(ELEM('Button'))&attributes({Button: {class: styles.elementButton}})

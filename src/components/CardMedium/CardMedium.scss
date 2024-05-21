@@ -1,0 +1,65 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../shared/styles/include-setings-styles";
+
+.card-medium {
+	position: relative;
+	z-index: 0;
+
+	display: flex;
+
+	overflow: hidden;
+	flex-direction: column;
+
+	min-height: 330px;
+	padding: 20px 4px 4px 20px;
+
+	border-radius: $br24;
+	background-color: $red;
+
+	&__image {
+		position: absolute;
+		z-index: -1;
+		right: 0;
+		bottom: 0;
+
+		height: 100%;
+		object-fit: cover;
+	}
+
+	&__button {
+		margin-top: auto;
+		margin-left: auto;
+	}
+
+	&_pink {
+		background-color: $pink;
+	}
+
+	&_dark {
+		background-color: $background-dark;
+	}
+
+	&_orange {
+		background-color: $orange;
+	}
+
+	@include media(xl) {
+		min-height: 272px;
+	}
+
+	@include media(lg) {
+		min-height: 192px;
+	}
+
+	@include media(md) {
+		min-height: 228px;
+		padding: 20px 4px 4px 20px;
+	}
+
+	@include media(xs) {
+		min-height: 174px;
+		padding: 8px 4px 4px 8px;
+
+		border-radius: 16px;
+	}
+}

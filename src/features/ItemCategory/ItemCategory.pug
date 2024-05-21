@@ -1,0 +1,15 @@
+mixin ItemCategory(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include ItemCategory.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)
+		+Text({data: {tag: 'a', href: 'https://www.google.com/'}, cn: {size: 'body-h4'}})(class=styles.elementItem data-catalog-title) !{DATA('title')}
+		div(class=styles.elementList)
+			for item in ELEM_ARR('ItemCategoryArr')
+				include ../../shared/helpers/pug/shortcut-check-store
+				+Text(item)

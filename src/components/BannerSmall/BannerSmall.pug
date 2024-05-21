@@ -1,0 +1,18 @@
+mixin BannerSmall(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include BannerSmall.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ЛОГИКА КОМПОНЕНТА # -//
+	- let TAG = OPT('isButton') ? 'button' : 'div'
+	- let attr = OPT('isButton') ? {'type': DATA('type')} : {}
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	#{TAG}(class=styles.block)&attributes(attr)
+		div(class=styles.elementCardIconWrap)
+			div(class=styles.elementCardIcon)
+				+Sprite(DATA('icon'), false)
+		+Text({cn: {size: 'caption', textAlign: 'text-align-left'}}) !{DATA('text')}

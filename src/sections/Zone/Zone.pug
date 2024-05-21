@@ -1,0 +1,13 @@
+mixin Zone(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Zone.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	section(class=styles.block)
+		button(class=styles.elementBtn data-modal-form="map")
+			+Sprite('location')(class=styles.elementIcon)
+			span Смотреть зоны доставки

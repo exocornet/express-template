@@ -1,0 +1,13 @@
+mixin Radio(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Radio.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	label(class=styles.block for=`radio${DATE_NOW}`)
+		input(class=styles.elementInput type="radio" name="lang" checked=OPT('checked') id=`radio${DATE_NOW}`)
+		span(class=styles.elementText) Мой текст
+	- DATE_NOW++

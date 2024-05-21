@@ -1,0 +1,24 @@
+mixin OrdersHistory(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include OrdersHistory.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	section(class=styles.block data-lk-section-name="history" data-id-component="lk-order-history")
+		+Heading({data: {text: 'История заказов', tag: 'h2'}, cn: { margin: 'mb-32' }})
+
+		div(class=styles.elementOrders data-more-container=true)
+			for item in ELEM_ARR('OrderArr')
+				include ../../shared/helpers/pug/shortcut-check-store
+				div(class=styles.elementMonth)
+					+Text(I_ELEM('TextMonth'))
+					for item in I_ELEM_ARR('CardOrderHistoryArr')
+						//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК I_DATA, I_OPT, I_ELEM # -//
+						include ../../shared/helpers/pug/shortcut-check-store
+							+CardOrder(item)
+			div(class=styles.elementPaginationWrapper)
+				+Button(ELEM('LoadMoreButton'))&attributes({ Button: { "data-load-more-button": true } })
+				+Pagination(ELEM('Pagination'))

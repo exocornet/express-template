@@ -1,0 +1,29 @@
+mixin ModalMap(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include ModalMap.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	+Modal(ELEM('Modal'))(class=styles.block)
+		+ModalBody(class=styles.elementModalBody)
+			div(class=styles.elementHeader)
+				+Text({ data: { text: 'Выбрать адрес доставки' }, cn: { size: 'body-h2' } })
+				+ModalCloseButton(class=styles.elementModalClose)
+			div(class=styles.elementSearch)
+				div(class=styles.elementSearchHeader)
+					+Button({
+						data: {
+							icon: 'arrow-left'
+						},
+						opt: {
+							isCircle: true
+						}
+					})(Button = { class: styles.elementButtonBack })
+					+Text({ data: { text: 'Уточнить адрес' }, cn: { size: 'body-h2' }, })
+				+Input(ELEM('Input'))(class=styles.elementInput)
+					div(class=styles.elementSuggestResult)
+				+Button({ data: { text: 'Применить' } })(Button = { class: styles.elementApplyButton })
+			+Map(class=styles.elementMap)

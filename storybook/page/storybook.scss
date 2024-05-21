@@ -1,0 +1,79 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../src/shared/styles/include-setings-styles";
+
+// # ------------ LAYER ELEMENTS ------------ # //
+// ## Сброс стилей ## //
+@import "../../src/shared/helpers/scss/swiss-knife-scss/layer-elements/reset";
+// ## стили стандартных тегов ## //
+@import "../../src/shared/helpers/scss/swiss-knife-scss/layer-elements/default";
+
+// # ------------ LAYER GENERIC ------------ # //
+// ## CSS root переменные ## //
+@import "../../src/shared/helpers/scss/swiss-knife-scss/layer-generic/root";
+
+.ui-kit {
+	display: flex;
+	flex-direction: row;
+
+	&__h1 {
+		color: hsl(0deg 0% 0% / 1);
+
+		font-size: 24px;
+	}
+
+	&__list-component {
+		position: fixed;
+
+		display: flex;
+		overflow: scroll;
+		flex-direction: column;
+
+		width: 200px;
+		height: 100%;
+		padding: 15px 10px;
+
+		background: hsl(0deg 0% 83% / 1);
+
+		font-size: 16px;
+		row-gap: 5px;
+
+		& > button {
+			padding: 5px 10px;
+
+			text-align: left;
+
+			border-radius: 10px;
+
+			font-size: 14px;
+		}
+	}
+
+	&__description {
+		white-space: pre-line;
+
+		color: hsl(248deg 53.5% 58% / 1);
+
+		font-size: 16px;
+	}
+
+	&__view-component {
+		padding-inline: 210px 10px;
+
+		width: 100%;
+
+		& > div {
+			display: none;
+		}
+	}
+
+	&__container-component {
+		row-gap: 12px;
+	}
+}
+
+.ui-kit__list-component > button:hover,
+.js-ui-kit-active {
+	transition: all 0.4s;
+
+	background: hsl(0deg 0% 100% / 0.3);
+}

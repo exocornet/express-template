@@ -1,0 +1,16 @@
+-
+	//- проверка данных получаемых из props миксинов
+	let callShortcutCheckStore = shortcutCheckStore(props);
+	let DATA = callShortcutCheckStore.DATA;
+	let DATA_ARR = callShortcutCheckStore.DATA_ARR;
+	let OPT = callShortcutCheckStore.OPT;
+	let ELEM = callShortcutCheckStore.ELEM;
+	let ELEM_ARR = callShortcutCheckStore.ELEM_ARR;
+
+	//- проверка данных получаемых из STORE перебираемых циклом arrData
+	let callShortcutCheckStoreItem = shortcutCheckStore(item);
+	let I_DATA = callShortcutCheckStoreItem.DATA;
+	let I_DATA_ARR = callShortcutCheckStoreItem.DATA_ARR;
+	let I_OPT = callShortcutCheckStoreItem.OPT;
+	let I_ELEM = callShortcutCheckStoreItem.ELEM;
+	let I_ELEM_ARR = callShortcutCheckStoreItem.ELEM_ARR;

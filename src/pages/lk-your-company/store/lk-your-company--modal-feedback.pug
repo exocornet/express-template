@@ -1,0 +1,136 @@
+-
+	const ModalFeedback = {
+		includeContent: 'ModalFeedback',
+		elem: {
+			Modal: {
+				data: {
+					dataModal: 'modal-feedback',
+				},
+			},
+			InputName: {
+				data: {
+					type: 'text',
+					validationType: 'fullName',
+					name: 'fullName',
+				},
+				elem: {
+					TextLabel: {
+						data: {
+							text: 'Ваше имя*'
+						},
+						cn: {
+							color: 'gray',
+						}
+					},
+					TextError: {
+						data: {
+							text: 'Неверный формат'
+						},
+						cn: {
+							color: 'red',
+							size: 'caption'
+						}
+					}
+				},
+				opt: {
+					required: true,
+				}
+			},
+			InputPhone: {
+				data: {
+					validationType: 'phone',
+					name: 'phone',
+				},
+				elem: {
+					TextLabel: {
+						data: {
+							text: "Номер телефона*"
+						},
+						cn: {
+							color: 'gray',
+						}
+					},
+					TextError: {
+						data: {
+							text: 'Неверный формат'
+						},
+						cn: {
+							color: 'red',
+							size: 'caption'
+						}
+					}
+				},
+				opt: {
+					required: true,
+				}
+			},
+			InputText: {
+				data: {
+					tag: 'textarea',
+					validationType: 'text',
+					name: 'text',
+				},
+				elem: {
+					TextLabel: {
+						data: {
+							text: "Текст вопроса*"
+						},
+						cn: {
+							color: 'gray',
+						}
+					},
+					TextError: {
+						data: {
+							text: 'Неверный формат'
+						},
+						cn: {
+							color: 'red',
+							size: 'caption'
+						}
+					}
+				},
+				cn: {
+					fieldType: 'text-area',
+				},
+				opt: {
+					required: true,
+				}
+			},
+			HeadingSuccess: {
+				data: {
+					text: 'Обращение отправлено',
+					tag: 'h2'
+				},
+			},
+			TextSuccess: {
+				data: {
+					text: 'Спасибо Вам за обращение, мы обязательно рассмотрим его в ближайшее время.'
+				},
+				cn: {
+					size: 'body-m-m'
+				}
+			},
+			ButtonSuccess: {
+				data: { text: 'Продолжить покупки', href: '#!' },
+				cn: { width: 'w-100' },
+			},
+			HeadingError: {
+				data: {
+					text: 'Ошибка сервера',
+					tag: 'h2'
+				}
+			},
+			TextError: {
+				data: {
+					text: 'Извините, на сервере произошла внутренняя ошибка. Мы работаем над ее устранением.'
+				},
+				cn: {
+					size: 'body-m-m'
+				}
+			},
+			ButtonError: {
+				data: { text: 'Перейти на главную' },
+				cn: { width: 'w-100' },
+			}
+		}
+	}

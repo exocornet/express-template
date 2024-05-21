@@ -1,0 +1,144 @@
+-
+	//- Проверка данных из сторов
+	function shortcutCheckStore (dataStore) {
+		return {
+			ELEM: function ELEM(storeElem, value = {}) {
+				return dataStore && dataStore.elem && dataStore.elem[storeElem] ? dataStore.elem[storeElem] : value;
+			},
+			DATA: function DATA(storeData, value = ''){
+				return dataStore && dataStore.data && dataStore.data[storeData] ? dataStore.data[storeData] : value;
+			},
+			OPT: function OPT(storeOpt) {
+				return dataStore && dataStore.opt && dataStore.opt[storeOpt] ? !!dataStore.opt[storeOpt] : false;
+			},
+			ELEM_ARR: function ELEM_ARR(storeElemArr, value = []) {
+				return dataStore && dataStore.elem && dataStore.elem[storeElemArr] && dataStore.elem[storeElemArr] ? dataStore.elem[storeElemArr] : value;
+			},
+			DATA_ARR: function DATA_ARR(storeDataArr, value = []) {
+				return dataStore && dataStore.dataArr && dataStore.dataArr[storeDataArr] ? dataStore.dataArr[storeDataArr] : value;
+			},
+		}
+	};
+
+	//- Для подключение секций
+	function addSections() {
+		const sections = [];
+
+		return {
+			addSection(section) {
+				sections.push(section);
+			},
+			getSections: sections
+		};
+	}
+
+	//- BEM classNames
+	function withNaming(preset) {
+		function stringify(blockName, elemName, mod, mix) {
+			const entityName = elemName ? blockName + preset.e + elemName : blockName;
+			let className = entityName;
+
+			// Добавление модификатора
+			if (mod) {
+				const modPrefix = ' ' + className + preset.m;
+				for (const key in mod) {
+					if (mod.hasOwnProperty(key)) {
+						const modVal = mod[key];
+						if (modVal === true) {
+							className += modPrefix + key;
+						} else if (modVal) {
+							className += ' ' + 'NO-BOOLEAN';
+						}
+					}
+				}
+			}
+
+			// Добавление дополнительных классов
+			if (mix !== undefined) {
+				for (let i = 0, len = mix.length; i < len; i++) {
+					const value = mix[i];
+
+					// Проверка только на строковое значение
+					if (!value || typeof value.valueOf() !== 'string') {
+						continue;
+					}
+
+					const mixes = value.valueOf().split(' ');
+					for (let j = 0; j < mixes.length; j++) {
+						const val = mixes[j];
+						if (val !== entityName) {
+							className += ' ' + val;
+						}
+					}
+				}
+			}
+			return className;
+		}
+
+		return function cnGenerator(blockName, elemName) {
+			return (elemOrMods, elemModsOrBlockMix, elemMix) => {
+				if (typeof elemOrMods === 'string') {
+					if (Array.isArray(elemModsOrBlockMix)) {
+						return stringify(blockName, elemOrMods, undefined, elemModsOrBlockMix);
+					}
+					return stringify(blockName, elemOrMods, elemModsOrBlockMix, elemMix);
+				}
+				return stringify(blockName, elemName, elemOrMods, elemModsOrBlockMix);
+			};
+		};
+	}
+
+	let CN = withNaming({ e: '__', m: '_'});
+
+- let DATE_NOW = -Date.now();
+
+-
+	function HTMLComment(text) {
+		return `\n <!-- ${text} -->`;
+	}
+
+mixin DEBUG(variables, text)
+	-
+		const TEXT = text && variables ? text || '' : (variables ? '' : '!!! error: no variables !!!');
+		const VARIABLES = variables || '';
+		const STYLE_LOG = variables ? 'color: blue;' : 'color: red; font-size: 16px; font-weight: bold;';
+	script.
+		console.log(!{JSON.stringify('%c' + TEXT).replace(/<\//g, "<\\/")}, !{JSON.stringify(STYLE_LOG).replace(/<\//g, "<\\/")}, !{JSON.stringify(VARIABLES).replace(/<\//g, "<\\/")})
+
+mixin debug(variables)
+	pre
+		code= JSON.stringify(variables, JSON_PRETTY_PRINT, 2)
+
+-
+	function deepMerge (target, ...sources) {
+		if (!sources.length) {
+			return target;
+		}
+
+		const source = sources.shift();
+
+		if (typeof target !== 'object' || typeof source !== 'object') {
+			return target;
+		}
+
+		for (const key in source) {
+			if (source.hasOwnProperty(key)) {
+				if (source[key] instanceof Object) {
+					if (!target[key]) {
+						Object.assign(target, { [key]: {} });
+					}
+					deepMerge(target[key], source[key]);
+				} else {
+					Object.assign(target, { [key]: source[key] });
+				}
+			}
+		}
+
+		return deepMerge(target, ...sources);
+	}
+
+mixin link(path, name)
+	link(rel="stylesheet" href= (isWebpack ? `${path}/${name}/${name}.scss` : `./assets/css/${name}.css`))/
+
+mixin script(path, name, namePage)
+	script(src= (isWebpack ? `${path}/${namePage || name}/${name}.ts` : `./assets/js/${name}.js`) defer)

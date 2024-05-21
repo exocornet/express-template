@@ -1,0 +1,12 @@
+//- # ПАРАМЕТРЫ ДЛЯ НАСТРОЙКИ LAYOUT # -//
+-
+	const PAGE_TITLE = "Страница ошибок";
+	const IS_PAGE_SVG_SPRITE = true;
+	// переменные для MainLayout
+
+//- # НАСЛЕДОВАНИЕ ФУНКЦИИ ДЛЯ РАЗДЕЛЕНИЯ СТОРОВ # -//
+- const PAGE_STORE = addSections();
+
+//- ## Подключение store секции ErrorMessage ## -//
+include error--error-message
+- PAGE_STORE.addSection(ErrorMessage);

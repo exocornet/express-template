@@ -1,0 +1,141 @@
+-
+	const Promo = {
+		includeSection: 'Promo',
+		cn: {
+			margin: 'mt-16'
+		},
+		elem: {
+			BannerPromo: {
+				data: {
+					image: './assets/img/sections/promo-banner/promo-banner.png',
+					title: 'Успейте купить',
+					text: 'Горошек Heinz зеленый Нежный',
+					weight: '400г',
+				},
+				elem: {
+					CardProductCounter: {
+						elem: {
+							TextPrice: {
+								data: {
+									text: '160 ₽',
+								},
+								cn: {
+									size: 'body-h3',
+								}
+							},
+							TextOldPrice: {
+								data: {
+									text: '160 ₽',
+								},
+								cn: {
+									size: 'caption',
+									color: 'gray',
+									textStriking: 'striking'
+								}
+							},
+							Button: {
+								cn: {
+									type: 'circle',
+								},
+								opt: {
+									isCircle: true
+								}
+							},
+							ButtonMinus: {
+								cn: {
+									type: 'circle',
+								},
+								opt: {
+									isCircle: true
+								}
+							},
+						}
+					},
+				}
+			},
+		},
+		dataArr: {
+			cardSmallArr: [
+				{
+					data: {
+						image: './assets/img/sections/medium-banners/medium-banners-1.png'
+					},
+					cn: {
+						bgColor: 'pink'
+					},
+					elem: {
+						Button: {
+							data: {
+								icon: 'arrow-right',
+							},
+							opt: {
+								isCircle: true
+							}
+						},
+						TextBig: {
+							data: {
+								text: 'Скидка 50%<br> на бананы'
+							},
+							cn: {
+								size: 'body-h4',
+								color: 'white',
+								margin: 'mb-8'
+							}
+						},
+						TextSmall: {
+							data: {
+								text: 'до 24.01.24'
+							},
+							cn: {
+								size: 'body-m-m',
+								color: 'white-opacity',
+							}
+						},
+						Col: {
+							cols: 'col-5 col-3@md d-none@xs'
+						}
+					}
+				},
+				{
+					data: {
+						image: './assets/img/sections/medium-banners/medium-banners-2.png'
+					},
+					cn: {
+						bgColor: 'dark'
+					},
+					elem: {
+						Button: {
+							data: {
+								icon: 'arrow-right',
+							},
+							opt: {
+								isCircle: true
+							}
+						},
+						TextBig: {
+							data: {
+								text: 'Свежий хлеб из пекарни'
+							},
+							cn: {
+								size: 'body-h4',
+								color: 'white',
+								margin: 'mb-8'
+							}
+						},
+						TextSmall: {
+							data: {
+								text: 'каждый день'
+							},
+							cn: {
+								size: 'body-m-m',
+								color: 'white-opacity',
+							}
+						},
+						Col: {
+							cols: 'col-5 col-3@md d-none@xs'
+						}
+					}
+				},
+			],
+		}
+	}

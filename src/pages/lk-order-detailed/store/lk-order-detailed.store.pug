@@ -1,0 +1,40 @@
+//- # ПАРАМЕТРЫ ДЛЯ НАСТРОЙКИ LAYOUT # -//
+-
+	const PAGE_TITLE = 'Детальная заказа';
+	const IS_PAGE_SVG_SPRITE = true;
+	// переменные для MainLayout
+	const LAYOUT_LEFT_COL_PROPS = { cn: { cols: 'col-6' }};
+	const LAYOUT_LEFT_SIDE_COMPONENT = 'MenuLk';
+	const LAYOUT_RIGHT_SIDE_COMPONENT = 'TotalCheckAmount';
+
+//- # ПЕРЕМЕННЫЕ ДЛЯ ПЕРЕОПРЕДЕЛЕНИЯ FEATURES # -//
+-
+	const Header = {
+		elem: {
+			ButtonBox: false,
+			ButtonSignIn: {
+				data: {
+					text: 'Личный кабинет',
+					icon: 'user',
+				},
+				cn: {
+					color: 'secondary'
+				}
+			},
+		}
+	}
+
+//- # НАСЛЕДОВАНИЕ ФУНКЦИИ ДЛЯ РАЗДЕЛЕНИЯ СТОРОВ # -//
+- const PAGE_STORE = addSections();
+
+//- ## Подключение store секции OrderDetailed ## -//
+include lk-order-detailed--order-detailed
+- PAGE_STORE.addSection(OrderDetailed);
+
+//- ## Подключение store секции SectionCardProductHeading ## -//
+include lk-order-detailed--section-card-product-heading
+- PAGE_STORE.addSection(SectionCardProductHeading);
+
+//- ## Подключение store секции ModalBuyInOne ## -//
+include lk-order-detailed--modal-buy-in-one
+- PAGE_STORE.addSection(ModalBuyInOne);

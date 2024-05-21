@@ -1,0 +1,16 @@
+mixin PersonalAccountMenu(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include PersonalAccountMenu.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)
+		for item in [{data: {text: 'Профиль', href: '/lk'}}, {data: {text: 'Ваши компании', href: '/lk-your-company'}}, {data: {text: 'Служба поддержки', modal: 'modal-feedback'}}, {data: {text: 'Выход', href: '/lk-exit'}}]
+			//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК I_DATA, I_OPT, I_ELEM # -//
+			include ../../shared/helpers/pug/shortcut-check-store
+			- const attributes = {'data-modal-form': I_DATA('modal', false)}
+			a(class=styles.elementMenuItem href=I_DATA('href', false))&attributes(attributes)
+				| #{I_DATA('text')}

@@ -1,0 +1,17 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('heading');
+		const SIZE = cn?.size || cn?.TAG
+
+		return {
+			block: BLOCK({
+					[SIZE]: ['h1', 'h2','h3', 'h4'].includes(SIZE)
+				},
+				[
+					cn?.textAlign,
+					cn?.margin,
+					['gray'].includes(cn?.color) && cn?.color
+				]
+			)
+		}
+	}

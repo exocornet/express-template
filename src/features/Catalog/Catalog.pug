@@ -1,0 +1,27 @@
+mixin Catalog(props)
+	//- # ПОДКЛЮЧЕНИЕ СТАТИЧНОГО STORE ДЛЯ HEADER # -//
+	include Catalog.store.pug
+	//- # ФУНКЦИОНАЛ ДЛЯ ПЕРЕОПРЕДЕЛЕНИЯ СТАТИЧНОГО STORE СО STORE СТРАНИЦЫ # -//
+	- props = deepMerge(Catalog, props);
+
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Catalog.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)
+		div(class=styles.elementRow)
+			+Container(class="h-100")
+				+Row(class=styles.elementCatalogContent)
+					+Col({ cn: { cols: 'col-6 col-7@xl col-12@md' } })(class="h-100")
+						aside(class=styles.elementList)
+							for item in ELEM_ARR('CatalogItemArr')
+								include ../../shared/helpers/pug/shortcut-check-store
+								+CatalogItem(item)(class=styles.elementCatalogItem)
+					+Col({ cn: { cols: 'col-28', offset: 'offset-1', display: 'd-none@md'} })(class="h-100")
+						for item in ELEM_ARR('CategoryListArr')
+							include ../../shared/helpers/pug/shortcut-check-store
+							+CategoryList(item)(class=styles.elementCategoryList)

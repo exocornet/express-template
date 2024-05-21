@@ -1,0 +1,14 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('modal')
+
+		return {
+			block: BLOCK({
+				[`${cn?.modalStyle}`]: ['right-oriented'].includes(cn?.modalStyle)
+			}),
+			elemBg: BLOCK('bg'),
+			elemBody: BLOCK('body'),
+			elemContent: BLOCK('content'),
+			elemBtnClose: BLOCK('button-close'),
+		}
+	}

@@ -1,0 +1,15 @@
+mixin TabsButtons(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Tabs.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.elementButtons)&attributes(attributes)
+		for item in DATA_ARR('buttonArr')
+			//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК I_DATA, I_OPT, I_ELEM # -//
+			include ../../../shared/helpers/pug/shortcut-check-store
+			button(class=styles.elementButton type="button" data-tabs-button=`${I_DATA('dataTabsButton', false)}`)
+				span !{I_DATA('text')}

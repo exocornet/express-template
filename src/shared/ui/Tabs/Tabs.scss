@@ -1,0 +1,62 @@
+@import "../../styles/include-setings-styles";
+
+.tabs {
+	display: flex;
+	flex-direction: column;
+
+	height: 100%;
+
+	&__buttons {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+
+		padding: 4px;
+
+		border-radius: 22px;
+		background: $background-light;
+	}
+
+	&__button {
+		width: 100%;
+		padding: 10px;
+
+		letter-spacing: 0.03em;
+
+		color: $black;
+		border-radius: 18px;
+		background: $background-light;
+
+		font-size: $fs16;
+		line-height: 1.25;
+
+		@include media(xs) {
+			font-size: $fs14;
+			line-height: 1.14;
+		}
+	}
+
+	&__body {
+		flex: 1 0 auto;
+	}
+
+	&__content {
+		overflow: hidden;
+
+		height: 0;
+
+		opacity: 0;
+	}
+}
+
+.js-tabs-button-active {
+	color: $white;
+	background: $red;
+}
+
+.js-tabs-content-active {
+	height: 100%;
+
+	transition: transition(opacity);
+
+	opacity: 1;
+}

@@ -1,0 +1,14 @@
+mixin Tags(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Tags.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.elementTags)&attributes(attributes)
+		for item in DATA_ARR('tagsArr')
+			include ../../../shared/helpers/pug/shortcut-check-store
+			- const stylesItem = classes(item && item.cn);
+			span(class=stylesItem.elementTag) !{I_DATA('text')}

@@ -1,0 +1,18 @@
+mixin Modal(props)
+	//- # ПОДКЛЮЧЕНИЕ ЧАСТЕЙ MODAL # -//
+	include ModalCloseButton
+	include ModalBody
+	include ModalBackground
+
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Modal.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block data-modal=DATA('dataModal'))&attributes(attributes)
+		if !OPT('notModalBackground')
+			+ModalBackground
+		block

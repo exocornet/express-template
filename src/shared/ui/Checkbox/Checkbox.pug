@@ -1,0 +1,23 @@
+mixin Checkbox(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Checkbox.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	label(class=styles.block)&attributes(attributes)
+		input(
+			class=styles.elementInput
+			type="checkbox"
+			name=DATA('name', false)
+			checked=OPT('checked', false)
+			disabled=OPT('disabled', false)
+			value=DATA('value', false)
+			data-js-value=DATA('dataJsValue', false)
+		)
+		span(class=styles.elementWrapper)
+			span(class=styles.elementBox)
+				+Sprite('check')
+			+Text(ELEM('Text'))(class=styles.elementLabel)

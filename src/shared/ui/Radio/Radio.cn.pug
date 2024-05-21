@@ -1,0 +1,13 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('radio');
+
+		return {
+			block: BLOCK({}, [
+				cn?.margin,
+				cn?.padding,
+			]),
+			elementInput: BLOCK('input'),
+			elementText: BLOCK('text'),
+		}
+	}

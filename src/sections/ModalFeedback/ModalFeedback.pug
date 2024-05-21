@@ -1,0 +1,41 @@
+mixin ModalFeedback(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include ModalFeedback.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	+Modal(ELEM('Modal'))(class=styles.block)
+		+ModalBody(class=styles.elementModalBody)
+			+ModalCloseButton(class=styles.elementModalClose)
+			div(class=styles.elementContent)
+				div(class=styles.elementMain)
+					div(class=styles.elementMainHeader)
+						+Heading({
+							data: { tag: 'p', text: 'Служба поддержки' },
+							cn: { size: 'h2', textAlign: 'text-align-center' }
+						})
+						+Text({
+							data: { tag: 'span', text: 'Мы рады вашим отзывам и предложениям, они помогают нам стать лучше! Чтобы отправить сообщение, заполните, пожалуйста, все поля формы.' },
+							cn: { size: 'body-m-m', textAlign: 'text-align-center' }
+						})(class=styles.elementText)
+					form(method="post" action="/feedback")
+						div(class=styles.elementFormContent)
+							+Input(ELEM('InputName'))
+							+Input(ELEM('InputPhone'))
+							+Input(ELEM('InputText'))(class=styles.elementTextArea)
+							+Button({
+								data: { type: 'submit', text: 'Отправить' },
+								cn: { width: 'w-100' },
+								opt: { disabled: true }
+							})&attributes({ Button: { class: styles.elementButton } })
+				div(class=[styles.elementSuccess, 'd-none'])
+					+Heading(ELEM('HeadingSuccess'))
+					+Text(ELEM('TextSuccess'))(class=styles.elementText)
+					+Button(ELEM('ButtonSuccess'))&attributes({ Button: { class: styles.elementButton } })
+				div(class=[styles.elementError, 'd-none'])
+					+Heading(ELEM('HeadingError'))(class=styles.elementErrorHeading)
+					+Text(ELEM('TextError'))(class=styles.elementText)
+					+Button(ELEM('ButtonError'))&attributes({ Button: { class: styles.elementBackButton } })

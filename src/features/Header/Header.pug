@@ -1,0 +1,34 @@
+include ./../CatalogSearch/CatalogSearch
+include ./../Catalog/Catalog
+
+mixin Header(props)
+	//- # ПОДКЛЮЧЕНИЕ СТАТИЧНОГО STORE ДЛЯ HEADER # -//
+	include Header.store.pug
+	//- # ФУНКЦИОНАЛ ДЛЯ ПЕРЕОПРЕДЕЛЕНИЯ СТАТИЧНОГО STORE СО STORE СТРАНИЦЫ # -//
+	- props = deepMerge(Header, props);
+
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Header.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	header(class=styles.block)
+		+Container
+			+Row({cn: {alignItems: 'align-items-center'}})(class=styles.elemRowHeader)
+				+Col(ELEM('ColLogo'))
+					+Logo
+				+Col(ELEM('ColCatalogSearch'))(class="js-header-scroll")
+					+CatalogSearch
+				+Col(ELEM('ColActions'))
+					div(class=styles.elemActions)
+						if ELEM('ButtonHeart', false)
+							+Button(ELEM('ButtonHeart'))
+						if ELEM('ButtonBox', false)
+							+Button(ELEM('ButtonBox'))
+						+Button(ELEM('ButtonSignIn'))&attributes({Button: {class: styles.elemSignIn}})
+						if ELEM('PersonalAccountMenu', false)
+							+PersonalAccountMenu
+		+Catalog(ELEM('Catalog'))

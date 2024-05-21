@@ -1,0 +1,201 @@
+.input {
+	$self: &;
+
+	position: relative;
+
+	&__field {
+		overflow: hidden;
+
+		width: 100%;
+		padding: 33px 40px 11px 20px;
+
+		transition: transition();
+		white-space: nowrap;
+		letter-spacing: 0.01em;
+		text-overflow: ellipsis;
+
+		color: $black;
+		border: 2px solid $background-light;
+		border-radius: 16px;
+		outline: none;
+		background: $background-light;
+		caret-color: $red;
+
+		font-size: $fs14;
+		line-height: 1.14;
+
+		&:hover {
+			border: 2px solid $light-gray;
+			background: $light-gray;
+		}
+
+		&:focus {
+			border: 2px solid $light-gray;
+			background: $white;
+		}
+
+		&:disabled {
+			cursor: not-allowed;
+
+			color: $gray;
+			border: 2px solid $light-gray;
+			background: $light-gray;
+		}
+
+		&_text-area {
+			overflow-y: scroll;
+
+			height: 139px;
+			padding-top: 0;
+
+			text-wrap: wrap;
+
+			border-top: 33px solid $background-light;
+
+			&:hover {
+				border-top: 33px solid $light-gray;
+				box-shadow: 0 -2px 0 0 $light-gray;
+			}
+
+			&:focus {
+				border-top: 33px solid $white;
+				box-shadow: 0 -2px 0 0 $light-gray;
+			}
+
+			@include no-scrollbar;
+		}
+
+		@include media(xs) {
+			padding: 21px 40px 7px 14px;
+
+			border-radius: 12px;
+
+			font-size: $fs12;
+			line-height: 1.3;
+		}
+	}
+
+	&__label {
+		position: absolute;
+		top: 25px;
+		left: 22px;
+
+		transition: all 0.2s;
+
+		pointer-events: none;
+
+		@include media(xs) {
+			top: 17px;
+			left: 16px;
+		}
+	}
+
+	&__field:focus ~ &__label {
+		top: 16px;
+
+		font-size: $fs12;
+
+		@include media(xs) {
+			top: 10px;
+
+			font-size: $fs10;
+			line-height: 1.2;
+		}
+	}
+
+	&__error {
+		display: none;
+	}
+
+	&__icon-close {
+		position: absolute;
+		top: 22px;
+		right: 16px;
+
+		width: 20px;
+		height: 20px;
+
+		cursor: pointer;
+
+		color: $gray;
+
+		@include media(xs) {
+			top: 14px;
+		}
+	}
+
+	&.js-filled {
+		#{ $self }__label {
+			top: 16px;
+
+			font-size: $fs12;
+
+			@include media(xs) {
+				top: 10px;
+
+				font-size: $fs10;
+				line-height: 1.2;
+			}
+		}
+	}
+
+	&.js-error {
+		#{ $self }__field {
+			border: 2px solid $red;
+			background: $white;
+
+			&_text-area {
+				border-top: 33px solid $white;
+				box-shadow: 0 -2px 0 0 $red;
+
+				&:focus {
+					border-top: 33px solid $white;
+					box-shadow: 0 -2px 0 0 $red;
+				}
+
+				@include no-scrollbar;
+			}
+		}
+
+		#{ $self }__error {
+			display: block;
+
+			margin-top: 5px;
+			margin-left: 22px;
+
+			@include media(xs) {
+				margin-left: 16px;
+			}
+		}
+	}
+
+	&_inversion {
+		#{ $self }__field {
+			border: 2px solid $white;
+			background: $white;
+
+			&:focus {
+				border: 2px solid $light-gray;
+			}
+
+			&:disabled {
+				border: 2px solid $light-gray;
+				background: $light-gray;
+			}
+
+			@include media(md) {
+				border: unset;
+				background-color: $background-light;
+
+				&:focus {
+					border: unset;
+				}
+
+				&:disabled {
+					border: unset;
+					background: unset;
+				}
+			}
+		}
+	}
+}

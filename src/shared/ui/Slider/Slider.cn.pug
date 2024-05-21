@@ -1,0 +1,16 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('slider');
+
+		return {
+			block: BLOCK(),
+			elementSwiper: BLOCK('swiper', {}, ['swiper']),
+			elementSlidesWrapper: BLOCK('slides-wrapper', ['swiper-wrapper']),
+			elementSlide: BLOCK('slide', ['swiper-slide']),
+			elementPagination: BLOCK('pagination'),
+			elementNavigation: BLOCK('navigation'),
+			elementPrev: BLOCK('prev'),
+			elementNext: BLOCK('next'),
+			elementArrowButton: BLOCK('arrow-button')
+		}
+	}

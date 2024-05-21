@@ -1,0 +1,21 @@
+mixin FilterSelect(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include FilterSelect.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block data-filter-name=DATA('dataFilterName'))&attributes(attributes.FilterSelect)
+		div(class=styles.elementBody)&attributes(attributes.FilterBody)
+			+Text({ data: { tag: 'span', text: DATA('text') }})
+			+Sprite('arrow-down')(class=styles.elementIcon)
+		div(class=styles.elementList)&attributes(attributes.FilterList)
+			div(class=styles.elementAnimation)
+				+Input(ELEM('Input'))(class="d-none")
+				div(class=styles.elementCheckboxWrapper)
+					for item in ELEM_ARR('CheckboxArr')
+						include ../../shared/helpers/pug/shortcut-check-store
+						+Checkbox(item)(class=styles.elementCheckbox)
+				+ButtonShowMore(ELEM('ButtonShowMore'))&attributes({class: styles.elementButtonShowMore})

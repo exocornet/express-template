@@ -1,0 +1,42 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../shared/styles/include-setings-styles";
+
+.total-check-amount {
+	$self: &;
+
+	position: sticky;
+	top: calc(var(--outside-indentation) + var(--outside-indentation-main));
+
+	display: grid;
+
+	padding: 20px;
+
+	border-radius: $br24;
+
+	background-color: $background-light;
+	row-gap: 24px;
+
+	@include media(md) {
+		position: static;
+	}
+
+	@include media(xs) {
+		row-gap: 12px;
+	}
+
+	// stylelint-disable-next-line order/order
+	&__article {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__separator {
+		background-color: $background-gray;
+	}
+
+	&__description {
+		display: grid;
+		row-gap: 12px;
+	}
+}

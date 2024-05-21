@@ -1,0 +1,45 @@
+.header {
+	position: sticky;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	left: 0;
+
+	transition: transition(top);
+
+	background: $white;
+
+	&__row-header {
+		background: $white;
+		padding-block: 16px;
+
+		@include media(md) {
+			padding-block: 12px;
+		}
+
+		@include media(xs) {
+			padding-block: 8px;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		column-gap: 8px;
+	}
+
+	&__sign-in {
+		@include media(xs) {
+			max-height: 40px;
+			padding: 8px;
+
+			span {
+				display: none;
+			}
+		}
+	}
+
+	@include media(md) {
+		top: var(--half-of-header-height)
+	}
+}
+

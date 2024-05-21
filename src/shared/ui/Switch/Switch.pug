@@ -1,0 +1,14 @@
+mixin Switch(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Switch.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	label(class=styles.block for=`switch${DATE_NOW}`)
+		input(type="checkbox" class=styles.elementInput id=`switch${DATE_NOW}` name=DATA('name', false) checked=OPT('checked') value=DATA('value', false))
+		span(class=styles.elementInner) !{DATA('text')}
+
+	- DATE_NOW++

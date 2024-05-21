@@ -1,0 +1,12 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('button-show-more')
+
+		return {
+			block: BLOCK({
+				[`${cn?.buttonStyle}`]: ['main', 'mobile-gray'].includes(cn?.buttonStyle)
+			}, [cn?.margin]),
+			elementIcon: BLOCK('icon'),
+			elementText: BLOCK('text'),
+		}
+	}

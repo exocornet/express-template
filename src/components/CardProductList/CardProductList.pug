@@ -1,0 +1,16 @@
+mixin CardProductList(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include CardProductList.cn.pug
+	- const styles = classes(props && props.cn);
+	- const COL_PROPS = ELEM('ColCardProduct', false) || { cn: { cols: 'col-4 col-5@xl col-4@md col-2@xs' } }
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	+Row({ cn: { gap: 'rg-8' } })(class=styles.block)&attributes(attributes)
+		for item in ELEM_ARR('CardProductArr')
+			include ../../shared/helpers/pug/shortcut-check-store
+			+Col(COL_PROPS)
+				+CardProduct(item)(data-modal-form="product")
+		block

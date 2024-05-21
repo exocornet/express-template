@@ -1,0 +1,11 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../shared/styles/include-setings-styles";
+
+.small-banners {
+	display: flex;
+	overflow-x: scroll;
+	flex-wrap: nowrap;
+	gap: 8px;
+
+	@include no-scrollbar;
+}

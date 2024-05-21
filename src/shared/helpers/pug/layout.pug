@@ -1,0 +1,104 @@
+//- # ПОДКЛЮЧЕНИЕ КОМПОНЕНТОВ И ВСПОМОГАТЕЛЬНЫХ ФУНКЦИЙ # -//
+include ../../shared
+include ../../../components/components
+include ../../../sections/sections
+include ../../../features/features
+
+//- # ПОДКЛЮЧЕНИЕ STORE СТРАНИЦ И ЛОГИКИ # -//
+block variables
+
+doctype html
+html(lang="ru")
+	//- ## Head ## -//
+	head
+		meta(charset="UTF-8")/
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")/
+		meta(name="description" content= PAGE_DESCRIPTION || "краткое описание страницы")/
+		if PAGE_CANONICAL
+			link(rel="canonical" href= PAGE_CANONICAL)/
+		link(rel="icon" type=FAVICON_TYPE href= (isWebpack ? 'FAVICON' : './assets/favicon.svg'))/
+		title= PAGE_TITLE || "Название страницы"
+
+		//- ## Добавление css на страницу ## -//
+		| !{HTMLComment('# ОБЯЗАТЕЛЬНЫЕ СТИЛИ ПОДКЛЮЧАЮЩИЕСЯ НА КАЖДОЙ СТРАНИЦЕ В НАЧАЛЕ #')}
+		if isWebpack
+			link(rel="stylesheet" href=require('../../shared.scss'))/
+		else
+			link(rel="stylesheet" href="./assets/css/shared.css")/
+
+		block include-css
+		| !{HTMLComment('# ОБЯЗАТЕЛЬНЫЕ СТИЛИ ПОДКЛЮЧАЮЩИЕСЯ НА КАЖДОЙ СТРАНИЦЕ В КОНЦЕ #')}
+		if isWebpack
+			link(rel="stylesheet" href=require('../../../app/main.scss'))/
+		else
+			link(rel="stylesheet" href="./assets/css/main.css")/
+
+	body(class=PAGE_CLASS_BODY || false)
+		//- ## Svg sprite ## -//
+		if IS_PAGE_SVG_SPRITE
+			+SVGSprite
+
+		//- ## Header ## -//
+		block header
+			style.
+				.layout-h1 {
+					font-size: 40px;
+					color: hsl(0, 0%, 50%);
+					text-align: center;
+					text-shadow: 0 0 2px hsl(0, 0%, 100%);
+				}
+
+				.layout-b {
+					font-weight: bold;
+				}
+			h1(class="layout-h1") Вызови #[b(class="layout-b") block header] в файле страницы и подключи в нем #[b(class="layout-b") Header] для страницы
+
+		//- ## Подключение main и его содержимого ## -//
+		block main
+			if MainLayout
+				+MainLayout
+			else
+				main(class=PAGE_CLASS_MAIN || false)
+					for sectionStore, idx in PAGE_STORE.getSections
+						if PAGE_STORE.getSections[idx].includeSection
+							+#{PAGE_STORE.getSections[idx].includeSection}(sectionStore)
+
+		//- ## Footer ## -//
+		block footer
+			style.
+				.layout-h1 {
+					font-size: 40px;
+					color: hsl(0, 0%, 50%);
+					text-align: center;
+					text-shadow: 0 0 2px hsl(0, 0%, 100%);
+				}
+
+				.layout-b {
+					font-weight: bold;
+				}
+			h1(class="layout-h1") Вызови #[b(class="layout-b") block footer] в файле страницы и подключи в нем #[b(class="layout-b") Footer] для страницы
+
+		//- ## Подключение дополнительных блоков (модальные окна, cookie, popups) ## -//
+		block extra-content
+			if ExtraContentLayout
+				+ExtraContentLayout
+			for contentStore, idx in PAGE_STORE.getSections
+				if PAGE_STORE.getSections[idx].includeContent
+					+#{PAGE_STORE.getSections[idx].includeContent}(contentStore)
+
+		//- ## Добавление js на страницу ## -//
+		| !{HTMLComment('# ПОДКЛЮЧЕНИЕ JS ИСПОЛЬЗУЕМОГО НА ВСЕХ СТРАНИЦАХ #')}
+		if isWebpack
+			script(src=require('../../../app/main.ts') defer)
+		else
+			script(src="./assets/js/main.js" defer)
+		block include-js
+
+		block update-page
+			if isDev
+				script(src="/socket.io/socket.io.js")
+				script.
+					const socket = io();
+					socket.on('webpackUpdate', () => {
+						location.reload();
+					});

@@ -1,0 +1,8 @@
+mixin Image(props)
+	- const ImageAttr = !attributes.Picture && !attributes.Image && attributes;
+
+	picture&attributes(attributes.Picture)
+		if props.source
+			for source in props.source
+				source(srcset= source.srcset media=`(max-width: ${source.media})`)
+		img(src= props.src alt= props.alt || "")&attributes(attributes.Image || ImageAttr)

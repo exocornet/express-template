@@ -1,0 +1,8 @@
+mixin SliderSlide(props)
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Slider.cn.pug
+	- const styles = classes();
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.elementSlide)&attributes(attributes)
+		block

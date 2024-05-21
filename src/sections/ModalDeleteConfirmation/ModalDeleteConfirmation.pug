@@ -1,0 +1,23 @@
+mixin ModalDeleteConfirmation(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include ModalDeleteConfirmation.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	+Modal(ELEM('Modal'))(class=styles.block)
+		+ModalBody(class=styles.elementModalBody)
+			+ModalCloseButton(class=styles.elementModalClose)
+			div(class=styles.elementContent)
+				div(class=styles.elementDeleteCompany)
+					+Heading({ data: { text: 'Удаление компании', tag: 'h2' } })
+					+Text({
+						data: { text: 'Вы действительно хотите удалить текущую компанию?' },
+						cn: { size: 'body-l-m' }
+					})(class=styles.elementText)
+					+Button({
+						data: { text: 'Да, хочу удалить' },
+						cn: { width: 'w-100', color: 'secondary' }
+					})&attributes({ Button: { class: styles.elementButtonDelete } })

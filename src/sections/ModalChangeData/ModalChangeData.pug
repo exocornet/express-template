@@ -1,0 +1,19 @@
+mixin ModalChangeData(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include ModalChangeData.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	+Modal(ELEM('Modal'))(class=styles.block)
+		+ModalBody(class=styles.elementModalBody)
+			+ModalCloseButton
+			div(class=styles.elementContent)
+				+Heading({data: {tag: 'p', text: 'Изменение данных'}, cn: {size: 'h2', textAlign: 'text-align-center'}})(class=styles.elementHeading)
+				+Text({data: {tag: 'span', text: 'Отправьте заявку на изменение данных вашей компании, наша служба поддержки заменит реквизиты'}, cn: { size: 'body-m-m',  textAlign: 'text-align-center'}})(class=styles.elementText)
+				form(class=styles.elementForm method="post" action="/changeData" novalidate="novalidate")
+					div(class=styles.elementFormContent)
+						+Input(ELEM('Input'))
+						+Button({data: {type: 'submit', text: 'Изменить данные'}, cn: {width: 'w-100'}, opt: {disabled: true}})(Button={class: styles.elementButton})

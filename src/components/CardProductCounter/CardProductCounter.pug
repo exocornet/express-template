@@ -1,0 +1,20 @@
+mixin CardProductCounter(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include CardProductCounter.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)&attributes(attributes.Counter)
+		div(class=styles.elementFooterText)
+			+Text(ELEM('TextPrice'))
+			if(ELEM('TextOldPrice', false))
+				+Text(ELEM('TextOldPrice'))
+		div(class=styles.elementFooterButton)&attributes(attributes.FooterButton)
+			+Button(ELEM('ButtonMinus'))(Button = { class: styles.elementButtonMinus })
+			div(class=styles.elementPriceWrap)
+				input(type="text" value="1" data-min-value="3" data-max-value="10" data-input-unit="шт" class=styles.elementInput)
+				+Text(ELEM('TextPrice'))(class=styles.elementPrice)
+			+Button(ELEM('Button'))(Button = { class: styles.elementButtonPlus })

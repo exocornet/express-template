@@ -1,0 +1,15 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('footer')
+
+		return {
+			block: BLOCK({}, [cn?.margin, cn?.padding]),
+			elementLogoWrap: BLOCK('logo-wrap', ['mt-64@xs', 'mt-80@md', 'mt-96@lg', 'mt-160']),
+			elementLogoImage: BLOCK('logo-image'),
+			elementFooterLink: BLOCK('link'),
+			elementFooterInfo: BLOCK('info'),
+			elementFooterSocial: BLOCK('social'),
+			elementFooterNav: BLOCK('nav'),
+			elementFooterNavLink: BLOCK('nav-link'),
+		}
+	}

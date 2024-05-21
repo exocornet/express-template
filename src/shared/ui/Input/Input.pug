@@ -1,0 +1,65 @@
+mixin Input(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../../shared/helpers/pug/shortcut-check-store
+
+	//- # ЛОГИКА КОМПОНЕНТА # -//
+	- const TAG = DATA('tag', false) || 'input'
+
+	//- # ПРИМЕР # -//
+	//- Input: {
+	//- 	data: {
+	//- 		type: 'text',
+	//- 		name: 'example',
+	//- 		value: 'Введенные данные',
+	//- 		validationType: 'text',
+	//- 	},
+	//- 	elem: {
+	//- 		TextLabel: {
+	//- 			data: {
+	//- 				tag: 'span',
+	//- 				text: 'Подсказка',
+	//- 			},
+	//- 			cn: {
+	//- 				color: 'gray',
+	//- 			}
+	//- 		},
+	//- 		TextError: {
+	//- 			data: {
+	//- 				tag: 'span',
+	//- 				text: 'Ошибка',
+	//- 			},
+	//- 			cn: {
+	//- 				size: 'caption',
+	//- 				color: 'red',
+	//- 			}
+	//- 		},
+	//- 	},
+	//- 	opt: {
+	//- 		disabled: false
+	//- 	}
+	//- }
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Input.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)&attributes(attributes)
+		#{TAG}(
+			class=styles.elementField
+			type=DATA('type', false)
+			name=DATA('name', false)
+			value=DATA('value', false)
+			min=DATA('min', false)
+			max=DATA('max', false)
+			data-validation-type=DATA('validationType', false)
+			disabled=OPT('disabled', false)
+			required=OPT('required', false)
+			autocomplete="off"
+		)
+		+Sprite('close')(class=[styles.elementIconClose, 'd-none'])
+		if ELEM('TextLabel', false)
+			+Text(ELEM('TextLabel'))(class=styles.elementLabel)
+		if ELEM('TextError', false)
+			+Text(ELEM('TextError'))(class=styles.elementError)
+		block

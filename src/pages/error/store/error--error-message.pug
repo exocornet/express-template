@@ -1,0 +1,31 @@
+-
+	const ErrorMessage = {
+		includeSection: 'ErrorMessage',
+		elem: {
+			Heading: {
+				data: {
+					tag: 'h2',
+					text: 'Такой страницы нет'
+				},
+			},
+			Text: {
+				data: {
+					text: `Ссылка, по которой вы перешли, никуда не ведет. <br class="d-none@xs">Возможно, в ней была опечатка, или эта страница была удалена.`
+				},
+				cn: {
+					size: 'body-l-m',
+					textAlign: 'text-align-center',
+				}
+			},
+			Button: {
+				data: {
+					href: '#!',
+					text: 'Перейти на главную'
+				},
+				cn: {
+					color: 'secondary',
+					width: 'w-100'
+				}
+			}
+		}
+	}

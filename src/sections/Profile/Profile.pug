@@ -1,0 +1,18 @@
+mixin Profile(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Profile.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	section(class=styles.block)
+		div(class=styles.elementHeadline)
+			+Button({
+				data: { icon: 'arrow-left' },
+				opt: { isCircle: true }
+			})&attributes({ Button: { class: styles.elementBtnBack, "aria-label": "Вернуться назад" } })
+			+Heading(ELEM('Heading'))
+
+		+ArticleList(ELEM('ArticleList'))

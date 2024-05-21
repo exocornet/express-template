@@ -1,0 +1,11 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('banner-video')
+
+		return {
+			block: BLOCK({[`${cn?.bgColor}`]: ['red'].includes(cn?.bgColor)}),
+			elementImage: BLOCK('image'),
+			elementText: BLOCK('text'),
+			elementButton: BLOCK('button'),
+		}
+	}

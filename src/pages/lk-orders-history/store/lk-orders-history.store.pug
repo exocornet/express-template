@@ -1,0 +1,31 @@
+//- # ПАРАМЕТРЫ ДЛЯ НАСТРОЙКИ LAYOUT # -//
+-
+	const PAGE_TITLE = 'История заказов';
+	const IS_PAGE_SVG_SPRITE = true;
+	// переменные для MainLayout
+	const LAYOUT_LEFT_COL_PROPS = { cn: { cols: 'col-6' }};
+	const LAYOUT_LEFT_SIDE_COMPONENT = 'MenuLk';
+
+//- # ПЕРЕМЕННЫЕ ДЛЯ ПЕРЕОПРЕДЕЛЕНИЯ FEATURES # -//
+-
+	const Header = {
+		elem: {
+			ButtonBox: false,
+			ButtonSignIn: {
+				data: {
+					text: 'Личный кабинет',
+					icon: 'user',
+				},
+				cn: {
+					color: 'secondary'
+				}
+			},
+		}
+	}
+
+//- # НАСЛЕДОВАНИЕ ФУНКЦИИ ДЛЯ РАЗДЕЛЕНИЯ СТОРОВ # -//
+- const PAGE_STORE = addSections();
+
+//- ## Подключение store секции OrdersHistory ## -//
+include lk-orders-history--orders-history.pug
+- PAGE_STORE.addSection(OrdersHistory);

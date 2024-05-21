@@ -1,0 +1,13 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('switch');
+
+		return {
+			block: BLOCK({}, [
+				cn?.margin,
+				cn?.padding,
+			]),
+			elementInput: BLOCK('input'),
+			elementInner: BLOCK('inner'),
+		}
+	}

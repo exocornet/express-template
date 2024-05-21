@@ -1,0 +1,55 @@
+@import "../../shared/styles/include-setings-styles";
+
+.company-tag-list {
+	display: flex;
+	flex-direction: column;
+	row-gap: 24px;
+
+	margin-bottom: 64px;
+
+	text-decoration: none;
+
+	&__companies-list {
+		display: flex;
+		flex-flow: row wrap;
+
+		gap: 4px 4px;
+
+		@include media(xs) {
+			overflow: scroll;
+			flex-wrap: nowrap;
+
+			@include no-scrollbar;
+		}
+	}
+
+	&__company-tag {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		padding: 10px 16px;
+
+		cursor: pointer;
+
+		white-space: nowrap;
+
+		text-decoration: none;
+
+		border-radius: 12px;
+		background: $background-light;
+	}
+
+	@include media(xs) {
+		margin-bottom: 24px;
+	}
+}
+
+.js-company-active {
+	color: $white;
+	background: $background-dark;
+
+	&:hover {
+		color: $light-gray;
+	}
+}

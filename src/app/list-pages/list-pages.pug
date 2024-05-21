@@ -1,0 +1,52 @@
+mixin link(path, name)
+	link(rel="stylesheet" href= (isWebpack ? `${path}/${name}/${name}.scss` : `./assets/css/${name}.css`))/
+
+mixin script(path, name, namePage)
+	script(src= (isWebpack ? `${path}/${namePage || name}/${name}.ts` : `./assets/js/${name}.js`) defer)
+
+doctype html
+html
+	head
+		meta(charset="UTF-8")/
+		title Список страниц
+		if isWebpack
+			link(rel="stylesheet" href="../../shared/shared.scss")/
+			include include-link
+			link(rel="stylesheet" href="../main.scss")/
+
+		style.
+			.body-list-pages {
+				padding: 20px;
+			}
+			.h1 {
+				font-size: 26px;
+				margin-bottom: 20px;
+				color: #000000;
+			}
+			.link {
+				font-size: 16px;
+				line-height: 1.3;
+				text-decoration: none;
+				color: #000000;
+			}
+			.link:hover {
+				color: #00000080;
+			}
+	body(class="body-list-pages")
+		h1(class="h1") Страницы сайта:
+		for link, idx in listLinks
+			a(class="link" href=link.link target="_blank" title=link.title accesskey=`${idx + 1}`)
+				| #{`${idx + 1}. ${link.name} (${link.title}.html)`}
+				br
+
+		if isWebpack
+			script(src="../main.ts")
+			include include-script
+
+		if isDev
+			script(src="/socket.io/socket.io.js")
+			script.
+				const socket = io();
+				socket.on('webpackUpdate', () => {
+					location.reload();
+				});

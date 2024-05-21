@@ -1,0 +1,54 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../shared/styles/include-setings-styles";
+
+.card-order {
+	display: flex;
+	flex-direction: column;
+	row-gap: 16px;
+
+	max-width: 456px;
+
+	padding: 16px;
+
+	text-decoration: none;
+
+	border-radius: 16px;
+	background-color: $background-light;
+
+	&__header {
+		display: flex;
+		flex-direction: column;
+		row-gap: 8px;
+	}
+
+	&__header-bottom-text {
+		display: flex;
+		column-gap: 8px;
+	}
+
+	&__order-pictures {
+		display: flex;
+		overflow: hidden;
+		flex-direction: row;
+
+		column-gap: 8px;
+	}
+
+	&__picture {
+		display: flex;
+		overflow: hidden;
+		align-items: center;
+		justify-content: center;
+
+		width: 64px;
+		height: 64px;
+
+		border-radius: 16px;
+
+		background-color: $white;
+	}
+
+	@include media(md) {
+		max-width: unset;
+	}
+}

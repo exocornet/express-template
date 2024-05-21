@@ -1,0 +1,126 @@
+// # ПОДКЛЮЧЕНИЕ SCSS ПЕРЕМЕННЫХ ДЛЯ root.scss и default.scss # //
+@import "../../helpers/scss/swiss-knife-scss/variables";
+
+// # ОБЪЯВЛЕНИЕ CSS ПЕРЕМЕННЫХ ДЛЯ ROOT # //
+$variables-root: variables-root((
+	// ## Определение стилей для default (layer-elements) ## //
+	"selection-color": hsla(356deg 76% 49% / 0.5),
+	"body-font-family": ("FiraSans", sans-serif),
+	"body-font-size": 1.4rem,
+	"body-font-weight": 500,
+	"body-font-color": hsla(0deg 0% 13% / 1),
+	"body-line-height": 1.35,
+	"body-font-letter-spacing": -0.01em,
+	"link-color": hsla(0deg 0% 13% / 1),
+	"link-hover-color": hsla(0deg 0% 13% / 0.8),
+
+	// ## Fonts ## //
+	"font-firasans": ("FiraSans", sans-serif),
+	"font-montserrat": ("Montserrat", sans-serif),
+
+	// ## Colors standard ## //
+	"transparent": transparent,
+	"white": hsla(0deg 0% 100% / 1),
+	"white-opacity": hsla(0deg 0% 100% / 0.7),
+	"black": hsla(0deg 0% 13% / 1),
+	"black-50": hsla(0deg 0% 13% / 0.5),
+	"black-80": hsla(0deg 0% 13% / 0.8),
+	"gray": hsla(0deg 0% 59% / 1),
+	"light-gray": hsla(0deg 0% 92% / 1),
+	"red": hsla(356deg 76% 49% / 1),
+	"red-80": hsla(356deg 76% 49% / 0.8),
+	"orange": hsla(28deg 100% 63% / 1),
+	"pink": hsla(0deg 86% 75% / 1),
+	"background-light": hsla(0deg 5% 96% / 1),
+	"background-dark": hsla(230deg 7% 21% / 1),
+	"background-gray": hsla(0deg 0% 85% / 1),
+	"tag-green": hsla(99deg 56% 50% / 1),
+	"tag-orange": hsla(28deg 100% 53% / 1),
+	"shadow-dark":  hsla(0deg 0% 0% / 0.05),
+
+	// ## Font-size ## //
+	"fs10": 1rem,
+	"fs12": 1.2rem,
+	"fs14": 1.4rem,
+	"fs16": 1.6rem,
+	"fs17": 1.7rem,
+	"fs20": 2rem,
+	"fs22": 2.2rem,
+	"fs24": 2.4rem,
+	"fs40": 4rem,
+
+	// ## Border-radius ## //
+	"br16": 16px,
+	"br24": 24px,
+
+	"infinity": calc(infinity),
+
+	// ## Высота header ## //
+	"outside-indentation": "0px",
+	"half-of-header-height": 0,
+));
+
+// # ПЕРЕОПРЕДЕЛЕНИЕ ПЕРЕМЕННЫХ ДЛЯ МЕДИАЗАПРОСОВ # //
+$media-direction: "max";
+$breakpoints: (
+	xs: 320,
+	md: 768,
+	lg: 1280,
+	xl: 1600,
+	xxl: 1920,
+);
+
+$col-media-params: (
+	xs: (4, 2),
+	md: 12,
+	lg: 36,
+	xl: 36,
+	xxl: (36, 4),
+);
+
+// # ПЕРЕМЕННАЯ ДЛЯ ОТСТУПОВ MARGIN, PADDING, GAP # //
+$property-values-spacings: (auto, 0, 4, 8, 12, 16, 20, 24, 32, 48, 64, 80, 96, 160);
+
+// # SCSS ПЕРЕМЕННЫЕ # //
+$column-gap: var(--column-gap, 0);
+
+// ## Fonts ## //
+$font-firasans: var(--font-firasans);
+$font-montserrat: var(--font-montserrat);
+
+// ## Colors standard ## //
+$transparent: var(--transparent);
+$white: var(--white);
+$white-opacity: var(--white-opacity);
+$black: var(--black);
+$black-50: var(--black-50);
+$black-80: var(--black-80);
+$gray: var(--gray);
+$light-gray: var(--light-gray);
+$red: var(--red);
+$red-80: var(--red-80);
+$orange: var(--orange);
+$pink: var(--pink);
+$background-light: var(--background-light);
+$background-dark: var(--background-dark);
+$background-gray: var(--background-gray);
+$tag-green: var(--tag-green);
+$tag-orange: var(--tag-orange);
+$shadow-dark: var(--shadow-dark);
+
+// ## Font-size ## //
+$fs10: var(--fs10);
+$fs12: var(--fs12);
+$fs14: var(--fs14);
+$fs16: var(--fs16);
+$fs17: var(--fs17);
+$fs20: var(--fs20);
+$fs22: var(--fs22);
+$fs24: var(--fs24);
+$fs40: var(--fs40);
+
+// ## Border-radius ## //
+$br16: var(--br16);
+$br24: var(--br24);
+
+$infinity: var(--infinity);

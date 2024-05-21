@@ -1,0 +1,32 @@
+mixin CardPrice(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include CardPrice.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)&attributes(attributes.cardPrice)
+		+Tags(ELEM('Tags'))&attributes(attributes.Tags)
+		div(class=styles.elementShortInfo)
+			+Text(ELEM('TextProductName'))
+			+Text(ELEM('TextProductDetailedPrice'))
+		div(class=styles.elementCount)
+			+Sprite('box')(class=styles.elementCountIcon)
+			+Text(ELEM('TextProductCount'))
+		div(class=styles.elementFooter data-card-id="1")
+			div(class=styles.elementPrice)
+				+Text(ELEM('TextProductPrice'))
+				if ELEM('TextProductOldPrice')
+					+Text(ELEM('TextProductOldPrice'))
+			+Button({
+				data: { text: 'Добавить в корзину' },
+			})&attributes({Button: {class: styles.elementAddButton}})
+			//- TODO: можно подставить компонент с модификатором +CounterCart
+			div(class=styles.elementFooterButton)
+				button(class=styles.elementButtonMinus type="button" aria-label="Уменьшить количество")
+					+Sprite('minus')(class=styles.elementButtonIcon)
+				input(class=styles.elementInput type="text" value="1" data-min-value="1" data-max-value="" data-input-unit="шт")
+				button(class=styles.elementButtonPlus type="button" aria-label="Увеличить количество")
+					+Sprite('plus')(class=styles.elementButtonIcon)

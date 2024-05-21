@@ -1,0 +1,52 @@
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+
+	gap: 2px 2px;
+
+	&__tag {
+		padding: 4px 8px;
+
+		cursor: pointer;
+
+		transition: transition(opacity);
+
+		letter-spacing: 0.01em;
+
+		color: $white;
+		border-radius: 32px;
+		background: $red;
+
+		font-size: $fs14;
+		line-height: 1.14;
+
+		&_sail {
+			border-radius: 4px;
+			background: $tag-green;
+
+			@include media(xs) {
+				padding: 0 4px;
+			}
+		}
+
+		&_new {
+			border-radius: 4px;
+			background: $orange;
+
+			@include media(xs) {
+				padding: 0 4px;
+			}
+		}
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		@include media(xs) {
+			padding: 0 8px;
+
+			font-size: $fs12;
+			line-height: 1.3;
+		}
+	}
+}

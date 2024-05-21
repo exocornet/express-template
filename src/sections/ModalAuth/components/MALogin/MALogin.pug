@@ -1,0 +1,19 @@
+mixin MALogin(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include MALogin.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)&attributes(attributes)
+		+Heading(ELEM('Heading'))(class=styles.elementHeading)
+		form(class=styles.elementForm novalidate method="post" action="/auth")
+			div(class=styles.elementFormContent)
+				+Input(ELEM('InputPhoneEmail'))(class=styles.elementInput)
+				+Input(ELEM('InputPassword'))(class=styles.elementInput)
+				+Button(ELEM('Button'))&attributes({Button: {class: styles.elementButton}})
+		+Button(ELEM('ButtonSignUp'))&attributes({Button: {class: [styles.elementButton, 'js-signup']}})
+		+Button(ELEM('ButtonPassRecovery'))&attributes({Button: {class: [styles.elementButton, 'js-pass-recovery']}})
+		+Text(ELEM('TextCaption'))(class=styles.elementCaption)

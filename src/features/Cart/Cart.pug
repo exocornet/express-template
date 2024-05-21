@@ -1,0 +1,39 @@
+mixin Cart(props)
+	//- # ПОДКЛЮЧЕНИЕ СТАТИЧНОГО STORE ДЛЯ CART # -//
+	include Cart.store.pug
+	//- # ФУНКЦИОНАЛ ДЛЯ ПЕРЕОПРЕДЕЛЕНИЯ СТАТИЧНОГО STORE СО STORE СТРАНИЦЫ # -//
+	- props = deepMerge(Cart, props);
+
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Cart.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	+Sprite(DATA('iconMobile'))(class=styles.elementButtonEmptyIconMobile)
+	aside(class=styles.block data-id-component="cart-component" data-api-cart-url="/api/cart")
+		div(class=styles.elementBg)
+		div(class=styles.elementWrapper)
+			div(class=styles.elementTop)
+				+Button(ELEM('ButtonBack'))&attributes({Button: {class: styles.elementButtonBack}})
+				+Heading(ELEM('Heading'))(class=styles.elementTopHeading)
+				button(class=styles.elementButtonEmpty type="button")
+					+Text(ELEM('TextButton'))(class=styles.elementButtonEmptyText)
+					+Sprite(DATA('iconDesktop'))(class=styles.elementButtonEmptyIconDesktop)
+					+Sprite(DATA('iconMobile'))(class=styles.elementButtonEmptyIconMobile)
+			div(class=styles.elementBody)
+				if(ELEM_ARR('CartItemArr', false))
+					for item in ELEM_ARR('CartItemArr')
+						include ../../shared/helpers/pug/shortcut-check-store
+						+CartItem(item)
+				else
+					div(class=styles.elementLogo)
+						+Sprite('logo')(class=styles.elementSprite)
+						+Text({ data: { text: 'В корзине пока пусто' }, cn: { size: 'body-l-m', color: 'gray' } })
+			div(class=styles.elementBottom)
+				+ButtonCart(ELEM('ButtonCart'))(class=styles.elementButtonCart)
+
+		template(data-template="template-cart-button-address")
+			+ButtonAddress(ELEM('ButtonAddress'))(class=styles.elementButtonAddress data-modal-form="map")

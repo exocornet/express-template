@@ -1,0 +1,20 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "styles/include-setings-styles";
+
+// # ------------ LAYER GENERIC ------------ # //
+// ## Подключение шрифтов ## //
+@import "styles/layer-generic/fonts";
+// ## Стили библиотек ## //
+@import "styles/layer-generic/vendors";
+// ## CSS root переменные ## //
+@import "helpers/scss/swiss-knife-scss/layer-generic/root";
+
+// # ------------ LAYER ELEMENTS ------------ # //
+// ## Сброс стилей ## //
+@import "helpers/scss/swiss-knife-scss/layer-elements/reset";
+// ## стили стандартных тегов ## //
+@import "styles/layer-elements/default";
+
+// # ------------ LAYER COMPONENTS ------------ # //
+// ## Стили компонентов ## //
+@import "ui/ui";

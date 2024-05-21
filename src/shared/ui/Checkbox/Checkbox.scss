@@ -1,0 +1,84 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../styles/include-setings-styles";
+
+.checkbox {
+	$self: &;
+	display: block;
+
+	width: fit-content;
+
+	&__input {
+		position: absolute;
+
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+
+		border: 0;
+	}
+
+	&__wrapper {
+		display: flex;
+		align-items: flex-start;
+
+		cursor: pointer;
+		gap: 8px;
+
+		#{ $self }__input:disabled ~ & {
+			cursor: default;
+		}
+	}
+
+	&__box {
+		display: flex;
+		align-items: center;
+		flex-shrink: 0;
+		justify-content: center;
+
+		width: 20px;
+		height: 20px;
+		padding: 2px;
+
+		transition: transition();
+
+		border-radius: 4px;
+		background: $background-light;
+
+		@include media(xs) {
+			width: 16px;
+			height: 16px;
+		}
+
+		// stylelint-disable-next-line order/order
+		#{ $self }__input:checked ~ #{ $self }__wrapper & {
+			background: $red;
+		}
+
+		#{ $self }__input:disabled ~ #{ $self }__wrapper & {
+			background: $light-gray;
+		}
+
+		svg {
+			transition: transition();
+
+			opacity: 0;
+			color: $white;
+
+			#{ $self }__input:checked ~ #{ $self }__wrapper & {
+				opacity: 1;
+			}
+		}
+	}
+
+	&__label {
+		padding-top: 3px;
+
+		#{ $self }__input:disabled ~ #{ $self }__wrapper & {
+			color: $gray;
+		}
+	}
+}

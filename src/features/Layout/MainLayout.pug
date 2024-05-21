@@ -1,0 +1,21 @@
+//- # АКТИВАЦИЯ КАСТОМНОГО МИКСИНА ЛЭЙАУТА # -//
+- let MainLayout = true;
+
+//- # МИКСИН КАСТОМНОГО ЛЭЙАУТА # -//
+mixin MainLayout
+	main(class=PAGE_CLASS_MAIN || false)
+		+Container
+			+Row
+				+Col(LAYOUT_LEFT_COL_PROPS || { cn: { cols: 'col-6', display: 'd-none@md' } })
+					if(LAYOUT_LEFT_SIDE_COMPONENT)
+						+#{LAYOUT_LEFT_SIDE_COMPONENT}(LAYOUT_LEFT_SIDE_COMPONENT_PROPS)
+
+				+Col({ cn: { cols: 'col-20 col-12@md col-4@xs center-col', offset: 'offset-1 offset-0@md' } })
+					for sectionStore, idx in PAGE_STORE.getSections
+						if PAGE_STORE.getSections[idx].includeSection
+							+#{PAGE_STORE.getSections[idx].includeSection}(sectionStore)
+
+				if(LAYOUT_RIGHT_SIDE_COMPONENT || NEED_EMPTY_RIGHT_COL)
+					+Col({ cn: { cols: 'col-8 right-col', offset: 'offset-1' } })
+						if(LAYOUT_RIGHT_SIDE_COMPONENT)
+							+#{LAYOUT_RIGHT_SIDE_COMPONENT}(LAYOUT_RIGHT_SIDE_PROPS)&attributes(LAYOUT_RIGHT_SIDE_ATTRIBUTES)

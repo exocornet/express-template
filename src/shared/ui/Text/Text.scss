@@ -1,0 +1,165 @@
+// дефолтным стилем является text Body M_M из макетов т.к встречался чаще всех.
+
+.text {
+	text-decoration: none;
+	letter-spacing: 0.01em;
+
+	color: $black;
+
+	font-size: $fs14;
+
+	line-height: 1.14;
+
+	@include media(xs) {
+		font-size: $fs12;
+		line-height: 1.3;
+	}
+
+	// # SIZE MODIFIER # //
+	// stylelint-disable-next-line order/order
+	&_caption {
+		font-size: $fs12;
+		line-height: 1.3;
+
+		@include media(xs) {
+			font-size: $fs10;
+			line-height: 1.2;
+		}
+	}
+
+	&_button-l {
+		font-size: $fs16;
+		line-height: 1.25;
+
+		@include media(xs) {
+			letter-spacing: 0.03em;
+
+			font-size: $fs16;
+		}
+	}
+
+	&_body-m-b {
+		font-weight: 700;
+
+		@include media(xs) {
+			font-size: $fs12;
+		}
+	}
+
+	&_body-m-m {
+		font-size: $fs14;
+
+		line-height: 1.14;
+
+		@include media(xs) {
+			font-size: $fs12;
+			line-height: 1.3;
+		}
+	}
+
+	&_body-l-m {
+		letter-spacing: 0.01em;
+
+		font-size: $fs16;
+		line-height: 1.25;
+
+		@include media(xs) {
+			font-size: $fs14;
+			line-height: 1.14;
+		}
+	}
+
+	&_body-h4 {
+		letter-spacing: 0.02em;
+
+		font-family: $font-montserrat;
+		font-size: $fs17;
+		line-height: 1.17;
+
+		@include media(xs) {
+			letter-spacing: 0.01em;
+
+			font-size: $fs14;
+			line-height: 1.14;
+		}
+	}
+
+	&_body-h3 {
+		letter-spacing: 0;
+
+		font-size: $fs22;
+		line-height: 1.1;
+
+		@include media(xs) {
+			letter-spacing: 0.02em;
+
+			font-size: $fs16;
+			line-height: 1.25;
+		}
+	}
+
+	&_body-h2 {
+		letter-spacing: 0.02em;
+
+		font-family: $font-montserrat;
+		font-size: $fs24;
+		font-weight: 700;
+		line-height: 1.16;
+
+		@include media(xs) {
+			font-size: $fs20;
+			line-height: 1.2;
+		}
+	}
+
+	&_body-h1 {
+		letter-spacing: 0.02em;
+
+		font-family: $font-montserrat;
+		font-size: $fs40;
+		line-height: 1.1;
+
+		@include media(xs) {
+			font-size: $fs24;
+			line-height: 1.16;
+		}
+	}
+
+	// # COLOR MODIFIER # //
+	&_gray {
+		color: $gray;
+	}
+
+	&_white {
+		color: $white;
+	}
+
+	&_white-opacity {
+		color: $white-opacity;
+	}
+
+	&_red {
+		color: $red;
+	}
+
+	// # TEXT STRIKING # //
+	&_striking {
+		position: relative;
+
+		width: fit-content;
+
+		&::before{
+			position: absolute;
+			top: 50%;
+			right: 0;
+			left: 0;
+
+			content: "";
+			transform: rotate(-22deg) translateY(-50%);
+			pointer-events: none;
+
+			border-top: 1px solid $red;
+			border-bottom: 1px solid $white;
+		}
+	}
+}

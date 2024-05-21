@@ -1,0 +1,8 @@
+mixin Logo(props)
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Logo.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	a(class=styles.block href="/" aria-label="Логотип сайта" tabindex="0" title="Логотип")&attributes(attributes)
+		include include-svg/logo

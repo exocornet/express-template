@@ -1,0 +1,19 @@
+mixin InputInn(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include InputInn.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	+Input(ELEM('Input'))(class=styles.block data-url=DATA('dataUrl', false))&attributes(attributes)
+		div(class=styles.elementList)
+			div(class=styles.elementListWrapper)
+				for item in DATA_ARR('itemsArray')
+					include ../../../shared/helpers/pug/shortcut-check-store
+					div(class=styles.elementItem)
+						if I_ELEM('TextName', false)
+							+Text(I_ELEM('TextName'))
+						if I_ELEM('TextInfo', false)
+							+Text(I_ELEM('TextInfo'))(class=styles.elementItemInfo)

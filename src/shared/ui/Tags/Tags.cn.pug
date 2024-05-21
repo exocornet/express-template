@@ -1,0 +1,11 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('tags')
+
+		return {
+			elementTags: BLOCK({}),
+			elementTag: BLOCK('tag', {
+				[`${cn?.tag}`]: ['hit', 'sail', 'new'].includes(cn?.tag),
+			}),
+		}
+	}

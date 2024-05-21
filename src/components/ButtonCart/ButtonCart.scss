@@ -1,0 +1,75 @@
+@import "../../shared/styles/include-setings-styles";
+
+.button-cart {
+	$self: &;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	height: 64px;
+	padding: 14px 20px;
+
+	transition: transition();
+
+	color: $white;
+	border-radius: 16px;
+	background: $red;
+
+	@include media(xs) {
+		height: 48px;
+		padding: 8px 20px;
+	}
+
+	// stylelint-disable-next-line order/order
+	&:hover {
+		background: $black;
+	}
+
+	&__right {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	span {
+		color: $white;
+	}
+
+	& > span:only-child {
+		width: 100%;
+
+		text-align: center;
+	}
+
+	&_more {
+		color: $gray;
+		background: $light-gray;
+
+		&:hover {
+			background: $light-gray;
+		}
+
+		// stylelint-disable-next-line no-descending-specificity
+		span {
+			color: $gray;
+		}
+	}
+
+	&_disabled,
+	&:disabled {
+		cursor: not-allowed;
+
+		color: $gray;
+		background: $light-gray;
+
+		&:hover {
+			background: $light-gray;
+		}
+
+		// stylelint-disable-next-line no-descending-specificity
+		span {
+			color: $gray;
+		}
+	}
+}

@@ -1,0 +1,16 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('input');
+
+		return {
+			block: BLOCK({
+				[`${cn?.color}`]: ['inversion'].includes(cn?.color),
+			}, [cn?.margin]),
+			elementLabel: BLOCK('label'),
+			elementField: BLOCK('field', {
+				[`${cn?.fieldType}`]: ['text-area'].includes(cn?.fieldType),
+			}),
+			elementError: BLOCK('error'),
+			elementIconClose: BLOCK('icon-close'),
+		}
+	}

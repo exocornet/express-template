@@ -1,0 +1,14 @@
+.sidebar {
+	position: sticky;
+	top: calc(var(--outside-indentation) + var(--outside-indentation-main));
+
+	display: flex;
+	overflow-y: scroll;
+	flex-direction: column;
+
+	height: calc(100vh - (var(--outside-indentation) + var(--outside-indentation-main)));
+	padding-bottom: 10px;
+	row-gap: 16px;
+
+	@include no-scrollbar;
+}

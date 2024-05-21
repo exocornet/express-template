@@ -1,0 +1,54 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../shared/styles/include-setings-styles";
+
+.article-list {
+	$self: &;
+
+	&__article {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+
+		padding-block: 16px;
+
+		border-bottom: 1px solid $light-gray;
+
+		@include media(xs) {
+			position: relative;
+
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 4px;
+
+			padding-right: 36px;
+			padding-block: 14px;
+		}
+
+		// stylelint-disable-next-line order/order
+		&:nth-child(1) {
+			padding-top: 0;
+		}
+	}
+
+	&__name {
+		flex-shrink: 0;
+
+		width: 162px;
+
+		@include media(md) {
+			width: 170px;
+		}
+	}
+
+	&__button {
+		margin-left: auto;
+
+		@include media(xs) {
+			position: absolute;
+			top: 50%;
+			right: 0;
+
+			transform: translateY(-50%);
+		}
+	}
+}

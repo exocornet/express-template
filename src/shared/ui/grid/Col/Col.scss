@@ -1,0 +1,95 @@
+// Можно пользоваться такими классами как col-1, col-1@xs, col-3@md, col-4@lg и тд
+// Можно пользоваться такими классами как offset-1, offset-1@xs, offset-3@md, offset-4@lg и тд
+@include col;
+
+$col-media-params-center: (
+	xs: (4, 2),
+	md: 12,
+	lg: 20,
+	xl: 20,
+	xxl: (20, 4),
+);
+
+@mixin colInsideCol {
+	$breakpoints-name-list: map-keys($breakpoints);
+
+	.center-col {
+		.col {
+			@for $index from 1 through length($breakpoints) {
+				$cols-count: nth(map-get($col-media-params-center, nth($breakpoints-name-list, -$index)), 1);
+
+				@if nth($breakpoints-name-list, -$index) == "xxl" {
+					width: 100%;
+
+					@if length(map-get($col-media-params-center, nth($breakpoints-name-list, -$index))) == 2 {
+						$cols-padding: nth(map-get($col-media-params-center, nth($breakpoints-name-list, -$index)), 2);
+						padding-inline: #{$cols-padding}px;
+					}
+
+					@for $colNum from 1 through $cols-count {
+						&-#{$colNum} {
+							flex: 0 0 calc(100% / #{$cols-count} * #{$colNum});
+
+							max-width: calc(100% / #{$cols-count} * #{$colNum});
+						}
+					}
+				}
+
+				@else if nth($breakpoints-name-list, -$index) != "xxl" {
+					@include media(nth($breakpoints-name-list, -$index)) {
+						@if length(map-get($col-media-params-center, nth($breakpoints-name-list, -$index))) == 2 {
+							$cols-padding: nth(map-get($col-media-params-center, nth($breakpoints-name-list, -$index)), 2);
+							padding-inline: #{$cols-padding}px;
+						}
+
+						@for $colNum from 1 through $cols-count {
+							&-#{$colNum}\@#{classMedia(nth($breakpoints-name-list, -$index))} {
+								flex: 0 0 calc(100% / #{$cols-count} * #{$colNum});
+
+								max-width: calc(100% / #{$cols-count} * #{$colNum});
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.offset {
+			@for $index from 1 through length($breakpoints) {
+				$cols-count: nth(map-get($col-media-params-center, nth($breakpoints-name-list, -$index)), 1);
+
+				@if nth($breakpoints-name-list, -$index) == "xxl" {
+					@for $colNum from 0 through $cols-count - 1 {
+						&-#{$colNum} {
+							@if $colNum == 0 {
+								margin-left: 0;
+							}
+
+							@else {
+								margin-left: calc(100% / #{$cols-count} * #{$colNum});
+							}
+						}
+					}
+				}
+
+				@else if nth($breakpoints-name-list, -$index) != "xxl" {
+					@include media(nth($breakpoints-name-list, -$index)) {
+						@for $colNum from 0 through $cols-count - 1 {
+							&-#{$colNum}\@#{classMedia(nth($breakpoints-name-list, -$index))} {
+								@if $colNum == 0 {
+									margin-left: 0;
+								}
+
+								@else {
+									margin-left: calc(100% / #{$cols-count} * #{$colNum});
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@include colInsideCol;

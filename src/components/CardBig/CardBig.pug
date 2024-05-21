@@ -1,0 +1,15 @@
+mixin CardBig(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include CardBig.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)
+		picture
+			source(srcset=DATA('imageXs') media=`(max-width: ${media.xs})`)
+			img(class=styles.elementImage src=DATA('image') alt="большой баннер")
+		+Text(ELEM('TextBig'))
+		+Text(ELEM('TextSmall'))

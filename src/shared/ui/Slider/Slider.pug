@@ -1,0 +1,33 @@
+//- ПРИ ПОЯВЛЕНИЕ СЛАЙДЕРА ОТЛИЧАЮЩЕГОСЯ ПО ДИЗАЙНУ ОТ ДАННОГО СЛАЙДЕРА ТРЕБУЕТСЯ РАЗДЕЛИТЬ ЛОГИКУ НА РАЗНЫЕ КОМПОНЕНТЫ И ПРОВЕСТИ РЕФАКТОРИНГ
+//- КОМПОНЕНТ +Slider ОСТАНЕТСЯ И БУДЕТ ВЫЗЫВАТЬСЯ УЖЕ В СООТВЕТСТВУЮЩИЕ КОМПОНЕНТЫ
+mixin Slider(props)
+	//- # ПОДКЛЮЧЕНИЕ ВСПОМОГАТЕЛЬНЫХ БЛОКОВ СЛАЙДЕРА # -//
+	include ./SliderSlide
+	include ./SliderPagination
+
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Slider.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)&attributes(attributes.Slider)
+		//- ## Инициализация слайдера ## -//
+		div(class=styles.elementSwiper)&attributes(attributes.SliderSwiper)
+			//-
+				обертка для слайдов
+				для определения количества слайдов вызываем SliderSlide и вкладываем в них содержимое
+			div(class=styles.elementSlidesWrapper)&attributes(attributes.SliderSlidesWrapper)
+				block
+
+			//- ## Пагинация слайдера ## //
+			+SliderPagination&attributes(attributes.SliderPagination)
+
+			//- ## Навигация слайдера ## //
+			div(class=styles.elementNavigation)&attributes(attributes.SliderNavigation)
+				button(class=styles.elementPrev)
+					+Sprite('arrow-left')(class=styles.elementArrowButton)
+				button(class=styles.elementNext)
+					+Sprite('arrow-right')(class=styles.elementArrowButton)

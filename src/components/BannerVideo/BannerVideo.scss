@@ -1,0 +1,88 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../shared/styles/include-setings-styles";
+
+.banner-video {
+	position: relative;
+
+	display: flex;
+	overflow: hidden;
+	flex-direction: column;
+
+	height: 100%;
+
+	padding: 20px 20px 16px;
+
+	text-align: center;
+
+	border-radius: $br24;
+
+	&__image {
+		position: absolute;
+		z-index: -1;
+		inset: 0;
+		filter: brightness(0.85);
+		object-fit: cover;
+
+		height: 100%;
+	}
+
+	&__text {
+		letter-spacing: 0.02rem;
+
+		color: $white;
+
+		font-family: $font-montserrat;
+		font-size: $fs22;
+		font-weight: 700;
+		line-height: 1.1;
+
+		@include media(xs) {
+			letter-spacing: 0;
+
+			font-size: $fs16;
+			line-height: 1.25;
+		}
+	}
+
+	&__button {
+		justify-content: center;
+
+		width: 92px;
+		height: 92px;
+		margin: auto;
+
+		border-radius: 50%;
+		background-color: $red;
+
+		@include media(lg) {
+			width: 64px;
+			height: 64px;
+		}
+
+		@include media(md) {
+			width: 66px;
+			height: 66px;
+
+			svg {
+				width: 28px;
+				height: 28px;
+			}
+		}
+
+		@include media(xs) {
+			width: 48px;
+			max-height: 48px;
+
+			svg {
+				width: 20px;
+				height: 20px;
+			}
+		}
+	}
+
+	@include media(xs) {
+		padding: 16px 8px 12px;
+
+		border-radius: 16px;
+	}
+}

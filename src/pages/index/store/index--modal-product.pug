@@ -1,0 +1,674 @@
+-
+	const ModalProduct = {
+		includeContent: 'ModalProduct',
+		elem: {
+			Modal: {
+				data: {
+					dataModal: 'product',
+					dataUrl: 'catalog/product',
+				},
+				cn: {
+					modalStyle: 'right-oriented'
+				},
+			},
+			CardProductHeading: {
+				elem: {
+					Heading: {
+						data: {
+							text: 'С этим часто берут',
+							tag: 'h2'
+						},
+						cn: {
+							size: 'h2',
+							margin: 'mb-24 mb-16@md',
+						}
+					},
+					CardProductList: {
+						elem: {
+							ColCardProduct: {
+								cn: {
+									cols: 'col-5 col-2@xs'
+								}
+							},
+							CardProductArr: [
+								{
+									data: {
+										icon: 'heart',
+										img: './assets/img/components/card-product/product-img.png',
+									},
+									elem: {
+										TextName: {
+											data: {
+												text: 'Горошек Heinz зеленый Нежный',
+											},
+											cn: {
+												size: 'body-m-m'
+											}
+										},
+										TextWeight: {
+											data: {
+												text: '400г',
+											},
+											cn: {
+												size: 'body-m-m',
+												color: 'gray',
+												margin: 'mt-8 mt-4@xs'
+											}
+										},
+										CardProductCounter: {
+											elem: {
+												TextOldPrice: {
+													data: {
+														text: '160 ₽',
+													},
+													cn: {
+														size: 'caption',
+														color: 'gray',
+														textStriking: 'striking'
+													}
+												},
+												TextPrice: {
+													data: {
+														text: '160 ₽',
+													},
+													cn: {
+														size: 'body-h3'
+													}
+												},
+												Button: {
+													cn: {
+														type: 'circle',
+													},
+													opt: {
+														isCircle: true
+													}
+												},
+												ButtonMinus: {
+													cn: {
+														type: 'circle',
+													},
+													opt: {
+														isCircle: true
+													}
+												}
+											}
+										}
+									},
+									dataArr: {
+										tagsArr: [
+											{
+												data: {
+													text: 'Хит',
+												},
+												cn: {
+													tag: 'hit'
+												}
+											},
+											{
+												data: {
+													text: '-20 %',
+												},
+												cn: {
+													tag: 'sail'
+												}
+											},
+										]
+									},
+									opt: {
+										withCounter: true,
+									}
+								},
+								{
+									data: {
+										icon: 'heart',
+										img: './assets/img/components/card-product/product-img2.png',
+									},
+									elem: {
+										TextName: {
+											data: {
+												text: 'Горошек Heinz зеленый Нежный',
+											},
+											cn: {
+												size: 'body-m-m'
+											}
+										},
+										TextWeight: {
+											data: {
+												text: '400г',
+											},
+											cn: {
+												size: 'body-m-m',
+												color: 'gray',
+												margin: 'mt-8 mt-4@xs'
+											}
+										},
+										CardProductCounter: {
+											elem: {
+												TextPrice: {
+													data: {
+														text: '160 ₽',
+													},
+													cn: {
+														size: 'body-h3'
+													}
+												},
+												Button: {
+													cn: {
+														type: 'circle',
+													},
+													opt: {
+														isCircle: true
+													}
+												},
+												ButtonMinus: {
+													cn: {
+														type: 'circle',
+													},
+													opt: {
+														isCircle: true
+													}
+												}
+											}
+										}
+									},
+									dataArr: {
+										tagsArr: [
+											{
+												data: {
+													text: 'Новинка',
+												},
+												cn: {
+													tag: 'new'
+												}
+											},
+										]
+									},
+									opt: {
+										withCounter: true,
+									}
+								},
+								{
+									data: {
+										icon: 'heart',
+										img: './assets/img/components/card-product/product-img.png',
+									},
+									elem: {
+										TextName: {
+											data: {
+												text: 'Горошек Heinz зеленый Нежный',
+											},
+											cn: {
+												size: 'body-m-m'
+											}
+										},
+										TextWeight: {
+											data: {
+												text: '400г',
+											},
+											cn: {
+												size: 'body-m-m',
+												color: 'gray',
+												margin: 'mt-8 mt-4@xs'
+											}
+										},
+										CardProductCounter: {
+											elem: {
+												TextPrice: {
+													data: {
+														text: '160 ₽',
+													},
+													cn: {
+														size: 'body-h3'
+													}
+												},
+												Button: {
+													cn: {
+														type: 'circle',
+													},
+													opt: {
+														isCircle: true
+													}
+												},
+												ButtonMinus: {
+													cn: {
+														type: 'circle',
+													},
+													opt: {
+														isCircle: true
+													}
+												}
+											}
+										}
+									},
+									dataArr: {
+										tagsArr: [
+											{
+												data: {
+													text: 'Хит',
+												},
+												cn: {
+													tag: 'hit'
+												}
+											},
+											{
+												data: {
+													text: '-20 %',
+												},
+												cn: {
+													tag: 'sail'
+												}
+											},
+										]
+									},
+									opt: {
+										withCounter: true,
+									}
+								},
+								{
+									data: {
+										icon: 'heart',
+										img: './assets/img/components/card-product/product-img.png',
+									},
+									elem: {
+										TextName: {
+											data: {
+												text: 'Горошек Heinz зеленый Нежный',
+											},
+											cn: {
+												size: 'body-m-m'
+											}
+										},
+										TextWeight: {
+											data: {
+												text: '400г',
+											},
+											cn: {
+												size: 'body-m-m',
+												color: 'gray',
+												margin: 'mt-8 mt-4@xs'
+											}
+										},
+										CardProductCounter: {
+											elem: {
+												TextPrice: {
+													data: {
+														text: '160 ₽',
+													},
+													cn: {
+														size: 'body-h3'
+													}
+												},
+												Button: {
+													cn: {
+														type: 'circle',
+													},
+													opt: {
+														isCircle: true
+													}
+												},
+												ButtonMinus: {
+													cn: {
+														type: 'circle',
+													},
+													opt: {
+														isCircle: true
+													}
+												}
+											}
+										}
+									},
+									dataArr: {
+										tagsArr: [
+											{
+												data: {
+													text: 'Хит',
+												},
+												cn: {
+													tag: 'hit'
+												}
+											},
+											{
+												data: {
+													text: '-20 %',
+												},
+												cn: {
+													tag: 'sail'
+												}
+											},
+										]
+									},
+									opt: {
+										withCounter: true,
+									}
+								},
+								{
+									data: {
+										icon: 'heart',
+										img: './assets/img/components/card-product/product-img.png',
+									},
+									elem: {
+										TextName: {
+											data: {
+												text: 'Горошек Heinz зеленый Нежный',
+											},
+											cn: {
+												size: 'body-m-m'
+											}
+										},
+										TextWeight: {
+											data: {
+												text: '400г',
+											},
+											cn: {
+												size: 'body-m-m',
+												color: 'gray',
+												margin: 'mt-8 mt-4@xs'
+											}
+										},
+										CardProductCounter: {
+											elem: {
+												TextPrice: {
+													data: {
+														text: '160 ₽',
+													},
+													cn: {
+														size: 'body-h3'
+													}
+												},
+												Button: {
+													cn: {
+														type: 'circle',
+													},
+													opt: {
+														isCircle: true
+													}
+												},
+												ButtonMinus: {
+													cn: {
+														type: 'circle',
+													},
+													opt: {
+														isCircle: true
+													}
+												}
+											}
+										}
+									},
+									dataArr: {
+										tagsArr: [
+											{
+												data: {
+													text: 'Хит',
+												},
+												cn: {
+													tag: 'hit'
+												}
+											},
+											{
+												data: {
+													text: '-20 %',
+												},
+												cn: {
+													tag: 'sail'
+												}
+											},
+										]
+									},
+									opt: {
+										withCounter: true,
+									}
+								},
+								{
+									data: {
+										icon: 'heart',
+										img: './assets/img/components/card-product/product-img.png',
+									},
+									elem: {
+										TextName: {
+											data: {
+												text: 'Горошек Heinz зеленый Нежный',
+											},
+											cn: {
+												size: 'body-m-m'
+											}
+										},
+										TextWeight: {
+											data: {
+												text: '400г',
+											},
+											cn: {
+												size: 'body-m-m',
+												color: 'gray',
+												margin: 'mt-8 mt-4@xs'
+											}
+										},
+										CardProductCounter: {
+											elem: {
+												TextPrice: {
+													data: {
+														text: '160 ₽',
+													},
+													cn: {
+														size: 'body-h3'
+													}
+												},
+												Button: {
+													cn: {
+														type: 'circle',
+													},
+													opt: {
+														isCircle: true
+													}
+												},
+												ButtonMinus: {
+													cn: {
+														type: 'circle',
+													},
+													opt: {
+														isCircle: true
+													}
+												}
+											}
+										}
+									},
+									dataArr: {
+										tagsArr: [
+											{
+												data: {
+													text: 'Хит',
+												},
+												cn: {
+													tag: 'hit'
+												}
+											},
+											{
+												data: {
+													text: '-20 %',
+												},
+												cn: {
+													tag: 'sail'
+												}
+											},
+										]
+									},
+									opt: {
+										withCounter: true,
+									}
+								},
+							],
+						}
+					}
+				}
+			},
+			CardPrice: {
+				elem: {
+					Tags: {
+						dataArr: {
+							tagsArr: [
+								{
+									data: {
+										text: 'Новинка',
+									},
+									cn: {
+										tag: 'new'
+									}
+								},
+							]
+						}
+					},
+					TextProductName: {
+						data: { text: 'Йогурт TEOS натуральный 2% 250 г (6 штук в упаковке)' },
+						cn: { size: 'body-h3' }
+					},
+					TextProductDetailedPrice: {
+						data: { text: '62,33 ₽ за шт • 140 гр' },
+						cn: { size: 'body-l-m', color: 'gray' }
+					},
+					TextProductCount: {
+						data: { text: '6 шт в упаковке' },
+						cn: { size: 'body-l' }
+					},
+					TextProductPrice: {
+						data: { text: '374 ₽/уп' },
+						cn: { size: 'body-h2' }
+					},
+					TextProductOldPrice: {
+						data: { text: '540 ₽' },
+						cn: { size: 'body-l-m', color: 'gray', textStriking: 'striking' }
+					},
+					ButtonPlus: {
+						data: {
+							icon: 'plus'
+						},
+						cn: {
+							color: 'secondary',
+							type: 'only-icon'
+						}
+					},
+					ButtonMinus: {
+						data: {
+							icon: 'minus'
+						},
+						cn: {
+							color: 'secondary',
+							type: 'only-icon'
+						}
+					}
+				}
+			},
+			HiddenList: {
+				elem: {
+					ListItemArr: [
+						{
+							elem: {
+								TextInfoName: {
+									data: { text: 'Торговая марка' },
+									cn: { size: 'body-m-m' }
+								},
+								TextInfo: {
+									data: { text: 'Teos' },
+									cn: { size: 'body-m-m' }
+								}
+							}
+						},
+						{
+							elem: {
+								TextInfoName: {
+									data: { text: 'Страна происхождения' },
+									cn: { size: 'body-m-m' }
+								},
+								TextInfo: {
+									data: { text: 'Беларусь' },
+									cn: { size: 'body-m-m' }
+								}
+							}
+						},
+						{
+							elem: {
+								TextInfoName: {
+									data: { text: 'Вес' },
+									cn: { size: 'body-m-m' }
+								},
+								TextInfo: {
+									data: { text: '250 гр.' },
+									cn: { size: 'body-m-m' }
+								}
+							}
+						},
+						{
+							elem: {
+								TextInfoName: {
+									data: { text: 'Тип продукта' },
+									cn: { size: 'body-m-m' }
+								},
+								TextInfo: {
+									data: { text: 'густой' },
+									cn: { size: 'body-m-m' }
+								}
+							}
+						},
+						{
+							elem: {
+								TextInfoName: {
+									data: { text: 'Способ приготовления' },
+									cn: { size: 'body-m-m' }
+								},
+								TextInfo: {
+									data: { text: 'пастеризация' },
+									cn: { size: 'body-m-m' }
+								}
+							}
+						},
+						{
+							elem: {
+								TextInfoName: {
+									data: { text: 'Жирность' },
+									cn: { size: 'body-m-m' }
+								},
+								TextInfo: {
+									data: { text: '2%' },
+									cn: { size: 'body-m-m' }
+								}
+							}
+						},
+						{
+							elem: {
+								TextInfoName: {
+									data: { text: 'Срок хранения от даты производства (суток)' },
+									cn: { size: 'body-m-m' }
+								},
+								TextInfo: {
+									data: { text: '30' },
+									cn: { size: 'body-m-m' }
+								}
+							}
+						},
+						{
+							elem: {
+								TextInfoName: {
+									data: { text: 'Количество единиц продаж в транспортной упаковке' },
+									cn: { size: 'body-m-m' }
+								},
+								TextInfo: {
+									data: { text: '1' },
+									cn: { size: 'body-m-m' }
+								}
+							}
+						},
+						{
+							elem: {
+								TextInfoName: {
+									data: { text: 'Тип упаковки' },
+									cn: { size: 'body-m-m' }
+								},
+								TextInfo: {
+									data: { text: 'пластиковый стаканчик' },
+									cn: { size: 'body-m-m' }
+								}
+							}
+						},
+					]
+				},
+			}
+		}
+	}

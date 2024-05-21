@@ -1,0 +1,19 @@
+mixin Text(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../../shared/helpers/pug/shortcut-check-store
+
+	//- # ЛОГИКА КОМПОНЕНТА # -//
+	-
+		const TEXT_TAGS = ['p', 'span', 'b', 'i', 'strong', 'em', 'li', 'a', 'div'];
+		const TAG = TEXT_TAGS.includes(DATA('tag')) ? DATA('tag') : 'p';
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Text.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	#{TAG}(class=styles.block href=DATA('href', false))&attributes(attributes)
+		if DATA('text', false)
+			| !{DATA('text')}
+		else
+			block

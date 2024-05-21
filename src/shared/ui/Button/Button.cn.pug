@@ -1,0 +1,24 @@
+-
+	function classes(cn) {
+		//- # ОПРЕДЕЛЕНИЕ БЛОКА ПО BEM # -//
+		const BLOCK = CN('button')
+
+		//- # ЛОГИКА ДЛЯ ОПРЕДЕЛЕНИЯ КЛАССОВ # -//
+		const TYPE_BUTTON = cn?.type ?? cn?.typeButton;
+
+		//- # СОЗДАНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+		return {
+			block: BLOCK({
+				[`${cn?.color}`]: ['secondary', 'red', 'ghost'].includes(cn?.color),
+				[`${TYPE_BUTTON}`]: ['with-icon', 'only-icon', 'only-small-icon', 'circle', 'text'].includes(TYPE_BUTTON)
+			}, [
+				cn?.margin,
+				cn?.padding,
+				cn?.width,
+				cn?.display,
+				cn?.justifyContent,
+			]),
+			elementIcon: BLOCK('icon'),
+			elementText: BLOCK('text')
+		}
+	}

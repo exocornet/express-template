@@ -1,0 +1,23 @@
+mixin CatalogSearch(props)
+	//- # ПОДКЛЮЧЕНИЕ СТАТИЧНОГО STORE ДЛЯ HEADER # -//
+
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include CatalogSearch.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)
+		button(class=styles.elementBtnCatalog)
+			div(class=styles.elementBtnIcon)
+			span(class=styles.elementBtnText) Каталог
+		form(class=styles.elementForm action="/search" data-url-api=(isDev ? "/api/search-result" : "./public/fake-api/search-result.json"))
+			input(class=styles.elementInputSearch type="search" aria-label="Поиск" name="search" placeholder="Найти поесть" autocomplete="off" required)
+			button(class=styles.elementBtnInput type="button")
+				+SVGUse('search')(Svg={class: styles.elementInputIcon} Use={class: styles.elementInputSvgUse})
+			div(class=styles.elementResultSearch)
+
+		template(data-template="template-result-search-item")
+			+Text({data: {text: 'result-search-item'}})(class=styles.elementResultSearchItem)

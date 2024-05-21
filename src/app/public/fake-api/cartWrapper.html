@@ -1,0 +1,134 @@
+<div class="cart__top">
+	<button class="button button_circle cart__button-back">
+		<svg class="button__icon" viewBox="0 0 24 24" fill="none">
+			<path fill-rule="evenodd" clip-rule="evenodd"
+						d="M16.2834 20.7803C16.5722 20.4874 16.5722 20.0126 16.2834 19.7197L9.19543 12.5303C8.90667 12.2374 8.90667 11.7626 9.19543 11.4697L16.2834 4.28033C16.5722 3.98744 16.5722 3.51256 16.2834 3.21967C15.9947 2.92678 15.5265 2.92678 15.2377 3.21967L8.14972 10.409C7.28343 11.2877 7.28343 12.7123 8.14972 13.591L15.2377 20.7803C15.5265 21.0732 15.9947 21.0732 16.2834 20.7803Z"
+						fill="currentColor"></path>
+		</svg>
+	</button>
+	<p class="heading heading_h2 cart__top-heading">Корзина</p>
+	<button class="cart__button-empty" type="button"><span class="text text_caption text_gray cart__button-empty-text">Очистить</span>
+		<svg class="cart__button-empty-icon-desktop" viewBox="0 0 24 24" fill="none">
+			<path fill-rule="evenodd" clip-rule="evenodd"
+						d="M5.20503 5.20503C5.47839 4.93166 5.92161 4.93166 6.19497 5.20503L12 11.01L17.805 5.20503C18.0784 4.93166 18.5216 4.93166 18.795 5.20503C19.0683 5.47839 19.0683 5.92161 18.795 6.19497L12.9899 12L18.795 17.805C19.0683 18.0784 19.0683 18.5216 18.795 18.795C18.5216 19.0683 18.0784 19.0683 17.805 18.795L12 12.9899L6.19497 18.795C5.92161 19.0683 5.47839 19.0683 5.20503 18.795C4.93166 18.5216 4.93166 18.0784 5.20503 17.805L11.01 12L5.20503 6.19497C4.93166 5.92161 4.93166 5.47839 5.20503 5.20503Z"
+						fill="currentColor"></path>
+		</svg>
+		<svg class="cart__button-empty-icon-mobile" viewBox="0 0 24 24" fill="none">
+			<path fill-rule="evenodd" clip-rule="evenodd"
+						d="M9.69232 9.46162C10.0747 9.46162 10.3846 9.77158 10.3846 10.1539V15.6924C10.3846 16.0747 10.0747 16.3847 9.69232 16.3847C9.30997 16.3847 9.00001 16.0747 9.00001 15.6924V10.1539C9.00001 9.77158 9.30997 9.46162 9.69232 9.46162Z"
+						fill="currentColor"></path>
+			<path fill-rule="evenodd" clip-rule="evenodd"
+						d="M14.3077 9.46162C14.69 9.46162 15 9.77158 15 10.1539V15.6924C15 16.0747 14.69 16.3847 14.3077 16.3847C13.9253 16.3847 13.6154 16.0747 13.6154 15.6924V10.1539C13.6154 9.77158 13.9253 9.46162 14.3077 9.46162Z"
+						fill="currentColor"></path>
+			<path fill-rule="evenodd" clip-rule="evenodd"
+						d="M3.69231 5.76948C3.30996 5.76948 3 6.07943 3 6.46178C3 6.84414 3.30996 7.15409 3.69231 7.15409H5.30768V18.9231C5.30768 20.0701 6.23755 21 7.38461 21H16.6154C17.7624 21 18.6923 20.0701 18.6923 18.9231V7.15409H20.3077C20.69 7.15409 21 6.84414 21 6.46178C21 6.07943 20.69 5.76948 20.3077 5.76948H16.1209V5.35385C16.1209 4.72246 15.8619 4.12148 15.4083 3.68184C14.9554 3.24291 14.3457 3 13.7143 3H10.2857C9.65429 3 9.04456 3.2429 8.59169 3.68184C8.13809 4.12148 7.87911 4.72246 7.87911 5.35385V5.76948H3.69231ZM10.2857 4.38462C10.0078 4.38462 9.74546 4.49182 9.55535 4.67608C9.36597 4.85964 9.26372 5.1039 9.26372 5.35385V5.76948H14.7363V5.35385C14.7363 5.1039 14.634 4.85964 14.4446 4.67608C14.2545 4.49182 13.9922 4.38462 13.7143 4.38462H10.2857ZM6.6923 18.9231C6.6923 19.3054 7.00225 19.6154 7.38461 19.6154H16.6154C16.9977 19.6154 17.3077 19.3054 17.3077 18.9231V7.15409H6.6923V18.9231Z"
+						fill="currentColor"></path>
+		</svg>
+	</button>
+</div>
+<div class="cart__body">
+	<div class="cart-item">
+		<picture class="cart-item__picture">
+			<source srcset="/assets/img/features/cart/cart-item.png">
+			<img class="cart-item__image" src="/assets/img/features/cart/cart-item.png" alt="text"></picture>
+		<div class="cart-item__content"><span
+			class="text text_body-m-m cart-item__name">Горошек Heinz зеленый Нежный</span>
+			<div class="cart-item__count" data-card-id="1">
+				<div class="counter-cart cart-item__counter">
+					<button class="counter-cart__button-minus" type="button" aria-label="Уменьшить количество">
+						<svg>
+							<use href="#minus" x="0" y="0"></use>
+						</svg>
+					</button>
+					<input class="counter-cart__input" type="text" value="3" data-min-value="3" data-input-unit="шт">
+					<button class="counter-cart__button-plus" type="button" aria-label="Увеличить количество">
+						<svg>
+							<use href="#plus" x="0" y="0"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="cart-item__count-info"><span
+					class="text text_caption text_gray cart-item__price">160 ₽</span><span
+					class="text text_caption text_gray cart-item__weight">400 г</span></div>
+			</div>
+		</div>
+		<button class="cart-item__button-empty" type="button" aria-label="Удалить">
+			<svg class="cart-item__button-empty-icon" viewBox="0 0 24 24" fill="none">
+				<path fill-rule="evenodd" clip-rule="evenodd"
+							d="M5.20503 5.20503C5.47839 4.93166 5.92161 4.93166 6.19497 5.20503L12 11.01L17.805 5.20503C18.0784 4.93166 18.5216 4.93166 18.795 5.20503C19.0683 5.47839 19.0683 5.92161 18.795 6.19497L12.9899 12L18.795 17.805C19.0683 18.0784 19.0683 18.5216 18.795 18.795C18.5216 19.0683 18.0784 19.0683 17.805 18.795L12 12.9899L6.19497 18.795C5.92161 19.0683 5.47839 19.0683 5.20503 18.795C4.93166 18.5216 4.93166 18.0784 5.20503 17.805L11.01 12L5.20503 6.19497C4.93166 5.92161 4.93166 5.47839 5.20503 5.20503Z"
+							fill="currentColor"></path>
+			</svg>
+		</button>
+	</div>
+	<div class="cart-item">
+		<picture class="cart-item__picture">
+			<source srcset="/assets/img/features/cart/cart-item.png">
+			<img class="cart-item__image" src="/assets/img/features/cart/cart-item.png" alt="text"></picture>
+		<div class="cart-item__content"><span
+			class="text text_body-m-m cart-item__name">Горошек Heinz зеленый Нежный</span>
+			<div class="cart-item__count" data-card-id="1">
+				<div class="counter-cart cart-item__counter">
+					<button class="counter-cart__button-minus" type="button" aria-label="Уменьшить количество">
+						<svg>
+							<use href="#minus" x="0" y="0"></use>
+						</svg>
+					</button>
+					<input class="counter-cart__input" type="text" value="1" data-min-value="0" data-input-unit="шт">
+					<button class="counter-cart__button-plus" type="button" aria-label="Увеличить количество">
+						<svg>
+							<use href="#plus" x="0" y="0"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="cart-item__count-info"><span
+					class="text text_caption text_gray cart-item__price">160 ₽</span><span
+					class="text text_caption text_gray cart-item__weight">400 г</span></div>
+			</div>
+		</div>
+		<button class="cart-item__button-empty" type="button" aria-label="Удалить">
+			<svg class="cart-item__button-empty-icon" viewBox="0 0 24 24" fill="none">
+				<path fill-rule="evenodd" clip-rule="evenodd"
+							d="M5.20503 5.20503C5.47839 4.93166 5.92161 4.93166 6.19497 5.20503L12 11.01L17.805 5.20503C18.0784 4.93166 18.5216 4.93166 18.795 5.20503C19.0683 5.47839 19.0683 5.92161 18.795 6.19497L12.9899 12L18.795 17.805C19.0683 18.0784 19.0683 18.5216 18.795 18.795C18.5216 19.0683 18.0784 19.0683 17.805 18.795L12 12.9899L6.19497 18.795C5.92161 19.0683 5.47839 19.0683 5.20503 18.795C4.93166 18.5216 4.93166 18.0784 5.20503 17.805L11.01 12L5.20503 6.19497C4.93166 5.92161 4.93166 5.47839 5.20503 5.20503Z"
+							fill="currentColor"></path>
+			</svg>
+		</button>
+	</div>
+	<div class="cart-item">
+		<picture class="cart-item__picture">
+			<source srcset="/assets/img/features/cart/cart-item.png">
+			<img class="cart-item__image" src="/assets/img/features/cart/cart-item.png" alt="text"></picture>
+		<div class="cart-item__content"><span
+			class="text text_body-m-m cart-item__name">Горошек Heinz зеленый Нежный</span>
+			<div class="cart-item__count" data-card-id="3">
+				<div class="counter-cart cart-item__counter">
+					<button class="counter-cart__button-minus" type="button" aria-label="Уменьшить количество">
+						<svg>
+							<use href="#minus" x="0" y="0"></use>
+						</svg>
+					</button>
+					<input class="counter-cart__input" type="text" value="1" data-min-value="0" data-input-unit="шт">
+					<button class="counter-cart__button-plus" type="button" aria-label="Увеличить количество">
+						<svg>
+							<use href="#plus" x="0" y="0"></use>
+						</svg>
+					</button>
+				</div>
+				<div class="cart-item__count-info"><span
+					class="text text_caption text_gray cart-item__price">160 ₽</span><span
+					class="text text_caption text_gray cart-item__weight">400 г</span></div>
+			</div>
+		</div>
+		<button class="cart-item__button-empty" type="button" aria-label="Удалить">
+			<svg class="cart-item__button-empty-icon" viewBox="0 0 24 24" fill="none">
+				<path fill-rule="evenodd" clip-rule="evenodd"
+							d="M5.20503 5.20503C5.47839 4.93166 5.92161 4.93166 6.19497 5.20503L12 11.01L17.805 5.20503C18.0784 4.93166 18.5216 4.93166 18.795 5.20503C19.0683 5.47839 19.0683 5.92161 18.795 6.19497L12.9899 12L18.795 17.805C19.0683 18.0784 19.0683 18.5216 18.795 18.795C18.5216 19.0683 18.0784 19.0683 17.805 18.795L12 12.9899L6.19497 18.795C5.92161 19.0683 5.47839 19.0683 5.20503 18.795C4.93166 18.5216 4.93166 18.0784 5.20503 17.805L11.01 12L5.20503 6.19497C4.93166 5.92161 4.93166 5.47839 5.20503 5.20503Z"
+							fill="currentColor"></path>
+			</svg>
+		</button>
+	</div>
+</div>
+<div class="cart__bottom">
+	<button class="button-cart cart__button-cart" type="button" data-modal-form="buy-in-one" data-price="На сумму 1746 ₽"><span
+		class="button-cart__left"><span class="text text_body-h2">1746 ₽</span></span><span
+		class="button-cart__right"><span class="text text_button-l">Продолжить</span></span></button>
+</div>

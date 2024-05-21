@@ -1,0 +1,62 @@
+mixin Filters(props)
+	//- # ПОДКЛЮЧЕНИЕ СТАТИЧНОГО STORE ДЛЯ FILTERS # -//
+	include Filters.store.pug
+	//- # ФУНКЦИОНАЛ ДЛЯ ПЕРЕОПРЕДЕЛЕНИЯ СТАТИЧНОГО STORE СО STORE СТРАНИЦЫ # -//
+	- props = deepMerge(Filters, props);
+
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include Filters.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	aside(class=styles.block)
+		div(class=styles.elementFilterHeader)
+			+Text({
+				data: { text: 'Все фильтры' },
+				cn: { size: 'body-h2', width: 'w-100@md', textAlign: 'text-align-center' }
+			})
+			+Button({ data: { icon: 'close' }, cn: { type: 'circle' } })&attributes({ Button: { class: styles.elementFilterCloseButton } })
+		form(class=styles.elementFilterForm action=DATA('formAction'))
+			+Switch(ELEM('Switch'))
+			+FilterRange(ELEM('FilterRange'))&attributes({
+				FilterRange: { class: [styles.elementFilterSelect, 'js-filter-range-show'] },
+				FilterBody: { class: styles.elementFilterSelectBody },
+				FilterList: { class: styles.elementFilterSelectList }
+			} )
+			+FilterSelect(ELEM('FilterSelectMark'))&attributes({
+				FilterSelect: { class: [styles.elementFilterSelect, 'js-filter-select-show'] },
+				FilterBody: { class: styles.elementFilterSelectBody },
+				FilterList: { class: styles.elementFilterSelectList }
+			} )
+			+FilterSelect(ELEM('FilterSelectCountry'))&attributes({
+				FilterSelect: { class: styles.elementFilterSelect },
+				FilterBody: { class: styles.elementFilterSelectBody },
+				FilterList: { class: styles.elementFilterSelectList }
+			} )
+			+FilterSelect(ELEM('FilterSelectWeight'))&attributes({
+				FilterSelect: { class: styles.elementFilterSelect },
+				FilterBody: { class: styles.elementFilterSelectBody },
+				FilterList: { class: styles.elementFilterSelectList }
+			} )
+			+FilterSelect(ELEM('FilterSelectCooking'))&attributes({
+				FilterSelect: { class: styles.elementFilterSelect },
+				FilterBody: { class: styles.elementFilterSelectBody },
+				FilterList: { class: styles.elementFilterSelectList }
+			} )
+			+FilterSelect(ELEM('FilterSelectComposition'))&attributes({
+				FilterSelect: { class: styles.elementFilterSelect },
+				FilterBody: { class: styles.elementFilterSelectBody },
+				FilterList: { class: styles.elementFilterSelectList }
+			} )
+		div(class=styles.elementFilterFooter)
+			+Button({
+				data: { text: 'Сбросить всё' },
+				cn: { color: 'secondary', justifyContent: 'justify-content-center' }
+			})&attributes({ Button: { class: styles.elementFilterFooterClearButton } })
+			+Button({
+				data: { text: 'Показать 96 товаров' },
+				cn: { justifyContent: 'justify-content-center' }
+			})&attributes({ Button: { class: styles.elementFilterFooterShowButton } })

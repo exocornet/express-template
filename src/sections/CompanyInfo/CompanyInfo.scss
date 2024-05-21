@@ -1,0 +1,60 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../shared/styles/include-setings-styles";
+
+.company-info {
+	$self: &;
+
+	&__button-add-company {
+		width: 100%;
+
+		margin-bottom: 0;
+
+		@include media(md) {
+			margin-bottom: 48px;
+		}
+
+		@include media(xs) {
+			margin-bottom: 32px;
+		}
+	}
+
+	&__about-company {
+		display: flex;
+		flex-direction: column;
+		row-gap: 36px;
+	}
+
+	&__button-delete {
+		display: flex;
+		align-items: center;
+
+		max-width: 210px;
+
+		margin-top: 44px;
+		padding: 14px 20px 14px 16px;
+
+		transition: transition(background);
+
+		border-radius: 12px;
+
+		background: $background-light;
+		column-gap: 8px;
+
+		&:hover {
+			background: $light-gray;
+		}
+
+		@include media(xs) {
+			justify-content: center;
+
+			max-width: unset;
+
+			margin-top: unset;
+		}
+	}
+
+	&__button-delete-icon {
+		width: 20px;
+		height: 20px;
+	}
+}

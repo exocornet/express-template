@@ -1,0 +1,24 @@
+//- # ПОДКЛЮЧЕНИЕ LAYOUT # -//
+extends ../../shared/helpers/pug/layout
+
+//- # ПОДКЛЮЧЕНИЕ STORE СТРАНИЦЫ # -//
+block variables
+	include store/catalog.store.pug
+
+//- # ПОДКЛЮЧЕНИЕ CSS СТРАНИЦЫ # -//
+append include-css
+	include styles-and-scripts/catalog.link.pug
+
+//- # ПОДКЛЮЧЕНИЕ HEADER СТРАНИЦЫ # -//
+block header
+	include ../../features/Header/Header
+	+Header(Header)
+
+//- # ПОДКЛЮЧЕНИЕ FOOTER СТРАНИЦЫ # -//
+block footer
+	include ../../features/Footer/Footer
+	+Footer(Footer)
+
+//- # ПОДКЛЮЧЕНИЕ JAVASCRIPT СТРАНИЦЫ # -//
+append include-js
+	include styles-and-scripts/catalog.script.pug

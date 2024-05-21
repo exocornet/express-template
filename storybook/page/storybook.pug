@@ -1,0 +1,29 @@
+doctype html
+html
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		//link(rel="stylesheet" href=`${cssPath}/main.css`)/
+		if isWebpack
+			link(rel="stylesheet" href="./storybook.scss")/
+		else
+			link(rel="stylesheet" href="/assets/css/storybook.css")/
+		title STORYBOOK
+
+	body(class="ui-kit")
+		div(class="ui-kit__list-component js-ui-kit-list-component")
+
+		div(class="ui-kit__view-component js-ui-kit-view-component")
+
+		for item in SCRIPT_FILES_STORY
+			script(src=item defer)
+
+		//script(src="./storybook.js" defer)
+
+		if isPageReload
+			script(src="/socket.io/socket.io.js")
+			script.
+				const socket = io();
+				socket.on('webpackUpdate', () => {
+					location.reload();
+				});

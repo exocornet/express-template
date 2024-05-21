@@ -1,0 +1,26 @@
+mixin ModalAddCompany(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include ModalAddCompany.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	+Modal(ELEM('Modal'))(class=styles.block)
+		+ModalBody(class=styles.elementModalBody)
+			+ModalCloseButton(class=styles.elementModalClose)
+			div(class=styles.elementContent)
+				form(method="post" action="/company" class=styles.elementFormAddCompany)
+					div(class=styles.elementAddCompanyHeading)
+						+Heading({ data: { text: 'Добавить новую компанию', tag: 'h2' } })
+						+Text({
+							data: { text: 'Введите ИНН новой компании' },
+							cn: { size: 'body-l-m' }
+						})(class=styles.elementText)
+					+InputInn(ELEM('InputInn'))
+					+Button({
+						data: { type: 'submit', text: 'Добавить' },
+						cn: { width: 'w-100' },
+						opt: { disabled: true }
+					})

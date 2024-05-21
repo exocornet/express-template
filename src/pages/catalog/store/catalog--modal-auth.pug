@@ -1,0 +1,899 @@
+-
+	const ModalAuth = {
+		includeContent: 'ModalAuth',
+		elem: {
+			Modal: {
+				data: {
+					dataModal: 'auth',
+				},
+			},
+			MACode: {
+				elem: {
+					Heading: {
+						data: {
+							tag: 'p',
+							text: 'Код из СМС',
+						},
+						cn: {
+							size: 'h2',
+							textAlign: 'text-align-center',
+						}
+					},
+					Text: {
+						data: {
+							tag: 'span',
+							text: 'Отправили код подтверждения на номер +792208878564'
+						},
+						cn: {
+							size: 'body-m-m',
+							textAlign: 'text-align-center',
+						}
+					},
+					InputOtp: {
+						data: {
+							count: 4,
+						},
+						elem: {
+							TextError: {
+								data: {
+									tag: 'span',
+									text: 'Неправильный код авторизации',
+								},
+								cn: {
+									size: 'caption',
+									color: 'red',
+								}
+							},
+						}
+					},
+					Button: {
+						data: {
+							type: 'submit',
+							text: 'Отправить повторно 01:00',
+						},
+						cn: {
+							type: ''
+						},
+						opt: {
+							disabled: true,
+						},
+					},
+					ButtonHelp: {
+						data: {
+							type: 'button',
+							text: '<span>Не приходит код?</span> Обращение в поддержку',
+						},
+						cn: {
+							color: 'ghost',
+						}
+					},
+					TextCaption: {
+						data: {
+							tag: 'span',
+							text: 'Продолжая <span class="ma-code__caption-act">регистрацию</span>, вы соглашаетесь с <a href="#" target="_blank">политикой конфиденциальности</a>, <a href="#" target="_blank">условиями сервиса</a> и <a href="#" target="_blank">условиями продажи товаров</a>'
+						},
+						cn: {
+							size: 'caption',
+							color: 'gray'
+						}
+					},
+				},
+			},
+			MALogin: {
+				elem: {
+					Heading: {
+						data: {
+							tag: 'p',
+							text: 'Войти',
+						},
+						cn: {
+							size: 'h2',
+							textAlign: 'text-align-center',
+						}
+					},
+					InputPhoneEmail: {
+						data: {
+							type: 'text',
+							name: 'phoneOrEmail',
+							validationType: 'phoneOrEmail',
+						},
+						elem: {
+							TextLabel: {
+								data: {
+									tag: 'span',
+									text: 'Электронная почта/Номер телефона*',
+								},
+								cn: {
+									color: 'gray',
+								}
+							},
+							TextError: {
+								data: {
+									tag: 'span',
+									text: 'Ошибка',
+								},
+								cn: {
+									size: 'caption',
+									color: 'red',
+								}
+							},
+						},
+						opt: {
+							required: true,
+						}
+					},
+					InputPassword: {
+						data: {
+							type: 'password',
+							name: 'password',
+							validationType: 'password',
+						},
+						elem: {
+							TextLabel: {
+								data: {
+									tag: 'span',
+									text: 'Пароль*',
+								},
+								cn: {
+									color: 'gray',
+								}
+							},
+							TextError: {
+								data: {
+									tag: 'span',
+									text: 'Ошибка',
+								},
+								cn: {
+									size: 'caption',
+									color: 'red',
+								}
+							},
+						},
+						opt: {
+							required: true,
+						}
+					},
+					Button: {
+						data: {
+							type: 'submit',
+							text: 'Войти',
+						},
+						cn: {
+							type: ''
+						},
+						opt: {
+							disabled: true
+						}
+					},
+					ButtonSignUp: {
+						data: {
+							type: 'button',
+							text: 'Зарегистрироваться',
+						},
+						cn: {
+							color: 'secondary',
+						}
+					},
+					ButtonPassRecovery: {
+						data: {
+							type: 'button',
+							text: '<span>Забыл пароль?</span> Восстановить доступ',
+						},
+						cn: {
+							color: 'ghost',
+						}
+					},
+					TextCaption: {
+						data: {
+							tag: 'span',
+							text: 'Продолжая регистрацию, вы соглашаетесь с <a href="#" target="_blank">политикой конфиденциальности</a>, <a href="#" target="_blank">условиями сервиса</a> и <a href="#" target="_blank">условиями продажи товаров</a>'
+						},
+						cn: {
+							size: 'caption',
+							color: 'gray'
+						}
+					},
+				},
+			},
+			MAPassChange: {
+				elem: {
+					Heading: {
+						data: {
+							tag: 'p',
+							text: 'Изменить пароль',
+						},
+						cn: {
+							size: 'h2',
+							textAlign: 'text-align-center',
+						}
+					},
+					InputPasswordRepeat: {
+						data: {
+							type: 'password',
+							name: 'password-repeat',
+							validationType: 'password',
+						},
+						elem: {
+							TextLabel: {
+								data: {
+									tag: 'span',
+									text: 'Новый пароль*',
+								},
+								cn: {
+									color: 'gray',
+								}
+							},
+							TextError: {
+								data: {
+									tag: 'span',
+									text: 'Ошибка',
+								},
+								cn: {
+									size: 'caption',
+									color: 'red',
+								}
+							},
+						},
+						opt: {
+							required: true
+						}
+					},
+					InputPassword: {
+						data: {
+							type: 'password',
+							name: 'password',
+							validationType: 'password',
+						},
+						elem: {
+							TextLabel: {
+								data: {
+									tag: 'span',
+									text: 'Повторить новый пароль*',
+								},
+								cn: {
+									color: 'gray',
+								}
+							},
+							TextError: {
+								data: {
+									tag: 'span',
+									text: 'Введенные пароли не совпадают',
+								},
+								cn: {
+									size: 'caption',
+									color: 'red',
+								}
+							},
+						},
+						opt: {
+							required: true
+						}
+					},
+					Button: {
+						data: {
+							type: 'submit',
+							text: 'Применить',
+						},
+						cn: {
+							type: ''
+						},
+						opt: {
+							disabled: true,
+						}
+					},
+				},
+			},
+			MAPassRecovery: {
+				elem: {
+					Heading: {
+						data: {
+							tag: 'p',
+							text: 'Восстановить пароль',
+						},
+						cn: {
+							size: 'h2',
+							textAlign: 'text-align-center',
+						}
+					},
+					InputPhoneEmail: {
+						data: {
+							type: 'text',
+							name: 'phoneOrEmail',
+							validationType: 'phoneOrEmail',
+						},
+						elem: {
+							TextLabel: {
+								data: {
+									tag: 'span',
+									text: 'Электронная почта/Номер телефона*',
+								},
+								cn: {
+									color: 'gray',
+								}
+							},
+							TextError: {
+								data: {
+									tag: 'span',
+									text: 'Ошибка',
+								},
+								cn: {
+									size: 'caption',
+									color: 'red',
+								}
+							},
+						},
+						opt: {
+							required: true,
+						}
+					},
+					Button: {
+						data: {
+							type: 'submit',
+							text: 'Отправить',
+						},
+						cn: {
+							type: ''
+						},
+						opt: {
+							disabled: true
+						}
+					},
+					ButtonSignUp: {
+						data: {
+							type: 'button',
+							text: 'Зарегистрироваться',
+						},
+						cn: {
+							color: 'secondary',
+						}
+					},
+					ButtonLogin: {
+						data: {
+							type: 'button',
+							text: '<span>Уже есть аккаунт?</span> Войти',
+						},
+						cn: {
+							color: 'ghost',
+						}
+					},
+					TextCaption: {
+						data: {
+							tag: 'span',
+							text: 'Продолжая восстановление пароля, вы соглашаетесь с <a href="#" target="_blank">политикой конфиденциальности</a>, <a href="#" target="_blank">условиями сервиса</a> и <a href="#" target="_blank">условиями продажи товаров</a>'
+						},
+						cn: {
+							size: 'caption',
+							color: 'gray'
+						}
+					},
+				},
+			},
+			MAPassSuccess: {
+				elem: {
+					Heading: {
+						data: {
+							tag: 'p',
+							text: 'Пароль успешно изменён',
+						},
+						cn: {
+							size: 'h2',
+							textAlign: 'text-align-center',
+						}
+					},
+					Text: {
+						data: {
+							tag: 'span',
+							text: 'Пароль изменен успешно. Перейдите на страницу авторизации, чтобы начать покупки.'
+						},
+						cn: {
+							size: 'body-l-m',
+							textAlign: 'text-align-center',
+						}
+					},
+					Button: {
+						data: {
+							type: 'button',
+							text: 'Перейти к авторизации',
+						},
+						cn: {
+							type: ''
+						},
+					},
+				},
+			},
+			MASignUp: {
+				elem: {
+					Heading: {
+						data: {
+							tag: 'p',
+							text: 'Регистрация',
+						},
+						cn: {
+							size: 'h2',
+							textAlign: 'text-align-center',
+						}
+					},
+					TabsButtons: {
+						dataArr: {
+							buttonArr: [
+								{
+									data: {
+										dataTabsButton: 'Natural',
+										text: 'Физ. лицо',
+									},
+									elem: {
+										Button: {
+											data: {
+												text: 'Физ. лицо',
+											}
+										}
+									}
+								},
+								{
+									data: {
+										dataTabsButton: 'Legal',
+										text: 'Юр. лицо',
+									},
+									elem: {
+										Button: {
+											data: {
+												text: 'Юр. лицо',
+											}
+										}
+									}
+								},
+							]
+						}
+					},
+					TabsContentArr: [
+						{
+							data: {
+								dataTabsContent: 'Natural',
+							},
+							dataArr: {
+								firstInputsArr: [
+									{
+										data: {
+											type: 'text',
+											name: 'phone',
+											validationType: 'phone',
+										},
+										elem: {
+											TextLabel: {
+												data: {
+													tag: 'span',
+													text: 'Номер телефона*',
+												},
+												cn: {
+													color: 'gray',
+												}
+											},
+											TextError: {
+												data: {
+													tag: 'span',
+													text: 'Ошибка',
+												},
+												cn: {
+													size: 'caption',
+													color: 'red',
+												}
+											},
+										},
+										opt: {
+											required: true
+										}
+									},
+									{
+										data: {
+											type: 'text',
+											name: 'fullName',
+											validationType: 'fullName',
+										},
+										elem: {
+											TextLabel: {
+												data: {
+													tag: 'span',
+													text: 'Имя и фамилия',
+												},
+												cn: {
+													color: 'gray',
+												}
+											},
+											TextError: {
+												data: {
+													tag: 'span',
+													text: 'Ошибка',
+												},
+												cn: {
+													size: 'caption',
+													color: 'red',
+												}
+											},
+										},
+									},
+								],
+								secondInputsArr: [
+									{
+										data: {
+											type: 'password',
+											name: 'password-repeat',
+											validationType: 'password',
+										},
+										elem: {
+											TextLabel: {
+												data: {
+													tag: 'span',
+													text: 'Пароль*',
+												},
+												cn: {
+													color: 'gray',
+												}
+											},
+											TextError: {
+												data: {
+													tag: 'span',
+													text: 'Ошибка',
+												},
+												cn: {
+													size: 'caption',
+													color: 'red',
+												}
+											},
+										},
+										opt: {
+											required: true
+										}
+									},
+									{
+										data: {
+											type: 'password',
+											name: 'password',
+											validationType: 'password',
+										},
+										elem: {
+											TextLabel: {
+												data: {
+													tag: 'span',
+													text: 'Повторить пароль*',
+												},
+												cn: {
+													color: 'gray',
+												}
+											},
+											TextError: {
+												data: {
+													tag: 'span',
+													text: 'Введенные пароли не совпадают',
+												},
+												cn: {
+													size: 'caption',
+													color: 'red',
+												}
+											},
+										},
+										opt: {
+											required: true
+										}
+									},
+								]
+							},
+							elem: {
+								Button: {
+									data: {
+										type: 'submit',
+										text: 'Зарегистрироваться',
+									},
+									cn: {
+										type: ''
+									},
+									opt: {
+										disabled: true,
+									}
+								},
+							},
+						},
+						{
+							data: {
+								dataTabsContent: 'Legal',
+							},
+							dataArr: {
+								firstInputsArr: [
+									{
+										data: {
+											type: 'text',
+											name: 'email',
+											validationType: 'email',
+										},
+										elem: {
+											TextLabel: {
+												data: {
+													tag: 'span',
+													text: 'Электронная почта*',
+												},
+												cn: {
+													color: 'gray',
+												}
+											},
+											TextError: {
+												data: {
+													tag: 'span',
+													text: 'Неправильный формат почты',
+												},
+												cn: {
+													size: 'caption',
+													color: 'red',
+												}
+											},
+										},
+										opt: {
+											required: true
+										}
+									},
+									{
+										data: {
+											dataUrl: 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/party',
+										},
+										elem: {
+											Input: {
+												data: {
+													type: 'text',
+													name: 'inn',
+													validationType: 'inn',
+												},
+												elem: {
+													TextLabel: {
+														data: {
+															tag: 'span',
+															text: 'ИНН',
+														},
+														cn: {
+															color: 'gray',
+														}
+													},
+													TextError: {
+														data: {
+															tag: 'span',
+															text: 'Введите корректный ИНН',
+														},
+														cn: {
+															size: 'caption',
+															color: 'red',
+														}
+													},
+												},
+											}
+										},
+										opt: {
+											inn: true
+										}
+										//- dataArr: {
+										//- 	itemsArray: [
+										//- 		{
+										//- 			elem: {
+										//- 				TextName: {
+										//- 					data: {
+										//- 						tag: 'span',
+										//- 						text: 'ООО "АИС МЕДИА ГРАФ"',
+										//- 					},
+										//- 					cn: {
+										//- 						size: 'body-m-m',
+										//- 					}
+										//- 				},
+										//- 				TextInfo: {
+										//- 					data: {
+										//- 						tag: 'div',
+										//- 						text: '<div class="input-inn__item-digits"><span>ИНН: 7716689955</span><span>КПП: 770901001</span><span>ОГРН: 770901001</span></div><span>Юр. адрес: 101000, г. Москва, вн.тер.г. Муниципальный Округ Басманный, б-р Покровский, д. 4/17</span>',
+										//- 					},
+										//- 					cn: {
+										//- 						size: 'caption',
+										//- 						color: 'gray',
+										//- 					},
+										//- 				},
+										//- 			}
+										//- 		},
+										//- 		{
+										//- 			elem: {
+										//- 				TextName: {
+										//- 					data: {
+										//- 						tag: 'span',
+										//- 						text: 'ООО "АИС МЕДИА ГРАФ"',
+										//- 					},
+										//- 					cn: {
+										//- 						size: 'body-m-m',
+										//- 					}
+										//- 				},
+										//- 				TextInfo: {
+										//- 					data: {
+										//- 						tag: 'div',
+										//- 						text: '<div class="input-inn__item-digits"><span>ИНН: 7716689955</span><span>КПП: 770901001</span><span>ОГРН: 770901001</span></div><span>Юр. адрес: 101000, г. Москва, вн.тер.г. Муниципальный Округ Басманный, б-р Покровский, д. 4/17</span>',
+										//- 					},
+										//- 					cn: {
+										//- 						size: 'caption',
+										//- 						color: 'gray',
+										//- 					},
+										//- 				},
+										//- 			}
+										//- 		},
+										//- 		{
+										//- 			elem: {
+										//- 				TextName: {
+										//- 					data: {
+										//- 						tag: 'span',
+										//- 						text: 'ООО "АИС МЕДИА ГРАФ"',
+										//- 					},
+										//- 					cn: {
+										//- 						size: 'body-m-m',
+										//- 					}
+										//- 				},
+										//- 				TextInfo: {
+										//- 					data: {
+										//- 						tag: 'div',
+										//- 						text: '<div class="input-inn__item-digits"><span>ИНН: 7716689955</span><span>КПП: 770901001</span><span>ОГРН: 770901001</span></div><span>Юр. адрес: 101000, г. Москва, вн.тер.г. Муниципальный Округ Басманный, б-р Покровский, д. 4/17</span>',
+										//- 					},
+										//- 					cn: {
+										//- 						size: 'caption',
+										//- 						color: 'gray',
+										//- 					},
+										//- 				},
+										//- 			}
+										//- 		},
+										//- 	],
+										//- },
+									},
+									{
+										data: {
+											type: 'text',
+											name: 'fullName',
+											validationType: 'fullName',
+										},
+										elem: {
+											TextLabel: {
+												data: {
+													tag: 'span',
+													text: 'Имя и фамилия',
+												},
+												cn: {
+													color: 'gray',
+												}
+											},
+											TextError: {
+												data: {
+													tag: 'span',
+													text: 'Ошибка',
+												},
+												cn: {
+													size: 'caption',
+													color: 'red',
+												}
+											},
+										},
+									},
+								],
+								secondInputsArr: [
+									{
+										data: {
+											type: 'password',
+											name: 'password-repeat',
+											validationType: 'password',
+										},
+										elem: {
+											TextLabel: {
+												data: {
+													tag: 'span',
+													text: 'Пароль*',
+												},
+												cn: {
+													color: 'gray',
+												}
+											},
+											TextError: {
+												data: {
+													tag: 'span',
+													text: 'Ошибка',
+												},
+												cn: {
+													size: 'caption',
+													color: 'red',
+												}
+											},
+										},
+										opt: {
+											required: true
+										}
+									},
+									{
+										data: {
+											type: 'password',
+											name: 'password',
+											validationType: 'password',
+										},
+										elem: {
+											TextLabel: {
+												data: {
+													tag: 'span',
+													text: 'Повторить пароль*',
+												},
+												cn: {
+													color: 'gray',
+												}
+											},
+											TextError: {
+												data: {
+													tag: 'span',
+													text: 'Введенные пароли не совпадают',
+												},
+												cn: {
+													size: 'caption',
+													color: 'red',
+												}
+											},
+										},
+										opt: {
+											required: true
+										}
+									},
+								]
+							},
+							elem: {
+								Button: {
+									data: {
+										type: 'submit',
+										text: 'Зарегистрироваться',
+									},
+									cn: {
+										type: ''
+									},
+									opt: {
+										disabled: true,
+									}
+								},
+							},
+						},
+					],
+					ButtonLogin: {
+						data: {
+							type: 'button',
+							text: '<span>Уже есть аккаунт?</span> Войти',
+						},
+						cn: {
+							color: 'ghost',
+						}
+					},
+					TextCaption: {
+						data: {
+							tag: 'span',
+							text: 'Продолжая регистрацию, вы соглашаетесь с <a href="#" target="_blank">политикой конфиденциальности</a>, <a href="#" target="_blank">условиями сервиса</a> и <a href="#" target="_blank">условиями продажи товаров</a>'
+						},
+						cn: {
+							size: 'caption',
+							color: 'gray'
+						}
+					},
+				},
+			},
+			MASuccess: {
+				elem: {
+					Heading: {
+						data: {
+							tag: 'p',
+							text: 'Регистрация успешно завершена',
+						},
+						cn: {
+							size: 'h2',
+							textAlign: 'text-align-center',
+						}
+					},
+					Text: {
+						data: {
+							tag: 'span',
+							text: 'Страница будет перезагружена в течение нескольких секунд.'
+						},
+						cn: {
+							size: 'body-l-m',
+							textAlign: 'text-align-center',
+						}
+					},
+				},
+			},
+		}
+	}

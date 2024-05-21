@@ -1,0 +1,120 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../shared/styles/include-setings-styles";
+
+.banner-promo {
+	$self: &;
+
+	overflow: hidden;
+
+	min-height: 330px;
+
+	border-radius: $br24;
+	background-color: $background-light;
+
+	&__image-wrap {
+		flex-basis: calc(50% - 4px);
+
+		width: calc(50% - 4px);
+
+		max-height: 100%;
+		margin: 2px;
+
+		border-radius: $br24;
+		background-color: $white;
+	}
+
+	&__image-caption {
+		letter-spacing: 0.034rem;
+
+		font-family: $font-montserrat;
+		font-size: $fs17;
+		font-weight: 700;
+		line-height: 1.18;
+
+		@include media(xs) {
+			letter-spacing: 0.01em;
+
+			font-size: $fs14;
+			line-height: 1.1;
+		}
+	}
+
+	&__image {
+		align-self: center;
+
+		width: auto;
+		height: responsive-size(75, 140);
+	}
+
+	&__time {
+		gap: 2px;
+	}
+
+	&__time-block {
+		flex-grow: 1;
+
+		width: 100%;
+		padding: 8px;
+
+		border-radius: 7px;
+		background-color: $white;
+
+		@include media(xs) {
+			padding: 6px 2px;
+		}
+	}
+
+	&__time-block-key,
+	&__time-block-value {
+		color: $red;
+	}
+
+	&__info {
+		position: relative;
+
+		flex-basis: calc(50% - 4px);
+
+		width: calc(50% - 4px);
+		padding: 16px 16px 16px 12px;
+
+		@include media(xl) {
+			padding: 12px 12px 12px 8px;
+		}
+
+		@include media(xs) {
+			padding: 12px 12px 12px 0;
+		}
+	}
+
+	&__description {
+		margin-top: auto;
+	}
+
+	&__weight {
+		color: $gray;
+	}
+
+	&__counter {
+		margin: unset;
+
+		@include media(xs) {
+			height: 32px;
+		}
+	}
+
+	&__footer-button {
+		margin: unset;
+	}
+
+	@include media(xl) {
+		min-height: 272px;
+	}
+
+	@include media(lg) {
+		min-height: 228px;
+	}
+
+	@include media(xs) {
+		min-height: 174px;
+	}
+}

@@ -1,0 +1,35 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../shared/styles/include-setings-styles";
+
+.modal-delete-confirmation {
+	$self: &;
+
+	&__modal-body {
+		border-radius: $br24;
+		background-color: $white;
+
+		@include media(xs) {
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
+
+	&__content {
+		width: 525px;
+		height: 100%;
+		padding: 24px;
+
+		@include media(xs) {
+			width: 100%;
+			padding: 22px 12px 32px;
+		}
+	}
+
+	&__delete-company {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+
+		row-gap: 24px;
+	}
+}

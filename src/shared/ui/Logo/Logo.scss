@@ -1,0 +1,12 @@
+.logo {
+	display: inline-block;
+
+	&__image {
+		width: 192px;
+
+		@include media(xs) {
+			width: 106px;
+		}
+	}
+}
+

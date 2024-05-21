@@ -1,0 +1,339 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../styles/include-setings-styles";
+
+.button {
+	$self: &;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: fit-content;
+	padding: 22px 32px;
+
+	transition: transition();
+	text-decoration: none;
+
+	letter-spacing: 0.01em;
+
+	color: $white;
+	border-radius: 16px;
+	background-color: $red;
+
+	font-size: $fs16;
+	font-weight: 500;
+	line-height: 1.25;
+	column-gap: 8px;
+
+	@include media(xs) {
+		max-height: 48px;
+		padding: 15px 24px;
+
+		letter-spacing: 0.03em;
+
+		border-radius: 12px;
+
+		font-size: $fs14;
+	}
+
+	// # STATE # //
+	// stylelint-disable-next-line order/order
+	&:disabled,
+	&[disabled] {
+		cursor: not-allowed;
+
+		color: $gray;
+		background-color: $background-light;
+	}
+
+	@media (hover: hover) {
+		&:hover:not([disabled]) {
+			color: $white;
+			background-color: $black;
+		}
+
+		&:focus:not([disabled]),
+		&:focus-visible:not([disabled]) {
+			color: $white;
+			background-color: $black;
+		}
+
+		&:active:not([disabled]) {
+			background-color: $red;
+		}
+	}
+
+	@media (hover: none) {
+		&:active:not([disabled]) {
+			color: $white;
+			background-color: $black;
+		}
+	}
+
+	// # ELEMENTS # //
+	// stylelint-disable-next-line order/order
+	&__icon {
+		width: 32px;
+		height: 32px;
+
+		@include media(xs) {
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	// # TYPE MODIFIER # //
+	&_only-icon {
+		padding: 16px;
+
+		@include media(xs) {
+			max-height: 40px;
+			padding: 8px;
+		}
+	}
+
+	&_only-small-icon {
+		padding: 8px;
+
+		color: $red;
+		background: transparent;
+
+		@include media(xs) {
+			padding: 8px;
+		}
+
+		// stylelint-disable-next-line order/order
+		&:disabled,
+		&[disabled] {
+			color: $red;
+			background: transparent;
+		}
+
+		@media (hover: hover) {
+			&:hover:not([disabled]) {
+				color: $red;
+				background: transparent;
+			}
+
+			&:focus:not([disabled]),
+			&:focus-visible:not([disabled]) {
+				color: $red;
+				outline: none;
+				background: transparent;
+			}
+
+			&:active:not([disabled]) {
+				background: transparent;
+			}
+		}
+
+		@media (hover: none) {
+			&:active:not([disabled]) {
+				color: $red;
+				background: transparent;
+			}
+		}
+
+		// stylelint-disable-next-line order/order
+		#{$self}__icon {
+			width: 24px;
+			height: 24px;
+
+			@include media(xs) {
+				width: 16px;
+				height: 16px;
+			}
+		}
+	}
+
+	&_with-icon {
+		padding: 16px 32px 16px 24px;
+
+		@include media(xs) {
+			padding: 12px 16px;
+		}
+	}
+
+	&_circle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 40px;
+		height: 40px;
+		padding: 8px;
+
+		color: $red;
+
+		border-radius: 50%;
+		background-color: $white;
+
+		@media (hover: hover) {
+			&:hover:not([disabled]) {
+				color: $white;
+				background-color: $red;
+			}
+
+			&:focus:not([disabled]),
+			&:focus-visible:not([disabled]) {
+				color: $white;
+				outline: none;
+				background-color: $red;
+			}
+		}
+
+		@media (hover: none) {
+			&:active:not([disabled]) {
+				color: $white;
+				background-color: $red;
+			}
+		}
+
+		@include media(md) {
+			max-height: 40px;
+			padding: 8px;
+		}
+
+		@include media(xs) {
+			width: 32px;
+			height: 32px;
+			padding: 8px;
+
+			border-radius: 50%;
+		}
+	}
+
+	&_text {
+		padding: 16px 8px;
+
+		color: $black;
+		background-color: unset;
+
+		font-size: $fs14;
+
+		@media (hover: hover) {
+			&:hover:not([disabled]) {
+				color: $black-80;
+				background-color: unset;
+			}
+
+			&:focus:not([disabled]),
+			&:focus-visible:not([disabled]) {
+				color: $black-80;
+				outline: none;
+				background-color: unset;
+			}
+		}
+	}
+
+	// # COLOR MODIFIER # //
+	&_secondary {
+		color: $black;
+		background-color: $background-light;
+
+		&:disabled,
+		&[disabled] {
+			color: $gray;
+			background-color: $background-light;
+		}
+
+		@media (hover: hover) {
+			&:hover:not([disabled]) {
+				color: $black;
+				background: $light-gray;
+			}
+
+			&:focus:not([disabled]),
+			&:focus-visible:not([disabled]) {
+				color: $black;
+				outline: none;
+				background: $light-gray;
+			}
+
+			&:active:not([disabled]) {
+				background-color: $gray;
+			}
+		}
+
+		@media (hover: none) {
+			&:active:not([disabled]) {
+				color: $black;
+				background: $light-gray;
+			}
+		}
+	}
+
+	&_red {
+		color: $red;
+
+		@media (hover: hover) {
+			&:hover:not([disabled]) {
+				color: $red-80;
+			}
+
+			&:focus:not([disabled]),
+			&:focus-visible:not([disabled]) {
+				color: $red-80;
+				outline: none;
+			}
+
+			&:active:not([disabled]) {
+				background-color: transparent;
+			}
+		}
+
+		@media (hover: none) {
+			&:active:not([disabled]) {
+				background-color: transparent;
+			}
+		}
+	}
+
+	&_ghost {
+		color: $black;
+		background-color: transparent;
+
+		// stylelint-disable-next-line order/order
+		&:disabled,
+		&[disabled] {
+			#{$self}__text {
+				span {
+					color: $red-80;
+				}
+			}
+		}
+
+		@media (hover: hover) {
+			&:hover:not([disabled]) {
+				color: $black;
+				background-color: $background-light;
+			}
+
+			&:focus:not([disabled]),
+			&:focus-visible:not([disabled]) {
+				color: $black;
+				outline: none;
+				background-color: $background-light;
+			}
+
+			&:active:not([disabled]) {
+				color: $black;
+				background: $light-gray;
+			}
+		}
+
+		@media (hover: none) {
+			&:active:not([disabled]) {
+				color: $black;
+				background-color: $background-light;
+			}
+		}
+
+		// stylelint-disable-next-line order/order
+		#{$self}__text {
+			span {
+				color: $gray;
+			}
+		}
+	}
+}

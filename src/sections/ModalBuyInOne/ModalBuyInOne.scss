@@ -1,0 +1,107 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../shared/styles/include-setings-styles";
+
+.modal-buy-in-one {
+	$self: &;
+
+	&__modal-body {
+		border-radius: $br24;
+		background-color: $white;
+
+		@include media(xs) {
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
+
+	&__content {
+		width: 525px;
+		height: 100%;
+		padding: 24px;
+
+		@include media(xs) {
+			width: 100%;
+			padding: 22px 12px 32px;
+		}
+	}
+
+	&__block {
+		display: flex;
+		flex-direction: column;
+
+		width: 100%;
+
+		row-gap: 24px;
+
+		@include media(xs) {
+			row-gap: 16px;
+		}
+	}
+
+	&__order {
+		display: flex;
+		flex-direction: column;
+
+		width: 100%;
+
+		row-gap: 24px;
+
+		@include media(xs) {
+			row-gap: 16px;
+		}
+	}
+
+	&__order-header {
+		display: flex;
+		flex-direction: column;
+
+		row-gap: 8px;
+	}
+
+	&__form-content {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+
+		@include media(xs) {
+			gap: 4px;
+		}
+	}
+
+	&__button,
+	&__button-back {
+		margin-top: 16px;
+
+		@include media(xs) {
+			margin-top: 12px;
+		}
+	}
+
+	&__success {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+
+		width: 100%;
+
+		row-gap: 14px;
+
+		@include media(xs) {
+			row-gap: 16px;
+		}
+	}
+
+	&__error {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+
+		width: 100%;
+
+		row-gap: 14px;
+
+		@include media(xs) {
+			row-gap: 16px;
+		}
+	}
+}

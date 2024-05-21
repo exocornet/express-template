@@ -1,0 +1,22 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('modal-product')
+
+		return {
+			block: BLOCK(),
+			elementModalBody: BLOCK('modal-body', [
+				'compression-col-right-7 compression-col-right-0@md'
+			]),
+			elementContainer: BLOCK('container'),
+			elementMainRow: BLOCK('main-row'),
+			elementMainCol: BLOCK('main-col'),
+			elementInnerRow: BLOCK('inner-row'),
+			elementInnerCol: BLOCK('inner-col'),
+			elementWrapCloseButton: BLOCK('wrap-close-button'),
+			elementCloseButton: BLOCK('close-button'),
+			elementDescription: BLOCK('description'),
+			elementModalCard: BLOCK('modal-card'),
+			elementCardProductHeading: BLOCK('card-product-heading'),
+			elementCardPriceTag: BLOCK('card-price-tag'),
+		}
+	}

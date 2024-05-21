@@ -1,0 +1,20 @@
+-
+	function classes(cn) {
+		const BLOCK = CN('row');
+
+		return {
+			row: BLOCK({}, [
+				cn?.rowCols,
+				cn?.gap,
+				cn?.margin,
+				cn?.justify,
+				cn?.alignItems,
+				cn?.flexWrap,
+				cn?.direction,
+				cn?.overflow,
+				cn?.order,
+				cn?.padding,
+				cn?.height,
+			])
+		}
+	}

@@ -1,0 +1,4 @@
+{
+	"watch": ["incremental-pages-watch.js"],
+	"exec": "cross-env NODE_ENV=watch node server.js"
+}

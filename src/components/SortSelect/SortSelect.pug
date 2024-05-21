@@ -1,0 +1,24 @@
+mixin SortSelect(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include SortSelect.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)&attributes(attributes.SortSelect)
+		div(class=styles.elementHeader)
+			+Text({
+				data: { text: 'Сортировка' },
+				cn: { size: 'body-h2', textAlign: 'text-align-center' }
+			})(class=styles.elementHeaderText)
+			+Button({ data: { icon: 'close' }, cn: { type: 'circle' } })&attributes({ Button: { class: styles.elementCloseButton } })
+		div(class=styles.elementBody)&attributes(attributes.SortSelectBody)
+			+Text({ data: { tag: 'span', text: 'По популярности(подставится первый элемент из js)' } })
+			+Sprite('arrow-down')(class=styles.elementIcon)
+		div(class=styles.elementList)&attributes(attributes.SortSelectList)
+			for item in DATA_ARR('sortListArr')
+				include ../../shared/helpers/pug/shortcut-check-store
+				div(class=styles.elementItem data-sort=I_DATA('dataSort', false))
+					+Text(I_ELEM('Text'))

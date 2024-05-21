@@ -1,0 +1,32 @@
+//- # ПАРАМЕТРЫ ДЛЯ НАСТРОЙКИ LAYOUT # -//
+-
+	const PAGE_TITLE = "Поиск";
+	const IS_PAGE_SVG_SPRITE = true;
+	// переменные для MainLayout
+	const LAYOUT_LEFT_SIDE_COMPONENT = 'Filters';
+	const LAYOUT_LEFT_SIDE_COMPONENT_PROPS = {
+		data: {
+			formAction: isDev ? "/search" : "./public/fake-api/searchFilter.json"
+		}
+	};
+	const LAYOUT_LEFT_COL_PROPS = { cn: { cols: 'col-6' }};
+	const LAYOUT_RIGHT_SIDE_COMPONENT = 'Cart';
+
+//- # НАСЛЕДОВАНИЕ ФУНКЦИИ ДЛЯ РАЗДЕЛЕНИЯ СТОРОВ # -//
+- const PAGE_STORE = addSections();
+
+//- ## Подключение store секции FilterItems ## -//
+include search--filter-items
+- PAGE_STORE.addSection(FilterItems);
+
+//- ## Подключение store секции ModalProduct ## -//
+include search--modal-product
+- PAGE_STORE.addSection(ModalProduct);
+
+//- ## Подключение store секции ModalMap ## -//
+include search--modal-map
+- PAGE_STORE.addSection(ModalMap);
+
+//- ## Подключение store секции ModalAuth ## -//
+include search--modal-auth
+- PAGE_STORE.addSection(ModalAuth);

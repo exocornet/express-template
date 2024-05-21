@@ -1,0 +1,239 @@
+// # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
+@import "../../shared/styles/include-setings-styles";
+
+.filter-items {
+	&__chips-wrapper {
+		display: flex;
+
+		flex-wrap: wrap;
+
+		margin-bottom: 40px;
+		gap: 4px 4px;
+
+		@include media(md) {
+			margin-top: 16px;
+		}
+
+		@include media(xs) {
+			overflow-x: scroll;
+			flex-wrap: nowrap;
+
+			margin-bottom: 24px;
+
+			&::-webkit-scrollbar {
+				display: block;
+			}
+		}
+
+		@include no-scrollbar;
+	}
+
+	&__tags-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+
+		margin-top: 16px;
+		gap: 4px 4px;
+	}
+
+	&__btn-chips-tags {
+		display: flex;
+		align-items: center;
+		column-gap: 8px;
+
+		margin-left: 16px;
+	}
+
+	&__btn-chips-tags-icon {
+		width: 20px;
+		height: 20px;
+
+		transition: transition();
+	}
+
+	&__span {
+		display: none;
+	}
+
+	&__chips-btn {
+		padding: 10px 24px;
+
+		transition: transition();
+
+		border: 2px solid $light-gray;
+		border-radius: 12px;
+
+		font-size: $fs16;
+		line-height: 1.25;
+
+		&:hover {
+			border: 2px solid $light-gray;
+			background-color: $light-gray;
+		}
+
+		@include media(xs) {
+			letter-spacing: 0.03em;
+
+			font-size: $fs16;
+		}
+	}
+
+	&__filter-wrapper {
+		display: none;
+		justify-content: space-between;
+
+		@include media(md) {
+			display: flex;
+
+			margin-top: 24px;
+		}
+
+		@include media(xs) {
+			margin-top: 20px;
+		}
+	}
+
+	&__btn-clear {
+		display: flex;
+		align-items: center;
+
+		padding: 14px 20px 14px 16px;
+
+		border-radius: 12px;
+
+		background: $background-light;
+		column-gap: 8px;
+
+		&:hover {
+			background: $light-gray;
+		}
+	}
+
+	&__sort-wrapper {
+		display: flex;
+		justify-content: space-between;
+
+		@include media(md) {
+			position: fixed;
+			top: 0;
+			left: 0;
+
+			width: 100%;
+			height: 0;
+		}
+	}
+
+	&__sort-wrapper-background {
+		position: fixed;
+		z-index: 0;
+		inset: 0;
+
+		display: none;
+
+		background: $black-50;
+	}
+
+	&__sort-select-wrapper {
+		width: 247px;
+
+		@include media(md) {
+			position: relative;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: end;
+
+			width: 100%;
+
+			transition: transition();
+			transform: translateY(100%);
+		}
+	}
+
+	&__sort-select {
+		@include media(md) {
+			width: 100%;
+
+			border-radius: 16px 16px 0 0;
+			background-color: $white;
+		}
+	}
+
+	&__sort-select-body {
+		@include media(md) {
+			display: none;
+		}
+	}
+
+	&__sort-select-list {
+		@include media(md) {
+			position: relative;
+
+			box-shadow: none;
+		}
+	}
+
+	&__btn-icon {
+		width: 32px;
+		height: 32px;
+	}
+
+	&__btn-clear-icon {
+		width: 20px;
+		height: 20px;
+	}
+
+	&__sort-btn,
+	&__filter-btn {
+		display: flex;
+		align-items: center;
+		column-gap: 8px;
+	}
+
+	&__pagination-wrapper {
+		display: flex;
+		align-items: center;
+
+		flex-direction: column;
+
+		width: 100%;
+
+		margin-top: 40px;
+
+		row-gap: 24px;
+	}
+}
+
+.js-sort-show {
+	@include media(md) {
+		z-index: 2;
+
+		height: 100%;
+
+		.filter-items {
+			&__sort-wrapper-background {
+				display: block;
+			}
+
+			&__sort-select-wrapper {
+				@include media(md) {
+					margin-top: auto;
+
+					transform: translateY(0);
+				}
+			}
+
+			&__sort-select-list {
+				max-height: unset;
+			}
+		}
+	}
+}
+
+.js-show-all-tags {
+	.filter-items {
+		&__btn-chips-tags-icon {
+			transform: rotate(180deg);
+		}
+	}
+}

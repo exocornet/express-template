@@ -1,0 +1,12 @@
+mixin ChipsTag(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include ChipsTag.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)
+		+Text({data: {tag: 'span'}, cn: { size: 'body-m-m'}}) !{DATA('text')}
+		+Sprite('close')(class=styles.elementIcon)

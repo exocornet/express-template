@@ -1,0 +1,15 @@
+mixin CounterCart(props)
+	//- # ПОДКЛЮЧЕНИЕ ДЛЯ ПРОВЕРОК DATA, OPT, ELEM # -//
+	include ../../../shared/helpers/pug/shortcut-check-store
+
+	//- # ПОЛУЧЕНИЕ CSS КЛАССОВ КОМПОНЕНТА # -//
+	include CounterCart.cn.pug
+	- const styles = classes(props && props.cn);
+
+	//- # ВЕРСТКА КОМПОНЕНТА # -//
+	div(class=styles.block)&attributes(attributes)
+		button(class=styles.elementButtonMinus type="button" aria-label="Уменьшить количество")
+			+SVGUse('minus')
+		input(class=styles.elementInput type="text" value=DATA('value') data-min-value=0 data-input-unit="шт")
+		button(class=styles.elementButtonPlus type="button" aria-label="Увеличить количество")
+			+SVGUse('plus')
