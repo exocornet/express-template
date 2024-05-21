@@ -1,13 +1,13 @@
 {
-	"name": "komus",
+	"name": "template",
 	"version": "2.0.0",
 	"description": "",
 	"main": "main.js",
 	"scripts": {
-		"start": "cross-env NODE_ENV=development node server.js",
+		"dev": "cross-env NODE_ENV=development node server.js",
 		"watch": "node configurations/create-incremental-pages-watch.js && nodemon",
 		"build": "cross-env NODE_ENV=production node server.js",
-		"server": "npx http-server -o build",
+		"start": "npx http-server -o build",
 		"create-page": "node configurations/create-page.js",
 		"storybook": "cross-env NODE_ENV=development node storybook/server.js",
 		"storybook-build": "cross-env NODE_ENV=production npx webpack -c storybook/webpack.config.js",
@@ -55,7 +55,6 @@
 		"nodemon": "^2.0.21",
 		"postcss": "^8.4.16",
 		"postcss-loader": "^8.1.1",
-		"postcss-preset-env": "^9.5.2",
 		"postcss-scss": "^4.0.9",
 		"prettier": "^3.2.5",
 		"pug": "^3.0.2",
@@ -81,8 +80,8 @@
 		"webpack-dev-server": "^4.15.2"
 	},
 	"dependencies": {
+		"autoprefixer": "^10.4.19",
 		"imask": "^7.6.0",
-		"nouislider": "^15.7.1",
 		"postcss-sort-media-queries": "^5.2.0",
 		"swiper": "^10.2.0",
 		"tippy.js": "^6.3.7",

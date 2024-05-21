@@ -7,7 +7,6 @@ const TerserPlugin = require('terser-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const PugPlugin = require('pug-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const postcssSortMediaQueries = require('postcss-sort-media-queries');
 const beautifyHtml = require('js-beautify').html;
 let plugins = [];
 
@@ -251,9 +250,6 @@ module.exports = (options) => {
 							loader: 'postcss-loader',
 							options: {
 								sourceMap: isDev,
-								postcssOptions: {
-									plugins: [postcssSortMediaQueries()],
-								},
 							},
 						},
 						{

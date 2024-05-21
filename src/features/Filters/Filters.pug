@@ -21,11 +21,6 @@ mixin Filters(props)
 			+Button({ data: { icon: 'close' }, cn: { type: 'circle' } })&attributes({ Button: { class: styles.elementFilterCloseButton } })
 		form(class=styles.elementFilterForm action=DATA('formAction'))
 			+Switch(ELEM('Switch'))
-			+FilterRange(ELEM('FilterRange'))&attributes({
-				FilterRange: { class: [styles.elementFilterSelect, 'js-filter-range-show'] },
-				FilterBody: { class: styles.elementFilterSelectBody },
-				FilterList: { class: styles.elementFilterSelectList }
-			} )
 			+FilterSelect(ELEM('FilterSelectMark'))&attributes({
 				FilterSelect: { class: [styles.elementFilterSelect, 'js-filter-select-show'] },
 				FilterBody: { class: styles.elementFilterSelectBody },
