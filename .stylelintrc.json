@@ -1,8 +1,9 @@
 {
-	"extends": ["stylelint-config-standard"],
-	"plugins": ["stylelint-order", "stylelint-scss"],
+	"extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
+	"plugins": ["stylelint-order", "stylelint-scss", "stylelint-prettier"],
 	"customSyntax": "postcss-scss",
 	"rules": {
+		"prettier/prettier": [true, {"singleQuote": false}],
 		"declaration-empty-line-before": null,
 		"order/order": [
 			"custom-properties",
@@ -382,7 +383,8 @@
 				]
 			}
 		],
-		"color-function-notation": "modern",
+		"color-function-notation": "legacy",
+		"hue-degree-notation": "number",
 		"alpha-value-notation": "number",
 		"import-notation": "string",
 		"function-no-unknown": [true, {
@@ -391,8 +393,6 @@
 		"annotation-no-unknown": [true, {
 			"ignoreAnnotations": ["default"]
 		}],
-		"indentation": "tab",
-		"color-hex-case": "upper",
 		"color-hex-length": "long",
 		"color-named": "never",
 		"color-no-invalid-hex": true,
@@ -400,7 +400,7 @@
 		"color-no-hex": [
 			true,
 			{
-			"message": "В проекте используются переменные SCSS. Назначьте переменную в файле variables.scss"
+				"message": "В проекте используются переменные SCSS. Назначьте переменную в файле variables.scss"
 			}
 		],
 		"length-zero-no-unit": [
@@ -411,13 +411,12 @@
 				]
 			}
 		],
-		"string-quotes": "double",
 		"declaration-no-important": true,
 		"at-rule-no-unknown": null,
 		"scss/dollar-variable-pattern": [
 			"^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
 			{
-				"message": "Expected variable name in kebab-case"
+				"message": "Ожидалось имя переменной в kebab-case"
 			}
 		]
 	}
