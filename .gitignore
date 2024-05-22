@@ -1,20 +1,40 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+#*storybook.log
+machinet.conf
+
+# testing
+/coverage
+
 # project
-node_modules
 build
 dist
 out
+
+# misc
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
 # IDE and OS
 .idea
 .vscode
 Thumbs.db
 .DS_Store
-machinet.conf
-package-lock.json
 
-# dotenv environment variables file (build for Zeit Now)
+# local env files
+.env*.local
 .env
 
+# project
 incremental-pages-watch.js
 include-link.pug
 include-script.pug
