@@ -14,10 +14,6 @@
 	&__modal-body {
 		border-radius: $br24;
 		background-color: $white;
-
-		@include media(xs) {
-			border-radius: $br16 $br16 0 0;
-		}
 	}
 
 	&__content {

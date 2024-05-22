@@ -1,4 +1,4 @@
-import { ModalControl, Slider } from '../../shared';
+import { ModalControl, Slider } from '../../shared/ui';
 import { CardProduct } from '../../components/CardProduct/CardProduct';
 import { HiddenText } from '../../components/HiddenText/HiddenText';
 import { HiddenList } from '../../components/HiddenList/HiddenList';

@@ -1,5 +1,0 @@
-// # ПЕРЕМЕННЫЕ ДЛЯ УТИЛИТ DISPLAY # //
-$property-values: (inline, inline-block, block, flex, inline-flex, grid, contents, none);
-
-// # СТИЛИ DISPLAY # //
-@include utilities(d, display);

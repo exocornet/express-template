@@ -21,14 +21,14 @@
 	};
 
 	//- Для подключение секций
-	function addSections() {
-		const sections = [];
+	function addComponents() {
+		const components = [];
 
 		return {
-			addSection(section) {
-				sections.push(section);
+			addComponent(component) {
+				components.push(component);
 			},
-			getSections: sections
+			getComponents: components
 		};
 	}
 

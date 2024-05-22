@@ -2,10 +2,10 @@
 import { Scroll } from '../shared/helpers/js/Scroll';
 
 // # ПОДКЛЮЧЕНИЕ JS ДЛЯ SHARED # //
-import { Slider, Tabs } from '../shared';
+import { Slider, Tabs } from '../shared/ui';
 
 // # ПОДКЛЮЧЕНИЕ JS ДЛЯ FEATURES # //
-import { Sidebar, Header, CatalogSearch, Cart, Catalog, Cookies } from '../features';
+import { Header } from '../features';
 
 document.addEventListener('DOMContentLoaded', () => {
 	// # ВЫЗОВ JS ДЛЯ HELPERS # //
@@ -17,9 +17,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// # ВЫЗОВ JS ДЛЯ FEATURES # //
 	Header();
-	Sidebar();
-	CatalogSearch();
-	Cart();
-	Catalog();
-	Cookies();
 });

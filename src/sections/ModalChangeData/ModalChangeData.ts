@@ -1,4 +1,4 @@
-import { InputArray, InputControl, ModalControl } from '../../shared';
+import { InputArray, InputControl, ModalControl } from '../../shared/ui';
 import { useDebounce } from '../../shared/helpers/js/useDebounce';
 
 const inputValidation = ['text', 'inn', 'email', 'fullName', 'phone', 'kpp', 'ogrn', 'phoneOrEmail', 'password'];

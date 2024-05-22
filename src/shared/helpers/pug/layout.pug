@@ -59,9 +59,9 @@ html(lang="ru")
 				+MainLayout
 			else
 				main(class=PAGE_CLASS_MAIN || false)
-					for sectionStore, idx in PAGE_STORE.getSections
-						if PAGE_STORE.getSections[idx].includeSection
-							+#{PAGE_STORE.getSections[idx].includeSection}(sectionStore)
+					for componentStore, index in PAGE_STORE.getComponents
+						if typeof pug_mixins[`${PAGE_STORE.getComponents[index].includeMain}`] === 'function'
+							+#{PAGE_STORE.getComponents[index].includeMain}(componentStore)
 
 		//- ## Footer ## -//
 		block footer
@@ -82,9 +82,9 @@ html(lang="ru")
 		block extra-content
 			if ExtraContentLayout
 				+ExtraContentLayout
-			for contentStore, idx in PAGE_STORE.getSections
-				if PAGE_STORE.getSections[idx].includeContent
-					+#{PAGE_STORE.getSections[idx].includeContent}(contentStore)
+			for contentStore, index in PAGE_STORE.getComponents
+				if typeof pug_mixins[`${PAGE_STORE.getComponents[index].includeExtraContent}`] === 'function'
+					+#{PAGE_STORE.getComponents[index].includeExtraContent}(contentStore)
 
 		//- ## Добавление js на страницу ## -//
 		| !{HTMLComment('# ПОДКЛЮЧЕНИЕ JS ИСПОЛЬЗУЕМОГО НА ВСЕХ СТРАНИЦАХ #')}

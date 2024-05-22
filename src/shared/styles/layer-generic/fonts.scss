@@ -1,26 +1,23 @@
 // # ПАРАМЕТРЫ ПОДКЛЮЧЕНИЯ ШРИФТОВ # //
 
-// --------------------------------------FiraSans------------------------------------------------- //
-
-// ## определение пути к подключаемому шрифту ## //
-$include-font-path: "FONTS/FiraSans/";
+// ## определение пути к папке шрифтов ## //
+$font-path: "../../../../public/fonts/";
 // ## определение типов подключаемых шрифтов ## //
-$include-font-types: ("woff2": "woff2");
-// ## определение имени шрифта для вызова в проекте ## //
-$include-font-family: "FiraSans";
+$font-types: (
+	"woff2": "woff2",
+);
+
+// --------------------------------------Manrope------------------------------------------------- //
+
+// ## определение имени шрифта для вызова в проекте и название папки с шрифтом ## //
+$include-font-family-manrope: "Manrope";
+// ## определение индивидуальных типов подключаемых шрифтов ## //
+//$font-types-manrope: (
+//	"woff2": "woff2",
+//);
 
 // # ВЫЗОВ МИКСИНА ПОДКЛЮЧЕНИЯ ШРИФТОВ # //
-@include includeFont("FiraSans-Medium", 500);
-@include includeFont("FiraSans-Bold", 700);
-
-// --------------------------------------Montserrat------------------------------------------------- //
-
-// ## определение пути к подключаемому шрифту ## //
-$include-font-path: "FONTS/Montserrat/";
-// ## определение типов подключаемых шрифтов ## //
-$include-font-types: ("woff2": "woff2");
-// ## определение имени шрифта для вызова в проекте ## //
-$include-font-family: "Montserrat";
-
-// # ВЫЗОВ МИКСИНА ПОДКЛЮЧЕНИЯ ШРИФТОВ # //
-@include includeFont("Montserrat-Bold", 700);
+//@include includeFont($include-font-family-manrope, $font-path, $font-types, "Manrope-Regular", 400);
+//@include includeFont($include-font-family-manrope, $font-path, $font-types, "Manrope-Medium", 500);
+//@include includeFont($include-font-family-manrope, $font-path, $font-types, "Manrope-SemiBold", 600);
+//@include includeFont($include-font-family-manrope, $font-path, $font-types, "Manrope-Bold", 700);

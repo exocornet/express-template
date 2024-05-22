@@ -1,4 +1,4 @@
-import { InputOtp, InputOtpControl } from '../../../../shared';
+import { InputOtp, InputOtpControl } from '../../../../shared/ui';
 import { ActionType } from '../../ModalAuth';
 
 interface MACodeControlOptions {

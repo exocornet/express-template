@@ -1,4 +1,4 @@
-import { Modal, ModalControl } from '../../shared';
+import { Modal, ModalControl } from '../../shared/ui';
 import { MACode, MACodeControl } from './components/MACode/MACode';
 import { MALogin, MALoginControl } from './components/MALogin/MALogin';
 import { MAPassChange, MAPassChangeControl } from './components/MAPassChange/MAPassChange';

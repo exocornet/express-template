@@ -1,4 +1,4 @@
-import { InputArray, InputControl } from '../../../../shared';
+import { InputArray, InputControl } from '../../../../shared/ui';
 import { useDebounce } from '../../../../shared/helpers/js/useDebounce';
 import { ActionType } from '../../ModalAuth';
 

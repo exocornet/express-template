@@ -1,14 +1,1 @@
-@import "../../helpers/scss/swiss-knife-scss/layer-elements/default.scss";
-
-main {
-	--outside-indentation-main: 32px;
-	margin-top: var(--outside-indentation-main);
-
-	@include media(md) {
-		--outside-indentation-main: 20px;
-	}
-
-	@include media(xs) {
-		--outside-indentation-main: 8px;
-	}
-}
+@import "swiss-knife-scss/layer-elements/default";

@@ -1,4 +1,4 @@
-import { ModalControl } from '../../shared';
+import { ModalControl } from '../../shared/ui';
 
 export class ModalDeleteConfirmationControl extends ModalControl {
 	block: HTMLElement;

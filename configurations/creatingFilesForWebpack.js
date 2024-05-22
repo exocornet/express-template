@@ -28,10 +28,14 @@ function findFiles(directory, extension, sign) {
 }
 
 function writeFile(arr, sign) {
-	fs.writeFileSync(
-		path.join(`${paths.src}/app/list-pages`, `include-${sign}.pug`),
-		[...new Set(arr)].join('\n') + '\n'
-	);
+	if (arr.length) {
+		fs.writeFileSync(
+			path.join(`${paths.src}/app/list-pages`, `include-${sign}.pug`),
+			[...new Set(arr)].join('\n') + '\n'
+		);
+	} else {
+		fs.writeFileSync(path.join(`${paths.src}/app/list-pages`, `include-${sign}.pug`), '');
+	}
 }
 
 function creatingFilesForWebpack(directory, extension, sign) {

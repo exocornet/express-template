@@ -1,4 +1,4 @@
-import { Modal, ModalControl } from '../../shared';
+import { Modal, ModalControl } from '../../shared/ui';
 
 class ModalMapControl extends ModalControl {
 	block: HTMLElement;

@@ -1,5 +1,0 @@
-// # ПЕРЕМЕННЫЕ ДЛЯ УТИЛИТ FLEX-DIRECTION # //
-$property-values: (column, row, column-reverse);
-
-// # СТИЛИ FLEX-DIRECTION # //
-@include utilities(flex-direction, flex-direction);

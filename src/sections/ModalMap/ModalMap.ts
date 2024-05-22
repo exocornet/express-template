@@ -1,4 +1,4 @@
-import { Input, InputControl, ModalControl } from '../../shared';
+import { Input, InputControl, ModalControl } from '../../shared/ui';
 import { MapControl, Map } from '../../components/Map/Map';
 import { useDebounce } from '../../shared/helpers/js/useDebounce';
 import { useMediaQuery } from '../../shared/helpers/js/useMediaQuery';
