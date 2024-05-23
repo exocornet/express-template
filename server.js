@@ -167,7 +167,7 @@ app.use(
 app.locals = {
 	isDev,
 	// [START] ===> переменные окружения
-	// isWebpack: false,
+	isServer: true,
 	// <=== [END] переменные окружения
 	// [START] ===> переменные фавиконки
 	FAVICON: VARIABLES.FAVICON,
@@ -175,6 +175,8 @@ app.locals = {
 	// переменные фавиконки <=== [END]
 	media: VARIABLES.MEDIA,
 	listLinks: links,
+	// jsPath: isDev ? './assets/js' : './assets/js',
+	// cssPath: isDev ? './assets/css' : './assets/css',
 };
 
 // # ROUTES ДЛЯ СТРАНИЦ INDEX И LIST-PAGES (в порядке исключения) # //

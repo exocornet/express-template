@@ -62,23 +62,15 @@ module.exports = (options) => {
 		new CopyWebpackPlugin({
 			patterns: [
 				{
-					from: 'src/app/public/fake-api',
-					to: 'public/fake-api',
+					from: 'public/fake-api',
+					to: 'assets/fake-api',
 				},
 			],
 		}),
 		new CopyWebpackPlugin({
 			patterns: [
 				{
-					from: 'src/app/public/static-files',
-					to: 'public/static-files',
-				},
-			],
-		}),
-		new CopyWebpackPlugin({
-			patterns: [
-				{
-					from: 'src/app/public/media',
+					from: 'public/media',
 					to: 'assets/',
 				},
 			],
@@ -88,18 +80,16 @@ module.exports = (options) => {
 	plugins.push(
 		new PugPlugin({
 			js: {
-				filename: 'assets/js/[name].js',
+				filename: 'js/[name].js',
 			},
 			css: {
-				filename: 'assets/css/[name].css',
+				filename: 'css/[name].css',
 			},
 			data: {
 				isDev,
 				// [START] ===> переменные окружения
 				isWebpack: true,
 				// <=== [END] переменные окружения
-				jsPath: isDev ? './assets/js' : './assets/js',
-				cssPath: isDev ? './assets/css' : './assets/css',
 			},
 			// loaderOptions: {
 			// 	sources: [
@@ -199,6 +189,10 @@ module.exports = (options) => {
 						},
 					],
 					exclude: /node_modules/,
+					// type: 'asset/resource',
+					// generator: {
+					// 	filename: 'js/[name].js',
+					// },
 				},
 				{
 					test: /\.(jpe?g|png|gif|svg|webp)$/i,
@@ -227,11 +221,15 @@ module.exports = (options) => {
 					exclude: /favicons/,
 					type: 'asset/resource',
 					generator: {
-						filename: 'assets/fonts/[name][ext]',
+						filename: 'fonts/[name][ext]',
 					},
 				},
 				{
 					test: /\.(s[ac]ss|css)$/i,
+					// type: 'asset/resource',
+					// generator: {
+					// 	filename: 'css/[name].css',
+					// },
 					use: [
 						{
 							loader: 'css-loader',
@@ -248,10 +246,10 @@ module.exports = (options) => {
 						{
 							loader: 'sass-loader',
 							options: {
+								sourceMap: isDev,
 								sassOptions: {
 									importer: magicImporter(),
 								},
-								sourceMap: isDev,
 							},
 						},
 					],
