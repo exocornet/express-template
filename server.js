@@ -51,6 +51,8 @@ for (const name of Object.keys(networkInterfaces)) {
 
 // # СОЗДАНИЕ ПЕРЕМЕННЫХ ДЛЯ APP # //
 const app = express();
+
+/* можно заменить app на router */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -180,7 +182,7 @@ router.get('/', function (req, res) {
 	PugLinter(res, './pages/index/index');
 });
 
-router.get('/list-pages.html', function (req, res) {
+router.get('/list-pages', function (req, res) {
 	PugLinter(res, './app/list-pages/list-pages');
 });
 
@@ -206,7 +208,7 @@ if (isDev) {
 	const SERVER_START = server.listen(port, () => {
 		process.stderr.write(`Loopback: http://localhost:${port}\n`);
 		process.stderr.write(`On Your Network (IPv4): http://${IPv4}:${port}\n\n`);
-		open(`http://localhost:${port}/list-pages.html`);
+		open(`http://localhost:${port}/list-pages`);
 	});
 
 	// # ОБРАБОТКА ОШИБОК # //

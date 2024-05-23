@@ -5,7 +5,7 @@ import { Scroll } from '../shared/helpers/js/Scroll';
 import { Slider, Tabs } from '../shared/ui';
 
 // # ПОДКЛЮЧЕНИЕ JS ДЛЯ FEATURES # //
-import { Header } from '../features';
+// import { Header } from '../features';
 
 document.addEventListener('DOMContentLoaded', () => {
 	// # ВЫЗОВ JS ДЛЯ HELPERS # //
@@ -16,5 +16,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	Tabs();
 
 	// # ВЫЗОВ JS ДЛЯ FEATURES # //
-	Header();
+	// Header();
 });

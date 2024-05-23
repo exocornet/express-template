@@ -55,35 +55,35 @@ const optionsMinimizer = [
 	}),
 ];
 
-plugins.push(
-	new CopyWebpackPlugin({
-		patterns: [
-			{
-				from: 'src/app/public/fake-api',
-				to: 'public/fake-api',
-			},
-		],
-	}),
-	new CopyWebpackPlugin({
-		patterns: [
-			{
-				from: 'src/app/public/static-files',
-				to: 'public/static-files',
-			},
-		],
-	}),
-	new CopyWebpackPlugin({
-		patterns: [
-			{
-				from: 'src/app/public/media',
-				to: 'assets/',
-			},
-		],
-	})
-);
-
 module.exports = (options) => {
-	const { isDev, isProd, paths, links, VARIABLES } = options;
+	const { isDev, isProd, paths } = options;
+
+	plugins.push(
+		new CopyWebpackPlugin({
+			patterns: [
+				{
+					from: 'src/app/public/fake-api',
+					to: 'public/fake-api',
+				},
+			],
+		}),
+		new CopyWebpackPlugin({
+			patterns: [
+				{
+					from: 'src/app/public/static-files',
+					to: 'public/static-files',
+				},
+			],
+		}),
+		new CopyWebpackPlugin({
+			patterns: [
+				{
+					from: 'src/app/public/media',
+					to: 'assets/',
+				},
+			],
+		})
+	);
 
 	plugins.push(
 		new PugPlugin({
@@ -98,15 +98,8 @@ module.exports = (options) => {
 				// [START] ===> переменные окружения
 				isWebpack: true,
 				// <=== [END] переменные окружения
-				// [START] ===> переменные фавиконки
-				FAVICON: VARIABLES.FAVICON,
-				FAVICON_TYPE: VARIABLES.FAVICON_TYPE,
-				// <=== [END] переменные фавиконки
-				media: VARIABLES.MEDIA,
-				// переменные требующие рассмотрения
 				jsPath: isDev ? './assets/js' : './assets/js',
 				cssPath: isDev ? './assets/css' : './assets/css',
-				listLinks: links,
 			},
 			// loaderOptions: {
 			// 	sources: [

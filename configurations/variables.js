@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const paths = require('./paths');
+
 const faviconType = {
 	ico: 'image/x-icon',
 	png: 'image/png',

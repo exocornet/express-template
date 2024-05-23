@@ -34,10 +34,12 @@ html
 			}
 	body(class="body-list-pages")
 		h1(class="h1") Страницы сайта:
-		for link, idx in listLinks
-			a(class="link" href=link.link target="_blank" title=link.title accesskey=`${idx + 1}`)
-				| #{`${idx + 1}. ${link.name} (${link.title}.html)`}
-				br
+
+		if !isWebpack
+			for link, idx in listLinks
+				a(class="link" href=link.link target="_blank" title=link.title accesskey=`${idx + 1}`)
+					| #{`${idx + 1}. ${link.name} (${link.title}.html)`}
+					br
 
 		if isWebpack
 			script(src="../main.ts")
