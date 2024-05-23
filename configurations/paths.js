@@ -13,13 +13,17 @@ if (!faviconFile) {
 module.exports = {
 	src: path.resolve(__dirname, '../src'),
 	build: path.resolve(__dirname, '../build'),
+	public: path.resolve(__dirname, '../public'),
 	dist: path.resolve(__dirname, '../dist'),
+
 	images: path.join(__dirname, '../src/app/assets/img/'),
 	video: path.join(__dirname, '../src/app/assets/video/'),
 	audio: path.join(__dirname, '../src/app/assets/audio/'),
 	fonts: path.join(__dirname, '../src/app/assets/fonts/'),
-	components: path.join(__dirname, '../src/components/'),
-	sections: path.join(__dirname, '../src/sections/'),
+
+	entities: path.join(__dirname, '../src/entities/'),
+	widgets: path.join(__dirname, '../src/widgets/'),
 	pages: path.join(__dirname, '../src/pages/'),
+
 	favicon: path.join(__dirname, `../src/app/assets/favicons/${faviconFile}`),
 };
