@@ -1,20 +1,2 @@
-// отступы margin у row должы быть соответствующими отступам padding у col
-.row {
-	display: flex;
-	flex-wrap: wrap;
-
-	margin-inline: -4px;
-
-	& > * {
-		width: 100%;
-		padding-inline: 4px;
-	}
-
-	@include media(xs) {
-		margin-inline: -2px;
-
-		& > * {
-			padding-inline: 2px;
-		}
-	}
-}
+// класс с основными стилями
+@include row;

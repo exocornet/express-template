@@ -39,7 +39,6 @@
 	}
 
 	@include media(md) {
-		top: var(--half-of-header-height)
+		top: var(--half-of-header-height);
 	}
 }
-
