@@ -218,7 +218,7 @@ module.exports = (options) => {
 				},
 				{
 					test: /\.(woff(2)?|eot|ttf|otf|svg)$/,
-					exclude: /favicons/,
+					exclude: /media/,
 					type: 'asset/resource',
 					generator: {
 						filename: 'fonts/[name][ext]',
