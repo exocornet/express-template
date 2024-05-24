@@ -21,7 +21,7 @@ const beautifyHtml = require('js-beautify').html;
 let port = process.env.PORT || 8000;
 const { names: namePages } = require('./src/app/list-pages/namePages');
 const paths = require('./configurations/paths');
-const creatingFilesForWebpack = require('./configurations/creatingFilesForWebpack');
+const creatingFilesForWebpack = require('./configurations/creating-files-for-webpack');
 const VARIABLES = require('./configurations/variables');
 const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'watch';
 const isProd = !isDev;
