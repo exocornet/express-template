@@ -35,6 +35,7 @@ Thumbs.db
 .env
 
 # project
+apiENV.json
 incremental-pages-watch.js
 include-link.pug
 include-script.pug
