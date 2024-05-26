@@ -1,4 +1,10 @@
 | !{HTMLComment('# ПОДКЛЮЧЕНИЕ СSS ДЛЯ COMPONENTS #')}
+//mixin link(path, name)
+//	link(rel="stylesheet" href= (isWebpack ? `${path}/${name}/${name}.scss` : `./assets/css/${name}.css`))/
+//
+//mixin script(path, name, namePage)
+//	script(src= (isWebpack ? `${path}/${namePage || name}/${name}.ts` : `./assets/js/${name}.js`) defer)
+link(rel="stylesheet" href="/widgets/Footer/Footer.css")/
 //+link('COMPONENTS', 'CardBig')
 //+link('COMPONENTS', 'CardProduct')
 //+link('COMPONENTS', 'CardMedium')

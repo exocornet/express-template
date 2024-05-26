@@ -9,10 +9,8 @@ html
 	head
 		meta(charset="UTF-8")/
 		title Список страниц
-		if isWebpack
-			//link(rel="stylesheet" href="../../shared/shared.scss")/
-			include include-link
-			link(rel="stylesheet" href="../main.scss")/
+		//if isWebpack
+			//include include-link
 
 		style.
 			.body-list-pages {
@@ -45,14 +43,13 @@ html
 					| #{`${idx + 1}. ${link.name} (${link.title}.html)`}
 					br
 
-		if isWebpack
-			script(src="../main.ts")
-			include include-script
+		//if isWebpack
+			//include include-script
 
-		if isDev
-			script(src="/socket.io/socket.io.js")
-			script.
-				const socket = io();
-				socket.on('webpackUpdate', () => {
-					location.reload();
-				});
+		//if isDev
+		//	script(src="/socket.io/socket.io.js")
+		//	script.
+		//		const socket = io();
+		//		socket.on('webpackUpdate', () => {
+		//			location.reload();
+		//		});

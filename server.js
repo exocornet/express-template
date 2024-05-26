@@ -21,21 +21,21 @@ const beautifyHtml = require('js-beautify').html;
 let port = process.env.PORT || 8000;
 const { names: namePages } = require('./src/app/list-pages/namePages');
 const paths = require('./configurations/paths');
-const creatingFilesForWebpack = require('./configurations/creating-files-for-webpack');
+// const creatingFilesForWebpack = require('./configurations/creating-files-for-webpack');
 const VARIABLES = require('./configurations/variables');
 const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'watch';
 const isProd = !isDev;
 
-const watcher = chokidar.watch(`${paths.src}/pages`, {
-	persistent: true,
-});
-
-['ready', 'change'].forEach((event) => {
-	watcher.on(event, () => {
-		creatingFilesForWebpack(`${paths.src}/pages`, '.link.pug', 'link');
-		creatingFilesForWebpack(`${paths.src}/pages`, '.script.pug', 'script');
-	});
-});
+// const watcher = chokidar.watch(`${paths.src}/pages`, {
+// 	persistent: true,
+// });
+//
+// ['ready', 'change'].forEach((event) => {
+// 	watcher.on(event, () => {
+// 		creatingFilesForWebpack(`${paths.src}/pages`, '.link.pug', 'link');
+// 		creatingFilesForWebpack(`${paths.src}/pages`, '.script.pug', 'script');
+// 	});
+// });
 
 // # ОПРЕДЕЛЕНИЕ IPv4 # //
 let IPv4 = '';
@@ -52,7 +52,7 @@ for (const name of Object.keys(networkInterfaces)) {
 // # СОЗДАНИЕ ПЕРЕМЕННЫХ ДЛЯ APP # //
 const app = express();
 
-/* можно заменить app на router */
+/* можно заменить app на router, но требуется детальное изучение так как типы express говорят об неактуальности router */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -195,7 +195,7 @@ app.use(router);
 const server = createServer(app);
 const io = new Server(server);
 compiler.hooks.done.tap('reloadPage', function () {
-	io.emit('webpackUpdate');
+	// io.emit('webpackUpdate');
 
 	if (isProd) {
 		setTimeout(() => {
@@ -206,6 +206,12 @@ compiler.hooks.done.tap('reloadPage', function () {
 });
 
 if (isDev) {
+	const watcher = chokidar.watch(__dirname + '/src');
+	// Отслеживайте изменения в файлах Pug и перезагружайте страницу
+	watcher.on('change', () => {
+		io.emit('webpackUpdate');
+	});
+
 	// # ЗАПУСК СЕРВЕРА # //
 	const SERVER_START = server.listen(port, () => {
 		process.stderr.write(`Loopback: http://localhost:${port}\n`);

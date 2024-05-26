@@ -1,58 +1,60 @@
 // # ------------ LAYER SETTINGS and LAYER TOOLS------------ # //
 @import "../../shared/styles/include-setings-styles";
 
-.footer {
-	margin-top: 64px;
-	padding-top: 64px;
+@layer components-widgets {
+	.footer {
+		margin-top: 64px;
+		padding-top: 64px;
 
-	background-color: $light-gray;
+		background-color: $light-gray;
 
-	&__social {
-		display: flex;
-		gap: 8px;
+		&__social {
+			display: flex;
+			gap: 8px;
 
-		@include media(xs) {
+			@include media(xs) {
+				margin-bottom: 32px;
+			}
+		}
+
+		&__logo-wrap {
+			display: flex;
+			justify-content: center;
+		}
+
+		&__logo-image {
+			max-width: 1920px;
+		}
+
+		&__link {
+			text-decoration: none;
+
+			font-family: $font-montserrat;
+		}
+
+		&__info {
+			color: $gray;
+
+			font-size: 12px;
+		}
+
+		&__nav {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+
 			margin-bottom: 32px;
 		}
-	}
 
-	&__logo-wrap {
-		display: flex;
-		justify-content: center;
-	}
+		&__nav-link {
+			text-decoration: none;
 
-	&__logo-image {
-		max-width: 1920px;
-	}
+			letter-spacing: 0.01rem;
+		}
 
-	&__link {
-		text-decoration: none;
-
-		font-family: $font-montserrat;
-	}
-
-	&__info {
-		color: $gray;
-
-		font-size: 12px;
-	}
-
-	&__nav {
-		display: flex;
-		flex-direction: column;
-		gap: 8px;
-
-		margin-bottom: 32px;
-	}
-
-	&__nav-link {
-		text-decoration: none;
-
-		letter-spacing: 0.01rem;
-	}
-
-	@include media(xs) {
-		margin-bottom: 0;
-		padding-top: 45px;
+		@include media(xs) {
+			margin-bottom: 0;
+			padding-top: 45px;
+		}
 	}
 }

@@ -20,18 +20,9 @@ html(lang="ru")
 		title= PAGE_TITLE || "Название страницы"
 
 		//- ## Добавление css на страницу ## -//
-		| !{HTMLComment('# ОБЯЗАТЕЛЬНЫЕ СТИЛИ ПОДКЛЮЧАЮЩИЕСЯ НА КАЖДОЙ СТРАНИЦЕ В НАЧАЛЕ #')}
-		//if isWebpack
-		//	link(rel="stylesheet" href=require('../../shared.scss'))/
-		//else
-		//	link(rel="stylesheet" href="./assets/css/shared.css")/
-
+		| !{HTMLComment('# ОБЯЗАТЕЛЬНЫЕ СТИЛИ ПОДКЛЮЧАЮЩИЕСЯ НА КАЖДОЙ СТРАНИЦЕ #')}
+		link(rel="stylesheet" href="/css/main.css")/
 		block include-css
-		| !{HTMLComment('# ОБЯЗАТЕЛЬНЫЕ СТИЛИ ПОДКЛЮЧАЮЩИЕСЯ НА КАЖДОЙ СТРАНИЦЕ В КОНЦЕ #')}
-		if isWebpack
-			link(rel="stylesheet" href=require('../../../app/main.scss'))/
-		else
-			link(rel="stylesheet" href="./css/main.css")/
 
 	body(class=PAGE_CLASS_BODY || false)
 		//- ## Svg sprite ## -//
@@ -88,13 +79,11 @@ html(lang="ru")
 
 		//- ## Добавление js на страницу ## -//
 		| !{HTMLComment('# ПОДКЛЮЧЕНИЕ JS ИСПОЛЬЗУЕМОГО НА ВСЕХ СТРАНИЦАХ #')}
-		if isWebpack
-			script(src=require('../../../app/main.ts') defer)
-		else
-			script(src="./js/main.js" defer)
+		script(src="/js/main.js" defer)
 		block include-js
 
 		block update-page
+			- console.log(isDev, 'isDevisDevisDevisDev')
 			if isDev
 				script(src="/socket.io/socket.io.js")
 				script.
