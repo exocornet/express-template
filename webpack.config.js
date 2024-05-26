@@ -5,9 +5,10 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const magicImporter = require('node-sass-magic-importer');
 const TerserPlugin = require('terser-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
-const PugPlugin = require('pug-plugin');
+// const PugPlugin = require('pug-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const beautifyHtml = require('js-beautify').html;
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const beautifyHtml = require('js-beautify').html;
 let plugins = [];
 
 const optionsMinimizer = [
@@ -78,41 +79,45 @@ module.exports = (options) => {
 	);
 
 	plugins.push(
-		new PugPlugin({
-			js: {
-				filename: 'js/[name].js',
-			},
-			css: {
-				filename: 'css/[name].css',
-			},
-			data: {
-				isDev,
-				// [START] ===> переменные окружения
-				isWebpack: true,
-				// <=== [END] переменные окружения
-			},
-			// loaderOptions: {
-			// 	sources: [
-			// 		{
-			// 			tag: 'img',
-			// 			filter: ({ attribute }) => attribute !== 'src',
-			// 		},
-			// 		{
-			// 			tag: 'source',
-			// 			filter: ({ attribute }) => attribute !== 'srcset',
-			// 		},
-			// 	],
-			// },
-			postprocess(content) {
-				if (isProd) {
-					return beautifyHtml(content, {
-						indent_size: 2,
-						indent_char: ' ',
-						indent_with_tabs: true,
-						editorconfig: true,
-					});
-				}
-			},
+		// new PugPlugin({
+		// 	// js: {
+		// 	// 	filename: 'js/[name].js',
+		// 	// },
+		// 	// css: {
+		// 	// 	filename: 'css/[name].css',
+		// 	// },
+		// 	data: {
+		// 		isDev,
+		// 		// [START] ===> переменные окружения
+		// 		isWebpack: true,
+		// 		// <=== [END] переменные окружения
+		// 	},
+		// 	// loaderOptions: {
+		// 	// 	sources: [
+		// 	// 		{
+		// 	// 			tag: 'img',
+		// 	// 			filter: ({ attribute }) => attribute !== 'src',
+		// 	// 		},
+		// 	// 		{
+		// 	// 			tag: 'source',
+		// 	// 			filter: ({ attribute }) => attribute !== 'srcset',
+		// 	// 		},
+		// 	// 	],
+		// 	// },
+		// 	postprocess(content) {
+		// 		if (isProd) {
+		// 			return beautifyHtml(content, {
+		// 				indent_size: 2,
+		// 				indent_char: ' ',
+		// 				indent_with_tabs: true,
+		// 				editorconfig: true,
+		// 			});
+		// 		}
+		// 	},
+		// }),
+
+		new MiniCssExtractPlugin({
+			filename: 'css/[name].css',
 		}),
 
 		new PugLintPlugin({
@@ -140,10 +145,12 @@ module.exports = (options) => {
 		cache: isDev ? { type: 'memory' } : false,
 		mode: isDev ? 'development' : 'production',
 		entry: {
-			'list-pages': 'src/app/list-pages/list-pages.pug',
+			// 'list-pages': 'src/app/list-pages/list-pages.pug',
+			main: ['./src/app/main.ts', './src/app/main.scss'],
 		},
 		output: {
 			path: isDev ? `${paths.dist}` : `${paths.build}`,
+			filename: 'js/[name].js',
 			publicPath: isDev ? '/' : './',
 			clean: true,
 		},
@@ -189,10 +196,6 @@ module.exports = (options) => {
 						},
 					],
 					exclude: /node_modules/,
-					// type: 'asset/resource',
-					// generator: {
-					// 	filename: 'js/[name].js',
-					// },
 				},
 				{
 					test: /\.(jpe?g|png|gif|svg|webp)$/i,
@@ -226,11 +229,8 @@ module.exports = (options) => {
 				},
 				{
 					test: /\.(s[ac]ss|css)$/i,
-					// type: 'asset/resource',
-					// generator: {
-					// 	filename: 'css/[name].css',
-					// },
 					use: [
+						MiniCssExtractPlugin.loader,
 						{
 							loader: 'css-loader',
 							options: {
