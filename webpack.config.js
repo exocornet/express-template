@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const PugLintPlugin = require('puglint-webpack-plugin');
 const StylelintWebpackPlugin = require('stylelint-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const magicImporter = require('node-sass-magic-importer');
 const TerserPlugin = require('terser-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
-// const PugPlugin = require('pug-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const beautifyHtml = require('js-beautify').html;
-let plugins = [];
+const watchIncludeLinkScript = require('./configurations/watch-include-link-script');
 
 const optionsMinimizer = [
 	new TerserPlugin({
@@ -58,6 +55,7 @@ const optionsMinimizer = [
 
 module.exports = (options) => {
 	const { isDev, isProd, paths } = options;
+	const plugins = [];
 
 	plugins.push(
 		new CopyWebpackPlugin({
@@ -75,55 +73,24 @@ module.exports = (options) => {
 					to: 'assets/',
 				},
 			],
+		}),
+		new CopyWebpackPlugin({
+			patterns: [
+				{
+					from: 'src/app/favicon.svg',
+				},
+			],
 		})
 	);
 
 	plugins.push(
-		// new PugPlugin({
-		// 	// js: {
-		// 	// 	filename: 'js/[name].js',
-		// 	// },
-		// 	// css: {
-		// 	// 	filename: 'css/[name].css',
-		// 	// },
-		// 	data: {
-		// 		isDev,
-		// 		// [START] ===> переменные окружения
-		// 		isWebpack: true,
-		// 		// <=== [END] переменные окружения
-		// 	},
-		// 	// loaderOptions: {
-		// 	// 	sources: [
-		// 	// 		{
-		// 	// 			tag: 'img',
-		// 	// 			filter: ({ attribute }) => attribute !== 'src',
-		// 	// 		},
-		// 	// 		{
-		// 	// 			tag: 'source',
-		// 	// 			filter: ({ attribute }) => attribute !== 'srcset',
-		// 	// 		},
-		// 	// 	],
-		// 	// },
-		// 	postprocess(content) {
-		// 		if (isProd) {
-		// 			return beautifyHtml(content, {
-		// 				indent_size: 2,
-		// 				indent_char: ' ',
-		// 				indent_with_tabs: true,
-		// 				editorconfig: true,
-		// 			});
-		// 		}
-		// 	},
+		// new PugLintPlugin({
+		// 	context: 'src',
+		// 	files: '**/*.pug',
+		// 	config: Object.assign({ emitError: true }, require('./.pug-lintrc.json')),
 		// }),
-
 		new MiniCssExtractPlugin({
 			filename: 'css/[name].css',
-		}),
-
-		new PugLintPlugin({
-			context: 'src',
-			files: '**/*.pug',
-			config: Object.assign({ emitError: true }, require('./.pug-lintrc.json')),
 		}),
 		new StylelintWebpackPlugin({
 			configFile: '.stylelintrc.json',
@@ -145,8 +112,8 @@ module.exports = (options) => {
 		cache: isDev ? { type: 'memory' } : false,
 		mode: isDev ? 'development' : 'production',
 		entry: {
-			// 'list-pages': 'src/app/list-pages/list-pages.pug',
 			main: ['./src/app/main.ts', './src/app/main.scss'],
+			...watchIncludeLinkScript(paths.pages),
 		},
 		output: {
 			path: isDev ? `${paths.dist}` : `${paths.build}`,
@@ -260,6 +227,6 @@ module.exports = (options) => {
 			minimize: isProd,
 			minimizer: isProd ? optionsMinimizer : [],
 		},
-		plugins: plugins,
+		plugins,
 	};
 };

@@ -1,0 +1,25 @@
+//- # ПАРАМЕТРЫ ДЛЯ НАСТРОЙКИ LAYOUT # -//
+-
+	const PAGE_TITLE = 'Главная';
+	const IS_PAGE_SVG_SPRITE = true;
+	// const LAYOUT_LEFT_SIDE_COMPONENT = 'Sidebar';
+	// const LAYOUT_RIGHT_SIDE_COMPONENT = 'Cart';
+
+//- # НАСЛЕДОВАНИЕ ФУНКЦИИ ДЛЯ РАЗДЕЛЕНИЯ СТОРОВ # -//
+- const PAGE_STORE = addComponents();
+
+//- ## Подключение store секции MainBanners ## -//
+include index--zone
+- PAGE_STORE.addComponent(Zone);
+
+//- ## Подключение store секции MainBanners ## -//
+include index--main-banners
+- PAGE_STORE.addComponent(MainBanners);
+
+//- ## Подключение store секции SmallBanners ## -//
+include index--small-banners
+- PAGE_STORE.addComponent(SmallBanners);
+
+//- ## Подключение store секции Delivery ## -//
+include index--delivery
+- PAGE_STORE.addComponent(Delivery);

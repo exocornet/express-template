@@ -61,7 +61,6 @@
     "prettier": "^3.2.5",
     "pug": "^3.0.2",
     "pug-lint": "^2.6.0",
-    "pug-plugin": "^5.2.0",
     "puglint-stylish": "^1.1.0",
     "puglint-webpack-plugin": "^1.0.3",
     "sass": "^1.54.9",

@@ -21,7 +21,7 @@ html(lang="ru")
 
 		//- ## Добавление css на страницу ## -//
 		| !{HTMLComment('# ОБЯЗАТЕЛЬНЫЕ СТИЛИ ПОДКЛЮЧАЮЩИЕСЯ НА КАЖДОЙ СТРАНИЦЕ #')}
-		link(rel="stylesheet" href="/css/main.css")/
+		link(href="/css/main.css" rel="stylesheet")/
 		block include-css
 
 	body(class=PAGE_CLASS_BODY || false)
@@ -83,7 +83,6 @@ html(lang="ru")
 		block include-js
 
 		block update-page
-			- console.log(isDev, 'isDevisDevisDevisDev')
 			if isDev
 				script(src="/socket.io/socket.io.js")
 				script.

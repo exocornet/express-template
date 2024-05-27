@@ -37,18 +37,6 @@ const isProd = !isDev;
 // 	});
 // });
 
-// # ОПРЕДЕЛЕНИЕ IPv4 # //
-let IPv4 = '';
-const networkInterfaces = os.networkInterfaces();
-for (const name of Object.keys(networkInterfaces)) {
-	for (const netInterface of networkInterfaces[name]) {
-		// Проверка на IPv4 адрес и исключение внешних и внутренних адресов
-		if (!netInterface.internal && netInterface.family === 'IPv4') {
-			IPv4 = netInterface.address;
-		}
-	}
-}
-
 // # СОЗДАНИЕ ПЕРЕМЕННЫХ ДЛЯ APP # //
 const app = express();
 
@@ -70,6 +58,35 @@ try {
 	incrementalPagesWatch = false;
 }
 const arrPages = process.env.NODE_ENV === 'watch' ? incrementalPagesWatch : fs.readdirSync(`${paths.src}/pages/`);
+
+function replacementSCSSAndTS(htmlContent) {
+	// Регулярное выражение для поиска <link> тегов с href, заканчивающимся на.scss
+	const regexLink = /<link[^>]*?href="\/([^"]+\.scss)[^>]*?>/g;
+	const regexScript = /<script[^>]*?src="\/([^"]+\.ts)[^>]*?>/g;
+
+	// Функция для замены найденных совпадений
+	function replacer(match, p1) {
+		// ## Разбиваем путь на части и получаем имя файла без расширения ## //
+		const PATH_PARTS_ARR = p1.split('/');
+		const FILE_NAME_WITH_EXTENSION = PATH_PARTS_ARR.pop();
+		const FILE_NAME = FILE_NAME_WITH_EXTENSION.split('.')[0];
+
+		// ## Возвращаем новый тег с измененным путем ## //
+		let newTag = `<link href="/css/${FILE_NAME}.css" rel="stylesheet" />`;
+		if (FILE_NAME_WITH_EXTENSION.split('.')[1] === 'ts') {
+			newTag = `<script src="/js/${FILE_NAME}.js" defer>`;
+		}
+
+		return newTag;
+	}
+
+	// ## Заменяем все найденные совпадения ## //
+	htmlContent = htmlContent.replace(regexLink, replacer);
+	htmlContent = htmlContent.replace(regexScript, replacer);
+
+	return htmlContent;
+}
+
 function PugLinter(res, path, options) {
 	PugLintPlugin({
 		context: 'src',
@@ -81,7 +98,15 @@ function PugLinter(res, path, options) {
 			res.send(`<pre>${htmlText}</pre>`);
 			process.stderr.write(errors);
 		} else {
-			res.render(path, { ...options });
+			res.render(path, { ...options }, function (err, html) {
+				if (err) {
+					process.stderr.write(err);
+					throw new Error('Something went wrong in render');
+				} else {
+					html = replacementSCSSAndTS(html);
+					res.send(html);
+				}
+			});
 		}
 	});
 }
@@ -107,8 +132,6 @@ arrPages.forEach((dirPage) => {
 	if (isProd) {
 		// # BUILD СТРАНИЦ С ПОМОЩЬЮ EXPRESS # //
 		compiler.hooks.done.tap('buildPages', function () {
-			io.emit('webpackUpdate');
-
 			app.render(
 				`${paths.src}/pages/${dirPage}/${dirPage}.pug`,
 				{ pretty: true, compileDebug: true },
@@ -117,6 +140,7 @@ arrPages.forEach((dirPage) => {
 						process.stderr.write(err);
 						throw new Error('Something went wrong in render');
 					} else {
+						html = replacementSCSSAndTS(html);
 						const htmlPretty = beautifyHtml(html, {
 							indent_size: 2,
 							indent_char: ' ',
@@ -211,6 +235,18 @@ if (isDev) {
 	watcher.on('change', () => {
 		io.emit('webpackUpdate');
 	});
+
+	// # ОПРЕДЕЛЕНИЕ IPv4 # //
+	let IPv4 = '';
+	const networkInterfaces = os.networkInterfaces();
+	for (const name of Object.keys(networkInterfaces)) {
+		for (const netInterface of networkInterfaces[name]) {
+			// Проверка на IPv4 адрес и исключение внешних и внутренних адресов
+			if (!netInterface.internal && netInterface.family === 'IPv4') {
+				IPv4 = netInterface.address;
+			}
+		}
+	}
 
 	// # ЗАПУСК СЕРВЕРА # //
 	const SERVER_START = server.listen(port, () => {
