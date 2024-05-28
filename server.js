@@ -7,7 +7,7 @@ const path = require('node:path');
 
 // # ПЕРЕМЕННЫЕ ПАКЕТОВ И ПЛАГИНОВ # //
 const { router, express } = require('./routes.js');
-const webpack = require('webpack');
+const rspack = require('@rspack/core');
 const chokidar = require('chokidar');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const open = require('open');
@@ -44,7 +44,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const config = require('./webpack.config.js');
+const config = require('./rspack.config.js');
 
 // # ПОДКЛЮЧЕНИЕ PUG В СРЕДЕ EXPRESS # //
 app.set('views', `${paths.src}`);
@@ -111,7 +111,7 @@ function PugLinter(res, path, options) {
 	});
 }
 
-const compiler = webpack(config({ isDev, isProd, paths, links, VARIABLES }));
+const compiler = rspack(config({ isDev, isProd, paths, links, VARIABLES }));
 arrPages.forEach((dirPage) => {
 	if (isDev) {
 		// # ROUTER СТРАНИЦЫ # //
@@ -220,6 +220,18 @@ const server = createServer(app);
 const io = new Server(server);
 compiler.hooks.done.tap('reloadPage', function () {
 	// io.emit('webpackUpdate');
+
+	fs.readdirSync(`${paths.build}/css`).forEach((file) => {
+		const filePath = path.join(`${paths.build}/css`, file);
+
+		if (fs.statSync(filePath).isDirectory()) {
+			// Если текущий элемент - папка, повторяем процедуру для дочерних папок
+			// deleteJsFiles(filePath);
+		} else if (path.extname(filePath) === '.js') {
+			// Если текущий элемент - файл с расширением.js, удаляем его
+			fs.unlinkSync(filePath);
+		}
+	});
 
 	if (isProd) {
 		setTimeout(() => {
