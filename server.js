@@ -14,8 +14,6 @@ const open = require('open');
 const { Server } = require('socket.io');
 const PugLintPlugin = require('puglint-webpack-plugin/lib/linter.js');
 const beautifyHtml = require('js-beautify').html;
-// const webpackHotMiddleware = require('webpack-hot-middleware');
-// app.use(webpackHotMiddleware(compiler));
 
 // # ПЕРЕМЕННЫЕ ПРОЕКТА # //
 let port = process.env.PORT || 8000;
@@ -25,17 +23,6 @@ const paths = require('./configurations/paths');
 const VARIABLES = require('./configurations/variables');
 const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'watch';
 const isProd = !isDev;
-
-// const watcher = chokidar.watch(`${paths.src}/pages`, {
-// 	persistent: true,
-// });
-//
-// ['ready', 'change'].forEach((event) => {
-// 	watcher.on(event, () => {
-// 		creatingFilesForWebpack(`${paths.src}/pages`, '.link.pug', 'link');
-// 		creatingFilesForWebpack(`${paths.src}/pages`, '.script.pug', 'script');
-// 	});
-// });
 
 // # СОЗДАНИЕ ПЕРЕМЕННЫХ ДЛЯ APP # //
 const app = express();
@@ -215,35 +202,38 @@ router.get('/list-pages', function (req, res) {
 // # ОПРЕДЕЛЕНИЕ МАРШРУТОВ ДЛЯ ЗАПРОСОВ # //
 app.use(router);
 
-// # СОЗДАНИЕ СЕРВЕРА # //
-const server = createServer(app);
-const io = new Server(server);
-compiler.hooks.done.tap('reloadPage', function () {
-	// io.emit('webpackUpdate');
+if (isProd) {
+	compiler.hooks.done.tap('reloadPage', function () {
+		// # УДАЛЕНИЕ ПУСТЫХ JS ФАЙЛОВ # //
+		function deleteEmptyJSFiles(pathDir) {
+			fs.readdirSync(pathDir).forEach((file) => {
+				const filePath = path.join(pathDir, file);
 
-	fs.readdirSync(`${paths.build}/css`).forEach((file) => {
-		const filePath = path.join(`${paths.build}/css`, file);
-
-		if (fs.statSync(filePath).isDirectory()) {
-			// Если текущий элемент - папка, повторяем процедуру для дочерних папок
-			// deleteJsFiles(filePath);
-		} else if (path.extname(filePath) === '.js') {
-			// Если текущий элемент - файл с расширением.js, удаляем его
-			fs.unlinkSync(filePath);
+				if (fs.statSync(filePath).isDirectory()) {
+					deleteEmptyJSFiles(filePath);
+					process.stderr.write('в директории build/css имеются директории');
+				} else if (path.extname(filePath) === '.js' && fs.statSync(filePath).size === 0) {
+					fs.unlinkSync(filePath);
+				}
+			});
 		}
-	});
+		deleteEmptyJSFiles(paths.build);
 
-	if (isProd) {
+		// # ВЫВОД СООБЩЕНИЯ ОБ УСПЕШНОМ БИЛДЕ И ЗАВЕРШЕНИЕ РАБОТЫ В ТЕРМИНАЛЕ # //
 		setTimeout(() => {
 			process.stderr.write('\n\x1b[32mBUILD COMPLETED SUCCESSFULLY\x1b[0m\n\n');
 			process.exit(0);
 		}, 0);
-	}
-});
+	});
+}
 
 if (isDev) {
-	const watcher = chokidar.watch(__dirname + '/src');
-	// Отслеживайте изменения в файлах Pug и перезагружайте страницу
+	// # СОЗДАНИЕ СЕРВЕРА # //
+	const server = createServer(app);
+	const io = new Server(server);
+
+	// # ОТСЛЕЖЕНИЕ ИЗМЕНЕНИЙ В ФАЙЛАХ И ПЕРЕЗАГРУЗКА СТРАНИЦЫ # //
+	const watcher = chokidar.watch(paths.src);
 	watcher.on('change', () => {
 		io.emit('webpackUpdate');
 	});

@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+// const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const StylelintWebpackPlugin = require('stylelint-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const magicImporter = require('node-sass-magic-importer');
@@ -17,6 +18,30 @@ const optionsMinimizer = [
 		extractComments: false,
 		parallel: true,
 	}),
+	// new ImageMinimizerPlugin({
+	// 	minimizer: {
+	// 		// Implementation
+	// 		implementation: ImageMinimizerPlugin.sharpMinify,
+	// 		// Options
+	// 	},
+	// }),
+	// new ImageMinimizerPlugin({
+	// 	minimizer: {
+	// 		implementation: ImageMinimizerPlugin.imageminMinify,
+	// 		options: {
+	// 			plugins: ['imagemin-gifsicle', 'imagemin-mozjpeg', 'imagemin-pngquant', 'imagemin-svgo'],
+	// 		},
+	// 	},
+	// 	generator: [
+	// 		{
+	// 			preset: 'webp',
+	// 			implementation: ImageMinimizerPlugin.imageminGenerate,
+	// 			options: {
+	// 				plugins: ['imagemin-webp'],
+	// 			},
+	// 		},
+	// 	],
+	// }),
 	// new ImageMinimizerPlugin({
 	// 	minimizer: {
 	// 		implementation: ImageMinimizerPlugin.imageminMinify,
@@ -83,7 +108,7 @@ module.exports = (options) => {
 
 	plugins.push(
 		new CssExtractRspackPlugin({
-			filename: '[name].css',
+			filename: 'css/[name].css',
 		}),
 		new StylelintWebpackPlugin({
 			configFile: '.stylelintrc.json',
@@ -109,14 +134,14 @@ module.exports = (options) => {
 		context: __dirname,
 		mode: isDev ? 'development' : 'production',
 		entry: {
-			'css/main': './src/app/main.scss',
-			'js/main': './src/app/main.ts',
-			// main: { import: '/src/app/main.scss', filename: 'css/[name].css' },
+			main: ['./src/app/main.ts', './src/app/main.scss'],
 			...watchIncludeLinkScript(paths.pages),
+			// 'css/main': './src/app/main.scss',
+			// 'js/main': './src/app/main.ts',
 		},
 		output: {
 			path: isDev ? `${paths.dist}` : `${paths.build}`,
-			// filename: 'js/[name].js',
+			filename: 'js/[name].js',
 			publicPath: isDev ? '/' : './',
 			clean: true,
 		},
@@ -174,6 +199,44 @@ module.exports = (options) => {
 				{
 					test: /\.(jpe?g|png|gif|svg|webp)$/i,
 					type: 'asset/resource',
+					// use: [
+					// 	{
+					// 		loader: ImageMinimizerPlugin.loader,
+					// 		// enforce: 'pre',
+					// 		options: {
+					// 			minimizer: {
+					// 				implementation: ImageMinimizerPlugin.imageminMinify,
+					// 				options: {
+					// 					plugins: [
+					// 						['gifsicle', { interlaced: true }],
+					// 						['mozjpeg', { quality: 85 }],
+					// 						['pngquant', { optimizationLevel: 6 }],
+					// 						[
+					// 							'svgo',
+					// 							{
+					// 								plugins: [
+					// 									{
+					// 										name: 'preset-default',
+					// 										params: {
+					// 											overrides: {
+					// 												removeViewBox: false,
+					// 												addAttributesToSVGElement: {
+					// 													params: {
+					// 														attributes: [{ xmlns: 'http://www.w3.org/2000/svg' }],
+					// 													},
+					// 												},
+					// 											},
+					// 										},
+					// 									},
+					// 								],
+					// 							},
+					// 						],
+					// 					],
+					// 				},
+					// 			},
+					// 		},
+					// 	},
+					// ],
 					exclude: /fonts/,
 					generator: {
 						filename: 'assets/images/[name][ext]',
