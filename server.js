@@ -164,7 +164,7 @@ arrPages.forEach((dirPage) => {
 // # НАСТРОЙКА И ПОДКЛЮЧЕНИЕ WEBPACK'а # //
 app.use(
 	webpackDevMiddleware(compiler, {
-		publicPath: isDev ? '/' : './',
+		publicPath: isDev ? '/' : '/',
 		writeToDisk: isProd,
 		stats: {
 			children: true,

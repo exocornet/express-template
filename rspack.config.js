@@ -104,6 +104,14 @@ module.exports = (options) => {
 				},
 			],
 		})
+		// new CopyRspackPlugin({
+		// 	patterns: [
+		// 		{
+		// 			from: 'public/fonts',
+		// 			to: 'fonts/',
+		// 		},
+		// 	],
+		// })
 	);
 
 	plugins.push(
@@ -128,6 +136,7 @@ module.exports = (options) => {
 
 	return {
 		// cache: isDev ? { type: 'memory' } : false,
+		cache: false,
 		experiments: {
 			css: false, // Отключаем экспериментальную функциональность CSS
 		},
@@ -142,7 +151,7 @@ module.exports = (options) => {
 		output: {
 			path: isDev ? `${paths.dist}` : `${paths.build}`,
 			filename: 'js/[name].js',
-			publicPath: isDev ? '/' : './',
+			publicPath: isDev ? '/' : '/',
 			clean: true,
 		},
 		resolve: {
@@ -198,7 +207,6 @@ module.exports = (options) => {
 				},
 				{
 					test: /\.(jpe?g|png|gif|svg|webp)$/i,
-					type: 'asset/resource',
 					// use: [
 					// 	{
 					// 		loader: ImageMinimizerPlugin.loader,
@@ -207,37 +215,14 @@ module.exports = (options) => {
 					// 			minimizer: {
 					// 				implementation: ImageMinimizerPlugin.imageminMinify,
 					// 				options: {
-					// 					plugins: [
-					// 						['gifsicle', { interlaced: true }],
-					// 						['mozjpeg', { quality: 85 }],
-					// 						['pngquant', { optimizationLevel: 6 }],
-					// 						[
-					// 							'svgo',
-					// 							{
-					// 								plugins: [
-					// 									{
-					// 										name: 'preset-default',
-					// 										params: {
-					// 											overrides: {
-					// 												removeViewBox: false,
-					// 												addAttributesToSVGElement: {
-					// 													params: {
-					// 														attributes: [{ xmlns: 'http://www.w3.org/2000/svg' }],
-					// 													},
-					// 												},
-					// 											},
-					// 										},
-					// 									},
-					// 								],
-					// 							},
-					// 						],
-					// 					],
+					// 					plugins: ['imagemin-gifsicle', 'imagemin-mozjpeg', 'imagemin-pngquant', 'imagemin-svgo'],
 					// 				},
 					// 			},
 					// 		},
 					// 	},
 					// ],
 					exclude: /fonts/,
+					type: 'asset/resource',
 					generator: {
 						filename: 'assets/images/[name][ext]',
 					},
