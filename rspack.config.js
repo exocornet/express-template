@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-// const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const StylelintWebpackPlugin = require('stylelint-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const magicImporter = require('node-sass-magic-importer');
-// const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const { CssExtractRspackPlugin, CopyRspackPlugin, SwcJsMinimizerRspackPlugin } = require('@rspack/core');
 const watchIncludeLinkScript = require('./configurations/watch-include-link-script');
+// const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 const optionsMinimizer = [
 	new SwcJsMinimizerRspackPlugin({
@@ -18,61 +17,25 @@ const optionsMinimizer = [
 		extractComments: false,
 		parallel: true,
 	}),
-	// new ImageMinimizerPlugin({
-	// 	minimizer: {
-	// 		// Implementation
-	// 		implementation: ImageMinimizerPlugin.sharpMinify,
-	// 		// Options
-	// 	},
-	// }),
-	// new ImageMinimizerPlugin({
-	// 	minimizer: {
-	// 		implementation: ImageMinimizerPlugin.imageminMinify,
-	// 		options: {
-	// 			plugins: ['imagemin-gifsicle', 'imagemin-mozjpeg', 'imagemin-pngquant', 'imagemin-svgo'],
-	// 		},
-	// 	},
-	// 	generator: [
-	// 		{
-	// 			preset: 'webp',
-	// 			implementation: ImageMinimizerPlugin.imageminGenerate,
-	// 			options: {
-	// 				plugins: ['imagemin-webp'],
-	// 			},
-	// 		},
-	// 	],
-	// }),
-	// new ImageMinimizerPlugin({
-	// 	minimizer: {
-	// 		implementation: ImageMinimizerPlugin.imageminMinify,
-	// 		options: {
-	// 			plugins: [
-	// 				['gifsicle', { interlaced: true }],
-	// 				['mozjpeg', { quality: 85 }],
-	// 				['pngquant', { optimizationLevel: 6 }],
-	// 				[
-	// 					'svgo',
-	// 					{
-	// 						plugins: [
-	// 							{
-	// 								name: 'preset-default',
-	// 								params: {
-	// 									overrides: {
-	// 										removeViewBox: false,
-	// 										addAttributesToSVGElement: {
-	// 											params: {
-	// 												attributes: [{ xmlns: 'http://www.w3.org/2000/svg' }],
-	// 											},
-	// 										},
-	// 									},
-	// 								},
-	// 							},
-	// 						],
-	// 					},
+	// import('imagemin').then((imagemin) => {
+	// 	import('imagemin-webp').then((imageminWebp) => {
+	// 		// Оптимизация и конвертация изображений
+	// 		imagemin
+	// 			.default(['test/images/**/*.{jpg,png}'], {
+	// 				destination: 'dist/images',
+	// 				plugins: [
+	// 					imageminWebp.default({
+	// 						quality: 100,
+	// 					}),
 	// 				],
-	// 			],
-	// 		},
-	// 	},
+	// 			})
+	// 			.then(() => {
+	// 				console.log('Images have been processed successfully.');
+	// 			})
+	// 			.catch((error) => {
+	// 				console.error('An error occurred during image processing:', error);
+	// 			});
+	// 	});
 	// }),
 ];
 
@@ -104,14 +67,6 @@ module.exports = (options) => {
 				},
 			],
 		})
-		// new CopyRspackPlugin({
-		// 	patterns: [
-		// 		{
-		// 			from: 'public/fonts',
-		// 			to: 'fonts/',
-		// 		},
-		// 	],
-		// })
 	);
 
 	plugins.push(
@@ -146,7 +101,6 @@ module.exports = (options) => {
 			main: ['./src/app/main.ts', './src/app/main.scss'],
 			...watchIncludeLinkScript(paths.pages),
 			// 'css/main': './src/app/main.scss',
-			// 'js/main': './src/app/main.ts',
 		},
 		output: {
 			path: isDev ? `${paths.dist}` : `${paths.build}`,
@@ -207,20 +161,6 @@ module.exports = (options) => {
 				},
 				{
 					test: /\.(jpe?g|png|gif|svg|webp)$/i,
-					// use: [
-					// 	{
-					// 		loader: ImageMinimizerPlugin.loader,
-					// 		// enforce: 'pre',
-					// 		options: {
-					// 			minimizer: {
-					// 				implementation: ImageMinimizerPlugin.imageminMinify,
-					// 				options: {
-					// 					plugins: ['imagemin-gifsicle', 'imagemin-mozjpeg', 'imagemin-pngquant', 'imagemin-svgo'],
-					// 				},
-					// 			},
-					// 		},
-					// 	},
-					// ],
 					exclude: /fonts/,
 					type: 'asset/resource',
 					generator: {

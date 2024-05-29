@@ -6,7 +6,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 // # ПЕРЕМЕННЫЕ ПАКЕТОВ И ПЛАГИНОВ # //
-const { router, express } = require('./routes.js');
+const { router, express } = require('./routes/routes.js');
 const rspack = require('@rspack/core');
 const chokidar = require('chokidar');
 const webpackDevMiddleware = require('webpack-dev-middleware');
@@ -103,6 +103,11 @@ arrPages.forEach((dirPage) => {
 	if (isDev) {
 		// # ROUTER СТРАНИЦЫ # //
 		router.get(`/${dirPage}`, function (req, res) {
+			const start = Date.now();
+			res.on('finish', () => {
+				const duration = Date.now() - start;
+				process.stderr.write(`GET ${req.originalUrl} time ${duration}ms\n`);
+			});
 			PugLinter(res, `./pages/${dirPage}/${dirPage}`);
 		});
 

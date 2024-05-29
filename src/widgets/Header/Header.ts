@@ -19,7 +19,7 @@ class HeaderControl {
 	}
 
 	#init() {
-		// console.log('Header', this.block);
+		// console.log('He3dааsdsd33ader', this.block);
 		// useMediaQuery(768, this.#onChangeMediaQueryForHeader, this.#onChangeMediaQueryForHeader);
 		// useMediaQuery(1280, this.#onChangeMediaQueryForHeader, this.#onChangeMediaQueryForHeader);
 		// useMediaQuery(768, this.#onChangeMediaQueryForAsideElems, this.#onChangeMediaQueryForAsideElems);
