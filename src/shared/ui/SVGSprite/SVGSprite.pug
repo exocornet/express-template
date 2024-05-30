@@ -1,9 +1,24 @@
-mixin SVGSprite
+mixin SVGSprite(includeSvgSpriteArr)
+	//- # ВСПОМОГАТЕЛЬНЫЙ КОМПОНЕНТ ДЛЯ ВЫЗОВА В НУЖНОМ МЕСТЕ ИЗ СПРАЙТА # -//
 	include SVGUse
 
 	svg(class="d-none" xmlns="http://www.w3.org/2000/svg")
-		include include-symbol/arrow-down
-		include include-symbol/search
-		include include-symbol/search-clear
-		include include-symbol/minus
-		include include-symbol/plus
+		for nameSVG in includeSvgSpriteArr || []
+			case nameSVG
+				when 'default'
+					//- # ЧАСТО ИСПОЛЬЗУЕМЫЕ SVG ОТ СТРАНИЦЫ К СТРАНИЦЕ # -//
+					//- include include-svg/lightning
+					//- include include-svg/lightning-red
+					//- include include-svg/phone-border
+					//- include include-svg/close-icon
+					//- include include-svg/message-icon
+					//- include include-svg/lighting
+					//- include include-svg/bottom_arrow
+					//- include include-svg/telegram
+					//- include include-svg/whatsapp
+					//- include include-svg/phone
+					//- include include-svg/popup-social-icon-tg
+					//- include include-svg/popup-social-icon-close
+
+				when 'user'
+					include include-svg/user

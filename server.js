@@ -12,14 +12,15 @@ const chokidar = require('chokidar');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const open = require('open');
 const { Server } = require('socket.io');
-const PugLintPlugin = require('puglint-webpack-plugin/lib/linter.js');
 const beautifyHtml = require('js-beautify').html;
+
+// # ВСПОМОГАТЕЛЬНЫЕ СКРИПТЫ # //
+const { replacementSCSSAndTS, PugLinter } = require('./configurations/additional-server-scripts.js');
 
 // # ПЕРЕМЕННЫЕ ПРОЕКТА # //
 let port = process.env.PORT || 8000;
 const { names: namePages } = require('./src/app/list-pages/namePages');
 const paths = require('./configurations/paths');
-// const creatingFilesForWebpack = require('./configurations/creating-files-for-webpack');
 const VARIABLES = require('./configurations/variables');
 const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'watch';
 const isProd = !isDev;
@@ -46,69 +47,19 @@ try {
 }
 const arrPages = process.env.NODE_ENV === 'watch' ? incrementalPagesWatch : fs.readdirSync(`${paths.src}/pages/`);
 
-function replacementSCSSAndTS(htmlContent) {
-	// Регулярное выражение для поиска <link> тегов с href, заканчивающимся на.scss
-	const regexLink = /<link[^>]*?href="\/([^"]+\.scss)[^>]*?>/g;
-	const regexScript = /<script[^>]*?src="\/([^"]+\.ts)[^>]*?>/g;
-
-	// Функция для замены найденных совпадений
-	function replacer(match, p1) {
-		// ## Разбиваем путь на части и получаем имя файла без расширения ## //
-		const PATH_PARTS_ARR = p1.split('/');
-		const FILE_NAME_WITH_EXTENSION = PATH_PARTS_ARR.pop();
-		const FILE_NAME = FILE_NAME_WITH_EXTENSION.split('.')[0];
-
-		// ## Возвращаем новый тег с измененным путем ## //
-		let newTag = `<link href="/css/${FILE_NAME}.css" rel="stylesheet" />`;
-		if (FILE_NAME_WITH_EXTENSION.split('.')[1] === 'ts') {
-			newTag = `<script src="/js/${FILE_NAME}.js" defer>`;
-		}
-
-		return newTag;
-	}
-
-	// ## Заменяем все найденные совпадения ## //
-	htmlContent = htmlContent.replace(regexLink, replacer);
-	htmlContent = htmlContent.replace(regexScript, replacer);
-
-	return htmlContent;
-}
-
-function PugLinter(res, path, options) {
-	PugLintPlugin({
-		context: 'src',
-		files: '**/*.pug',
-		config: Object.assign({ emitError: true }, require('./.pug-lintrc.json')),
-	}).then((errors) => {
-		if (errors) {
-			const htmlText = errors.replaceAll('[90m', '<b style="color:red;">').replaceAll('[39m', '</b>');
-			res.send(`<pre>${htmlText}</pre>`);
-			process.stderr.write(errors);
-		} else {
-			res.render(path, { ...options }, function (err, html) {
-				if (err) {
-					process.stderr.write(err);
-					throw new Error('Something went wrong in render');
-				} else {
-					html = replacementSCSSAndTS(html);
-					res.send(html);
-				}
-			});
-		}
-	});
-}
-
 const compiler = rspack(config({ isDev, isProd, paths, links, VARIABLES }));
 arrPages.forEach((dirPage) => {
 	if (isDev) {
 		// # ROUTER СТРАНИЦЫ # //
 		router.get(`/${dirPage}`, function (req, res) {
-			const start = Date.now();
-			res.on('finish', () => {
-				const duration = Date.now() - start;
-				process.stderr.write(`GET ${req.originalUrl} time ${duration}ms\n`);
-			});
+			const START = Date.now();
+
 			PugLinter(res, `./pages/${dirPage}/${dirPage}`);
+
+			res.on('finish', () => {
+				const duration = Date.now() - START;
+				process.stderr.write(`GET ${req.originalUrl} ${res.statusCode} in ${duration}ms\n`);
+			});
 		});
 
 		// # ПЕРЕАДРЕСАЦИЯ СТРАНИЦЫ ПРИ ДОБАВЛЕНИЕ В КОНЦЕ СЛЭША ("/") # //

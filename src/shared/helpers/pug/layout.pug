@@ -26,8 +26,7 @@ html(lang="ru")
 
 	body(class=PAGE_CLASS_BODY || false)
 		//- ## Svg sprite ## -//
-		if IS_PAGE_SVG_SPRITE
-			+SVGSprite
+		block svg-sprite
 
 		//- ## Header ## -//
 		block header

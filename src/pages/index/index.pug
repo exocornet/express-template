@@ -9,10 +9,14 @@ block variables
 append include-css
 	include styles-and-scripts/index.link.pug
 
+block svg-sprite
+	+SVGSprite(['user'])
+
 //- # ПОДКЛЮЧЕНИЕ HEADER СТРАНИЦЫ # -//
 block header
 	+Header(Header)
-	div fgfgfgfgfg
+	div(class="dd") 333hh3
+	+SVGUse('user')
 
 //- # ПОДКЛЮЧЕНИЕ FOOTER СТРАНИЦЫ # -//
 block footer
